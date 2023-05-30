@@ -19,3 +19,6 @@ Route::get('/', function () {
 Route::get('/transaksi', function () {
     return view('formTransaksi');
 });
+Route::get('/dashboard', function () {
+    return view('dashboard');
+});
