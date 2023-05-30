@@ -23,7 +23,7 @@ Route::get('/about', function () {
     return view('landingpage.about');
 });
 
-Route::get('/', function () {
+Route::get('/login', function () {
     return view('login');
 });
 Route::get('/transaksi', function () {
