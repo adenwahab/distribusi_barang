@@ -24,9 +24,10 @@
                                     <h3 class="text-center font-weight-light my-4">Login</h3>
                                 </div>
                                 <div class="card-body">
-                                    <form method="post">
-                                        <div class="form-floating mb-3">
-                                            <input class="form-control" name="username" id="inputUsername" type="Username" placeholder="name@example.com" />
+                                    <form method="post" action="/login">
+                                        @csrf
+                                        <div class=" form-floating mb-3">
+                                            <input class="form-control" name="username" id="inputUsername" type="Username" />
                                             <label for="inputUsername">Username</label>
                                         </div>
                                         <div class="form-floating mb-3">
@@ -35,7 +36,7 @@
                                         </div>
                                         <div class="d-flex align-items-center justify-content-between mt-4 mb-0">
                                             <a class="small" href="password.html">Forgot Password?</a>
-                                            <a class="btn btn-primary" href="{{ url('/dashboard') }}">Login</a>
+                                            <button type="submit" class="btn btn-dark btn-block">Signin</button>
                                         </div>
                                     </form>
                                 </div>

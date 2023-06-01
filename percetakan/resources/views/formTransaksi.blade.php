@@ -1,7 +1,13 @@
-<body>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+@extends('admin.index')
 
+@section('content')
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+
+
+<div class="container-fluid">
+    <H3>Masukkan transaksi disini</H3>
+    <br><br><br>
     <form>
         <div class="form-group row">
             <label for="text" class="col-3 col-form-label">Nama Pelanggan</label>
@@ -54,6 +60,5 @@
             </div>
         </div>
     </form>
-</body>
-
-</html>
+</div>
+@endsection

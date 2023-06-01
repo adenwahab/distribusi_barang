@@ -1,8 +1,8 @@
-@extends('layouts.main')
+@extends('admin.index')
 
 @section('content')
 <main>
-    <div class="container">
+    <div class="container-fluid">
         <h1 class="mt-4">Dashboard</h1>
         <ol class="breadcrumb mb-4">
             <li class="breadcrumb-item active">Dashboard</li>
@@ -32,6 +32,8 @@
                                 </ul>
                             </div>
 
+
+
                             <div class="card-body">
                                 <h5 class="card-title">Sales <span>| Today</span></h5>
 
@@ -46,8 +48,8 @@
                                     </div>
                                 </div>
                             </div>
-
-                        </div>
+                            <br>
+                        </div><br>
                     </div><!-- End Sales Card -->
 
                     <!-- Revenue Card -->
@@ -83,6 +85,7 @@
                             </div>
 
                         </div>
+                        <br>
                     </div><!-- End Revenue Card -->
 
                     <!-- Customers Card -->
@@ -138,7 +141,6 @@
                                     <li><a class="dropdown-item" href="#">This Year</a></li>
                                 </ul>
                             </div>
-
                             <div class="card-body">
                                 <h5 class="card-title">Reports <span>/Today</span></h5>
 
@@ -202,6 +204,7 @@
                             </div>
 
                         </div>
+                        <br>
                     </div><!-- End Reports -->
 
                     <!-- Recent Sales -->
@@ -219,8 +222,7 @@
                                     <li><a class="dropdown-item" href="#">This Month</a></li>
                                     <li><a class="dropdown-item" href="#">This Year</a></li>
                                 </ul>
-                            </div>
-
+                            </div><br>
                             <div class="card-body">
                                 <h5 class="card-title">Recent Sales <span>| Today</span></h5>
 
