@@ -7,28 +7,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
     <meta name="description" content="" />
     <meta name="author" content="" />
-    <title>Dashboard - SB Admin</title>
+    <title>{{ $title }}</title>
     <link href="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/style.min.css" rel="stylesheet" />
     <link href="{{ asset('admin/css/styles.css') }}" rel="stylesheet" />
     <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
 </head>
 
-<body class="sb-nav-fixed">
+<body class="sb-nav-fixed container-fluid">
     @include('admin.header')
     @include('admin.sidebar')
     <div id="layoutSidenav_content">
         <main id="main" class="main">
-            <div class="pagetitle">
-                <h1>Produk Kami</h1>
-                <nav>
-                    <ol class="breadcrumb">
-                        <li class="breadcrumb-item"><a href="">Home</a></li>
-                        <li class="breadcrumb-item active">
-                            Produk Kami
-                        </li>
-                    </ol>
-                </nav>
-            </div><!-- End Page Title -->
+            <!-- End Page Title -->
             {{-- area main --}}
             @yield('content')
 
