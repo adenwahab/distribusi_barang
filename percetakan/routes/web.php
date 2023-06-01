@@ -23,7 +23,7 @@ Route::get('/about', function () {
     return view('landingpage.about');
 });
 
-Route::get('/', function () {
+Route::get('/login', function () {
     return view('login');
 });
 Route::get('/transaksi', function () {
@@ -58,8 +58,8 @@ Route::get('/contact', function () {
 });
 
 
-Route::get('/', [BarangController::class,'dataBahan']);
-Route::get('/beranda', [BarangController::class,'dataBahan']);
+Route::get('/', [BarangController::class, 'dataBahan']);
+Route::get('/beranda', [BarangController::class, 'dataBahan']);
 
 
 //----------route admin------------
@@ -67,7 +67,7 @@ Route::get('/home', function () {
     return view('admin.home');
 });
 
-Route::resource('kategori',KategoriController::class);
-Route::resource('barang',BarangController::class);
-Route::resource('pelanggan',PelangganController::class);
-Route::resource('bahan',BahanController::class);
+Route::resource('kategori', KategoriController::class);
+Route::resource('barang', BarangController::class);
+Route::resource('pelanggan', PelangganController::class);
+Route::resource('bahan', BahanController::class);
