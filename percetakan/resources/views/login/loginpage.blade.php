@@ -24,16 +24,30 @@
                                     <h3 class="text-center font-weight-light my-4">Login</h3>
                                 </div>
                                 <div class="card-body">
-                                    <form method="post" action="/login">
+
+                                    @if (session()->has('succes'))
+                                    <div class="alert alert-success" role="alert">
+                                        {{ session()->get('succes') }}
+                                    </div>
+                                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                                    @endif
+
+                                    <form method=" post" action="/login">
                                         @csrf
                                         <div class=" form-floating mb-3">
-                                            <input class="form-control" name="username" id="inputUsername" type="Username" />
+                                            <input class="form-control @error('username') is-invalid @enderror" name="username" id="inputUsername" type="text" placeholder="Username" autofocus value="{{old ('username')}}" />
                                             <label for="inputUsername">Username</label>
                                         </div>
+                                        @error('username')
+                                        <div class="alert alert-danger">{{ $message }}</div>
+                                        @enderror
                                         <div class="form-floating mb-3">
                                             <input class="form-control" name="password" id="inputPassword" type="password" placeholder="Password" />
                                             <label for="inputPassword">Password</label>
                                         </div>
+                                        @error('password')
+                                        <div class="alert alert-danger">{{ $message }}</div>
+                                        @enderror
                                         <div class="d-flex align-items-center justify-content-between mt-4 mb-0">
                                             <a class="small" href="password.html">Forgot Password?</a>
                                             <button type="submit" class="btn btn-dark btn-block">Signin</button>

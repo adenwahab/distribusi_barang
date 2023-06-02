@@ -41,21 +41,21 @@ class loginController extends Controller
 
     public function authenticate(Request $request)
     {
-        $request->validate([
+        $credentials = $request->validate([
             'username' => 'required',
             'password' => 'required'
         ]);
         // dd('Berhasil Login');
-        $credentials = $request->only('username', 'password');
+        // $credentials = $request->only('username', 'password');
         // dd($credentials);
-
+        // $request->session()->flush('success', 'Login Berhasil');
         if (Auth::attempt($credentials)) {
             $request->session()->regenerate();
             // Authentication passed...
             return redirect()->intended('/dashboard');
         }
 
-        return redirect('login')->with('pesan', "Login gagal, periksa kembali username dan password anda");
+        return back()->with('loginError', 'Login Gagal');
     }
 
     public function logout()
