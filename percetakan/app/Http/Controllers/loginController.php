@@ -12,7 +12,7 @@ class loginController extends Controller
 {
     public function login()
     {
-        return view('login', [
+        return view('login.loginpage', [
             'title' => 'Login',
             'active' => 'login'
         ]);
@@ -47,7 +47,7 @@ class loginController extends Controller
         ]);
         // dd('Berhasil Login');
         $credentials = $request->only('username', 'password');
-        //dd($credentials);
+        // dd($credentials);
 
         if (Auth::attempt($credentials)) {
             $request->session()->regenerate();
