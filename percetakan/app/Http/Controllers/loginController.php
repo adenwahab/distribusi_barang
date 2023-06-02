@@ -12,7 +12,7 @@ class loginController extends Controller
 {
     public function login()
     {
-        return view('login', [
+        return view('login.loginpage', [
             'title' => 'Login',
             'active' => 'login'
         ]);
@@ -45,14 +45,14 @@ class loginController extends Controller
             'username' => 'required',
             'password' => 'required'
         ]);
-        dd('Berhasil Login');
+        // dd('Berhasil Login');
         $credentials = $request->only('username', 'password');
-        //dd($credentials);
+        // dd($credentials);
 
         if (Auth::attempt($credentials)) {
             $request->session()->regenerate();
             // Authentication passed...
-            return redirect()->intended('dashboard');
+            return redirect()->intended('/dashboard');
         }
 
         return redirect('login')->with('pesan', "Login gagal, periksa kembali username dan password anda");

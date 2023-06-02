@@ -59,7 +59,6 @@ Route::get('/contact', function () {
 });
 
 
-Route::get('/', [BarangController::class, 'dataBahan']);
 Route::get('/beranda', [BarangController::class, 'dataBahan']);
 
 
