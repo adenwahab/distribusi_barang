@@ -57,8 +57,8 @@ class barangController extends Controller
             'stok' => 'required|integer',
             'satuan' => 'required|max:45',
             'kategori' => 'required|integer',
-            'foto' => 'nullable|max:45',
-            //'foto' => 'nullable|image|mimes:jpg,jpeg,png,gif,svg|max:2048',
+            //'foto' => 'nullable|max:45',
+            'foto' => 'nullable|image|mimes:jpg,jpeg,png,gif,svg|max:2048',
         ],
         //custom pesan errornya
         [
@@ -75,9 +75,22 @@ class barangController extends Controller
             'satuan.max'=>'satuan Maksimal 45 karakter',
             'kategori_id.required'=>'kategori barang Wajib Diisi',
             'kategori_id.integer'=>'kategori barang Wajib Diisi Berupa dari Pilihan yg Tersedia',
+            'foto.min'=>'Ukuran file kurang 2 MB',
+            'foto.max'=>'Ukuran file melebihi 2 MB ',
+            'foto.image'=>'File foto bukan gambar',
+            'foto.mimes'=>'Extension file selain jpg,jpeg,png,gif,svg',
         ]
         );
         //barang::create($request->all());
+                //------------apakah user  ingin upload foto--------- --
+        if(!empty($request->foto)){
+            $fileName = 'barang_'.$request->kode.'.'.$request->foto->extension();
+            //$fileName = $request->foto->getClientOriginalName();
+            $request->foto->move(public_path('admin/assets/img'),$fileName);
+        }
+        else{
+            $fileName = '';
+        }
 
         //lakukan insert data dari request form
         DB::table('barang')->insert(
@@ -88,7 +101,8 @@ class barangController extends Controller
                 'harga'=>$request->harga,
                 'stok'=>$request->stok,
                 'satuan'=>$request->satuan,
-                'foto'=>$request->foto,
+                //'foto'=>$request->foto,
+                'foto'=>$fileName,
                 //'created_at'=>now(),
             ]);
 
@@ -124,15 +138,15 @@ class barangController extends Controller
     {
         //proses input barang dari form
         $request->validate([
-            'kode' => 'required|unique:barang|max:5',
+            'kode' => 'required|max:5',
             'nama_barang' => 'required|max:45',
             //'harga' => 'required|double',
             'harga' => 'required|regex:/^[0-9]+(\.[0-9][0-9]?)?$/',
             'stok' => 'required|integer',
             'satuan' => 'required|max:45',
             'kategori' => 'required|integer',
-            'foto' => 'nullable|max:45',
-            //'foto' => 'nullable|image|mimes:jpg,jpeg,png,gif,svg|max:2048',
+            //'foto' => 'nullable|max:45',
+            'foto' => 'nullable|image|mimes:jpg,jpeg,png,gif,svg|max:2048',
         ],
         //custom pesan errornya
         [
@@ -149,9 +163,30 @@ class barangController extends Controller
             'satuan.max'=>'Satuan Maksimal 45 karakter',
             'kategori_id.required'=>'kategori barang Wajib Diisi',
             'kategori_id.integer'=>'kategori barang Wajib Diisi Berupa dari Pilihan yg Tersedia',
+            'foto.min'=>'Ukuran file kurang 2 MB',
+            'foto.max'=>'Ukuran file melebihi 2 MB',
+            'foto.image'=>'File foto bukan gambar',
+            'foto.mimes'=>'Extension file selain jpg,jpeg,png,gif,svg',
         ]
         );
         //barang::create($request->all());
+        //------------ambil foto lama apabila user ingin ganti foto-----------
+        $foto = DB::table('barang')->select('foto')->where('id',$id)->get();
+        foreach($foto as $f){
+            $namaFileFotoLama = $f->foto;
+        }
+        //------------apakah user  ingin ubah upload foto baru--------- --
+        if(!empty($request->foto)){
+            //jika ada foto lama, hapus foto lamanya terlebih dahulu
+            if(!empty($namaFileFotoLama)) unlink('admin/assets/img/'.$namaFileFotoLama);
+            //lalukan proses ubah foto lama menjadi foto baru
+            $fileName = 'barang_'.$request->kode.'.'.$request->foto->extension();
+            //$fileName = $request->foto->getClientOriginalName();
+            $request->foto->move(public_path('admin/assets/img'),$fileName);
+        }
+        else{
+            $fileName = $namaFileFotoLama;
+        }
 
         //lakukan update data dari request form edit
         DB::table('barang')->where('id',$id)->update(
@@ -162,7 +197,8 @@ class barangController extends Controller
                 'harga'=>$request->harga,
                 'stok'=>$request->stok,
                 'satuan'=>$request->satuan,
-                'foto'=>$request->foto,
+                //'foto'=>$request->foto,
+                'foto'=>$fileName,
                 //'updated_at'=>now(),
             ]);
 
@@ -175,9 +211,13 @@ class barangController extends Controller
      */
     public function destroy(string $id)
     {
-        barang::where('id',$id)->delete();
+         //sebelum hapus data, hapus terlebih dahulu fisik file fotonya jika ada
+        $row = Barang::find($id);
+        if(!empty($row->foto)) unlink('admin/assets/img/'.$row->foto);
+        //hapus data di database
+        Barang::where('id',$id)->delete();
         return redirect()->route('barang.index')
-                        ->with('success','Data barang Berhasil Dihapus');
+                        ->with('success','Data Barang Berhasil Dihapus');
     }
 
     public function batal()

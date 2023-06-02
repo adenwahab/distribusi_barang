@@ -71,7 +71,7 @@ public function create()
      */
     public function show(string $id)
     {
-        $rs = Kategori::find($id);
+        $rs = Barang::where('kategori_id',$id)->get();
         return view('kategori.detail',compact('rs'));
     }
 
