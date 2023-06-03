@@ -48,7 +48,6 @@
                                     </div>
                                 </div>
                             </div>
-                            <br>
                         </div><br>
                     </div><!-- End Sales Card -->
 
@@ -85,7 +84,6 @@
                             </div>
 
                         </div>
-                        <br>
                     </div><!-- End Revenue Card -->
 
                     <!-- Customers Card -->
@@ -222,7 +220,7 @@
                                     <li><a class="dropdown-item" href="#">This Month</a></li>
                                     <li><a class="dropdown-item" href="#">This Year</a></li>
                                 </ul>
-                            </div><br>
+                            </div>
                             <div class="card-body">
                                 <h5 class="card-title">Recent Sales <span>| Today</span></h5>
 

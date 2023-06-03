@@ -1,13 +1,10 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\StaffController;
 use App\Http\Controllers\BarangController;
 use App\Http\Controllers\KategoriController;
-use App\Http\Controllers\ProdukController;
 use App\Http\Controllers\PelangganController;
-use App\Http\Controllers\loginController;
-
+use App\Http\Controllers\Auth\loginController;
 
 /*
 |--------------------------------------------------------------------------
@@ -59,15 +56,15 @@ Route::get('/contact', function () {
 });
 
 
-Route::get('/beranda', [BarangController::class, 'dataBahan']);
+Route::get('/beranda', [BarangController::class, 'dataBahan'])->middleware('auth');
 
 
 //----------route admin------------
 
-Route::resource('kategori', KategoriController::class);
-Route::resource('barang', BarangController::class);
-Route::resource('pelanggan', PelangganController::class);
-Route::resource('bahan', BahanController::class);
+Route::resource('kategori', KategoriController::class)->middleware('auth');
+Route::resource('barang', BarangController::class)->middleware('auth');
+Route::resource('pelanggan', PelangganController::class)->middleware('auth');
+Route::resource('bahan', BahanController::class)->middleware('auth');
 
 //login and logut
 // Route::get('/login', function () {
@@ -75,5 +72,7 @@ Route::resource('bahan', BahanController::class);
 //         "title" => "Login"
 //     ]);
 // });
-Route::get('/login', [loginController::class, 'login']);
-Route::post('/login', [loginController::class, 'authenticate']);
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
