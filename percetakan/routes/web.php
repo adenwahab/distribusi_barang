@@ -24,13 +24,7 @@ Route::get('/about', function () {
 });
 
 Route::get('/', function () {
-    return view('login');
-});
-Route::get('/transaksi', function () {
-    return view('formTransaksi');
-});
-Route::get('/dashboard', function () {
-    return view('dashboard');
+    return view('welcome');
 });
 
 //---------route landingpage-------
