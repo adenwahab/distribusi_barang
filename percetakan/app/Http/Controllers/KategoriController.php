@@ -73,8 +73,10 @@ class KategoriController extends Controller
      */
     public function show(string $id)
     {
+
         $rs = Kategori::find($id);
         return view('kategori.detail', compact('rs'));
+
     }
 
     /**
