@@ -36,9 +36,6 @@ Route::get('/', function () {
     //return view('welcome');
     return view('landingpage.hero');
 });
-Route::get('/beranda', function () {
-    return view('landingpage.hero');
-});
 Route::get('/about', function () {
     return view('landingpage.about');
 });

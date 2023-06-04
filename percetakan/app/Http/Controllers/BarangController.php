@@ -119,7 +119,7 @@ class barangController extends Controller
     public function show(string $id)
     {
         $rs = barang::find($id);
-        return view('barang.detail', compact('rs'));
+        return view('barang.detail', compact('rs'), ['title' => 'Detail Barang']);
     }
 
     /**
@@ -131,7 +131,7 @@ class barangController extends Controller
         $ar_kategori = kategori::all();
         //tampilkan data lama di form
         $row = barang::find($id);
-        return view('barang.form_edit', compact('row', 'ar_kategori'));
+        return view('barang.form_edit', compact('row', 'ar_kategori'), ['title' => 'Edit Barang']);
     }
 
     /**
@@ -235,6 +235,6 @@ class barangController extends Controller
             ->orderBy('barang.id', 'desc')
             ->get();
 
-        return view('barang.index', compact('ar_barang'));
+        return view('barang.index', compact('ar_barang'), ['title' => 'Data Barang']);
     }
 }

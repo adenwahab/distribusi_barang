@@ -18,7 +18,6 @@
             <label for="kodebarang">Kode barang</label>
             <div class="invalid-feedback" data-sb-feedback="kodebarang:required">Kode barang is required.</div>
         </div>
-        @endif
         <div class="container px-5 my-5">
             <form method="POST" action="{{ route('barang.store') }}" enctype="multipart/form-data">
                 @csrf
