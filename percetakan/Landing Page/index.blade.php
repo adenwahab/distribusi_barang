@@ -588,7 +588,7 @@
           <div>
             <iframe
               style="border: 0; width: 100%; height: 270px"
-              src="https://maps.google.com/maps?q=rosario, argentine&t=&z=10&ie=UTF8&iwloc=&output=embed"
+              src="https://maps.google.com/maps?width=600&amp;height=400&amp;hl=en&amp;q=jalan lenteng agung&amp;t=&amp;z=14&amp;ie=UTF8&amp;iwloc=B&amp;output=embed"
               frameborder="0"
               allowfullscreen
             ></iframe>
