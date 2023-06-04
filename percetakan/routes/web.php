@@ -6,6 +6,7 @@ use App\Http\Controllers\BarangController;
 use App\Http\Controllers\KategoriController;
 use App\Http\Controllers\ProdukController;
 use App\Http\Controllers\PelangganController;
+use App\Http\Controllers\loginController;
 
 
 /*
@@ -19,12 +20,18 @@ use App\Http\Controllers\PelangganController;
 |
 */
 
-Route::get('/about', function () {
-    return view('landingpage.about');
-});
 
-Route::get('/', function () {
-    return view('welcome');
+
+
+Route::get('/transaksi', function () {
+    return view('formTransaksi', [
+        "title" => "Transaksi"
+    ]);
+});
+Route::get('/dashboard', function () {
+    return view('dashboard', [
+        "title" => "Dashboard"
+    ]);
 });
 
 //---------route landingpage-------
@@ -52,16 +59,21 @@ Route::get('/contact', function () {
 });
 
 
-Route::get('/', [BarangController::class,'dataBahan']);
-Route::get('/beranda', [BarangController::class,'dataBahan']);
+Route::get('/beranda', [BarangController::class, 'dataBahan']);
 
 
 //----------route admin------------
-Route::get('/home', function () {
-    return view('admin.home');
-});
 
-Route::resource('kategori',KategoriController::class);
-Route::resource('barang',BarangController::class);
-Route::resource('pelanggan',PelangganController::class);
-Route::resource('bahan',BahanController::class);
+Route::resource('kategori', KategoriController::class);
+Route::resource('barang', BarangController::class);
+Route::resource('pelanggan', PelangganController::class);
+Route::resource('bahan', BahanController::class);
+
+//login and logut
+// Route::get('/login', function () {
+//     return view('login', [
+//         "title" => "Login"
+//     ]);
+// });
+Route::get('/login', [loginController::class, 'login']);
+Route::post('/login', [loginController::class, 'authenticate']);
