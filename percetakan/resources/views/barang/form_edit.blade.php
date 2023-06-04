@@ -1,6 +1,6 @@
 @extends('admin.index')
 @section('content')
-    <h3>Form Update Barang</h3>
+    <h1 class="mt-4">Form Update Barang</h1>
     @if ($errors->any())
         <div class="alert alert-danger">
             <ul>
@@ -11,8 +11,7 @@
         </div>
     @endif
     <div class="container px-5 my-5">
-        <form method="POST" action="{{ route('barang.update', $row->id) }}" id="contactForm"
-            data-sb-form-api-token="API_TOKEN">
+        <form method="POST" action="{{ route('barang.update', $row->id) }}" enctype="multipart/form-data">
             @csrf
             @method('PUT')
             <div class="form-floating mb-3">
@@ -56,14 +55,23 @@
                 <label for="satuan">Satuan</label>
                 <div class="invalid-feedback" data-sb-feedback="satuan:required">Satuan is required.</div>
             </div>
+
+
+            <!-- FOTO -->
             <div class="form-floating mb-3">
-                <input class="form-control" name="foto" value="{{ $row->foto }}" id="foto" type="text"
+                <input class="form-control" name="foto" value="{{ $row->foto }}" id="foto" type="file"
                     placeholder="Foto" data-sb-validations="required" />
                 <label for="foto">Foto</label>
                 <div class="invalid-feedback" data-sb-feedback="foto:required">Foto is required.</div>
             </div>
-            <button class="btn btn-primary" name="proses" value="ubah" id="ubah" type="submit">Ubah</button>
-            <a href="{{ url('/barang') }}" class="btn btn-info">Batal</a>
+
+            <button class="btn btn-primary" name="proses" value="ubah" id="ubah" type="submit">
+                <i class="fas fa-edit"></i> Ubah
+            </button>
+            <input type="hidden" name="id" value="{{ $row->id }}" />
+            <a href="{{ url('/barang') }}" class="btn btn-info">
+                <i class="fas fa-times"></i> Batal
+            </a>
 
         </form>
     </div>
