@@ -73,9 +73,10 @@ class KategoriController extends Controller
      */
     public function show(string $id)
     {
+
         $rs = Barang::where('kategori_id', $id)->get();
         return view('kategori.detail', compact('rs'), ['title' => 'Detail Data Kategori']);
-    }
+
 
     /**
      * Show the form for editing the specified resource.
@@ -86,7 +87,9 @@ class KategoriController extends Controller
         $ar_barang = Barang::all();
         //tampilkan data lama di form
         $row = Kategori::find($id);
+
         return view('kategori.form_edit', compact('row', 'ar_barang'), ['title' => 'Edit Data Kategori']);
+
     }
 
     /**
