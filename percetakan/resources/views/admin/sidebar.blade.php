@@ -4,7 +4,7 @@
             <div class="sb-sidenav-menu">
                 <div class="nav">
                     <div class="sb-sidenav-menu-heading">Core</div>
-                    <a class="nav-link" href="{{'/'}}">
+                    <a class="nav-link" href="{{'/dashboard'}}">
                         <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
                         Dashboard
                     </a>
@@ -53,8 +53,8 @@
                     </div>
                     <div class="sb-sidenav-menu-heading">Addons</div>
                     <a class="nav-link" href="charts.html">
-                        <div class="sb-nav-link-icon"><i class="fas fa-chart-area"></i></div>
-                        Charts
+                        <div class="sb-nav-link-icon"><i class="fas fa-solid fa-user"></i></div>
+                        User
                     </a>
                     <a class="nav-link" href="tables.html">
                         <div class="sb-nav-link-icon"><i class="fas fa-table"></i></div>
@@ -64,7 +64,11 @@
             </div>
             <div class="sb-sidenav-footer">
                 <div class="small">Logged in as:</div>
-                Start Bootstrap
+                @if(Auth::user() == true)
+                {{ Auth::user()->name  }} ({{ Auth::user()->level }})
+                @else
+                -
+                @endif
             </div>
         </nav>
     </div>

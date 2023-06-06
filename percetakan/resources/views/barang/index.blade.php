@@ -54,10 +54,12 @@
                                         <a class="btn btn-warning btn-sm" href="{{ route('barang.edit', $data->id) }}" title="Ubah">
                                             <i class="fas fa-edit"></i>
                                         </a>
+                                        @if(Auth::user()->level == 'admin')
                                         <!-- hapus data -->
                                         <button class="btn btn-danger btn-sm" type="submit" title="Hapus" name="proses" value="hapus" onclick="return confirm('Anda Yakin Data Dihapus?')">
                                             <i class="fas fa-trash-alt"></i>
                                         </button>
+                                        @endif
                                         <input type="hidden" name="idx" value="" />
                                     </form>
                                 </td>
