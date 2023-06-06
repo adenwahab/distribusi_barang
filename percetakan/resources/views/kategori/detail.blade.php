@@ -17,7 +17,7 @@
             <img src="{{ url('assets/img') }}/{{ $data->foto }}" class="card-img-top" alt="...">
             @endempty
             <div class="card-body">
-                <h5 class="card-title">{{ $data->$nama_barang }}</h5>
+                <h5 class="card-title">{{ $data->nama_barang }}</h5>
                 <table class="table">
                     <section class="section">
                         <tr>
