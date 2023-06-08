@@ -21,7 +21,11 @@ use App\Http\Controllers\loginController;
 */
 
 
-
+Route::get('/transaksitable', function () {
+    return view('transaksitable', [
+        "title" => "Tabel Transaksi"
+    ]);
+});
 
 Route::get('/transaksi', function () {
     return view('formTransaksi', [
