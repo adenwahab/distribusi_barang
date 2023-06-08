@@ -7,7 +7,7 @@ use App\Http\Controllers\KategoriController;
 use App\Http\Controllers\ProdukController;
 use App\Http\Controllers\PelangganController;
 use App\Http\Controllers\loginController;
-
+use App\Http\Controllers\TransaksiController;
 
 /*
 |--------------------------------------------------------------------------
@@ -21,17 +21,6 @@ use App\Http\Controllers\loginController;
 */
 
 
-Route::get('/transaksitable', function () {
-    return view('transaksitable', [
-        "title" => "Tabel Transaksi"
-    ]);
-});
-
-Route::get('/transaksi', function () {
-    return view('formTransaksi', [
-        "title" => "Transaksi"
-    ]);
-});
 Route::get('/dashboard', function () {
     return view('dashboard', [
         "title" => "Dashboard"
@@ -81,3 +70,15 @@ Route::resource('bahan', BahanController::class);
 // });
 Route::get('/login', [loginController::class, 'login']);
 Route::post('/login', [loginController::class, 'authenticate']);
+
+
+// routes transaksi //
+
+
+Route::get('/transaksi', function () {
+    return view('formTransaksi', [
+        "title" => "Transaksi"
+    ]);
+});
+
+Route::get('transaksitable',[TransaksiController::class,'show']);

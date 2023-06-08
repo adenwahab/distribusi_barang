@@ -13,6 +13,8 @@
 	@extends('admin.index')
 
 	@section('content')
+
+	<!-- table start -->
 	<section class="ftco-section">
 		<div class="container">
 			<div class="row justify-content-center">
@@ -38,61 +40,42 @@
 						    </tr>
 						  </thead>
 						  <tbody>
+							@foreach ($transaksi as $trs )
 						    <tr>
-						      <th scope="row">0001</th>
-						      <td>10-03-2023</td>
-						      <td>Joko</td>
-						      <td>Banner</td>
-						      <td>1</td>
-						      <td>Member</td>
-						      <td>Lunas</td>
+						      <th scope="row">{{$trs['id']}}</th>
+						      <td>{{$trs['tgl']}}</td>
+						      <td>{{$trs['pelanggan_id']}}</td>
+						      <td>{{$trs['barang_id']}}</td>
+						      <td>{{$trs['jumlah']}}</td>
+						      <td>	
+							  <select class="form-select">
+								<option>Ya</option>
+								<option>Tidak</option>
+								</select>
+							</td>
+							<td>	
+							  <select class="form-select">
+								<option>DP</option>
+								<option>Lunas</option>
+								</select>
+							</td>
 							  <td><a href="#" class="btn btn-success">Done</a></td>
 						    </tr>
-
-							<tr>
-								<th scope="row">0001</th>
-								<td>10-03-2023</td>
-								<td>Joko</td>
-								<td>Banner</td>
-								<td>1</td>
-								<td>Member</td>
-								<td>DP</td>
-								<td><a href="#" class="btn btn-warning">Doing</a></td>
-							  </tr>
-
-							  <tr>
-								<th scope="row">0001</th>
-								<td>10-03-2023</td>
-								<td>Joko</td>
-								<td>Banner</td>
-								<td>1</td>
-								<td>Member</td>
-								<td>Lunas</td>
-								<td><a href="#" class="btn btn-success">Done</a></td>
-							  </tr>
-  
-							  <tr>
-								  <th scope="row">0001</th>
-								  <td>10-03-2023</td>
-								  <td>Joko</td>
-								  <td>Banner</td>
-								  <td>1</td>
-								  <td>Member</td>
-								  <td>DP</td>
-								  <td><a href="#" class="btn btn-warning">Doing</a></td>
-								</tr>
+							@endforeach						
 						  </tbody>
 						</table>
 					</div>
-					
 				</div>
+
+				<!-- end of table -->
+
 				<div class="text-center">
 					<button type="button" class="btn btn-primary">Cetak</button>
 					<button type="button" class="btn btn-primary">Tambah Transaksi</button>
 
 					<button type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown">
-						Waktu
-					  </button>
+						Urutkan Berdasar
+					</button>
 					  <ul class="dropdown-menu">
 						<li><a class="dropdown-item" href="#">Minggu</a></li>
 						<li><a class="dropdown-item" href="#">Bulan</a></li>
@@ -104,9 +87,7 @@
 	</section>
 	@endsection
 	
-<script src=""{{ asset('assets/vendor/bootstrap/css/bootstrap.min.css') }}""></script>
-
- 
+	<script src="{{ asset('assets/vendor/bootstrap/css/bootstrap.min.css') }}"></script>
 
 	</body>
 </html>
