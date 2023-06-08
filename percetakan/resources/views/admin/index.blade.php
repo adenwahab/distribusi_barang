@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
     <meta name="description" content="" />
     <meta name="author" content="" />
-    <title>Manajemen Toko Percetakan</title>
+    <title>{{ $title }}</title>
     <!-- File Bootsrap tambahan-->
     <link href="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/style.min.css" rel="stylesheet" />
     <!-- akhor File Bootsrap tambahan-->
