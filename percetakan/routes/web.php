@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\BarangController;
 use App\Http\Controllers\KategoriController;
 use App\Http\Controllers\PelangganController;
+use App\Http\Controllers\UserController;
 use App\Http\Controllers\Auth\loginController;
 
 /*
@@ -52,6 +53,7 @@ Route::get('/contact', function () {
     return view('landingpage.contact');
 });
 
+Route::get('datauser', [UserController::class, 'index'])->middleware('auth');
 
 Route::get('/beranda', [BarangController::class, 'dataBahan'])->middleware('auth');
 
