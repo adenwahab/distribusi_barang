@@ -20,13 +20,13 @@ class KategoriController extends Controller
             ->orderBy('kategori.id', 'desc')
             ->get();
 
-        return view('kategori.index', compact('ar_kategori'));
+        return view('kategori.index', compact('ar_kategori'),['title' => 'kategori']);
     }
 
     public function dataPilihan()
     {
         $ar_pilihan = Kategori::all(); //eloquent
-        return view('landingpage.about', compact('ar_pilihan'));
+        return view('landingpage.about', compact('ar_pilihan'),['title' => 'kategori']);
     }
 
     public function create()
@@ -34,7 +34,7 @@ class KategoriController extends Controller
         //ambil master untuk dilooping di select option
         $ar_kategori = Kategori::all();
         //arahkan ke form input data
-        return view('kategori.form', compact('ar_kategori'));
+        return view('kategori.form', compact('ar_kategori'),['title' => 'kategori']);
     }
 
 
