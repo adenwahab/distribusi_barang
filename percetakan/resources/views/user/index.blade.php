@@ -45,6 +45,10 @@
                     </table>
                 </div>
             </div>
+            <div class="row">
+                <a href="{{url('/register')}}"> <button type="button" class="btn btn-success">tambah</button></a>
+            </div>
+            <br>
         </div>
     </div>
 </div>

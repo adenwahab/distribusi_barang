@@ -12,9 +12,9 @@
     <div class="col-md-3 mb-4">
         <div class="card" style="width: 18rem;">
             @empty($data->foto)
-            <img src="{{ url('assets/img/noimage.jpg') }}" class="card-img-top" alt="...">
+            <img src="{{ url('admin/assets/img/noimage.jpg') }}" class="card-img-top" alt="...">
             @else
-            <img src="{{ url('assets/img') }}/{{ $data->foto }}" class="card-img-top" alt="...">
+            <img src="{{ url('admin/assets/img') }}/{{ $data->foto }}" class="card-img-top" alt="...">
             @endempty
             <div class="card-body">
                 <h5 class="card-title">{{ $data->nama_barang }}</h5>

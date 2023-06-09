@@ -8,6 +8,7 @@ use App\Models\User;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Validation\Rule;
 
 class RegisterController extends Controller
 {
@@ -29,7 +30,7 @@ class RegisterController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/dashboard';
+    protected $redirectTo = '/datauser';
 
     /**
      * Create a new controller instance.
@@ -38,7 +39,7 @@ class RegisterController extends Controller
      */
     public function __construct()
     {
-        $this->middleware("guest");
+        $this->middleware("auth");
     }
 
     /**
@@ -52,6 +53,7 @@ class RegisterController extends Controller
         return Validator::make($data, [
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
+            'level' => ['required', Rule::in(['admin', 'manajer', 'staff'])], //tambahkan validasi level
             'password' => ['required', 'string', 'min:8', 'confirmed'],
             'alamat' => ['string', 'max:255'],
             'no_hp' => ['numeric', 'min:11'],
@@ -69,6 +71,7 @@ class RegisterController extends Controller
         return User::create([
             'name' => $data['name'],
             'email' => $data['email'],
+            'level' => $data['level'], //tambahkan level
             'password' => Hash::make($data['password']),
             'alamat' => $data['alamat'],
             'no_hp' => $data['no_hp'],
