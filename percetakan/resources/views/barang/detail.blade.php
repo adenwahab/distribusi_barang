@@ -42,7 +42,7 @@
                                         <tr>
                                             <td class="h6">Kategori Barang</td>
                                             <td class="h6">:</td>
-                                            <td class="h6">{{ $rs->kategori }}</td>
+                                            <td class="h6">{{ $rs->kategori->nama }}</td>
                                         </tr>
                                     </table>
                                     <hr>

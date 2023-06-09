@@ -23,6 +23,7 @@ class User extends Authenticatable
         'level',
         'password',
         'alamat',
+        'no_hp',
     ];
 
     /**
