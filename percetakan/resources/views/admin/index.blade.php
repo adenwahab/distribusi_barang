@@ -65,7 +65,28 @@
         crossorigin="anonymous"></script>
     <script src="{{ asset('admin/js/datatables-simple-demo.js') }}"></script>
 
-
+    <script>
+        $('.delete-confirm').on('click', function(event) {
+            event.preventDefault();
+            //const url = $(this).attr('href');
+            var form = $(this).closest("form");
+            var name = $(this).data("name");
+            swal({
+                title: "Anda Yakin Data dihapus?",
+                text: "Jika yakin dihapus, data akan hilang selamanya",
+                icon: "warning",
+                type: "warning",
+                buttons: ["Cancel", "Yes!"],
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Yes, delete it!'
+            }).then((willDelete) => {
+                if (willDelete) {
+                    form.submit();
+                }
+            });
+        });
+    </script>
 </body>
 
 </html>
