@@ -5,7 +5,8 @@ use App\Http\Controllers\BarangController;
 use App\Http\Controllers\KategoriController;
 use App\Http\Controllers\PelangganController;
 use App\Http\Controllers\UserController;
-use App\Http\Controllers\Auth\loginController;
+use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\Auth\LoginController;
 
 /*
 |--------------------------------------------------------------------------
@@ -26,11 +27,13 @@ Route::get('/transaksi', function () {
         "title" => "Transaksi"
     ]);
 });
+/*
 Route::get('/dashboard', function () {
     return view('dashboard', [
         "title" => "Dashboard"
     ]);
 });
+*/
 
 //---------route landingpage-------
 Route::get('/', function () {
@@ -59,6 +62,8 @@ Route::get('/beranda', [BarangController::class, 'dataBahan'])->middleware('auth
 
 
 //----------route admin------------
+
+Route::get('/dashboard', [DashboardController::class, 'index']);
 
 Route::resource('kategori', KategoriController::class)->middleware('auth');
 Route::resource('barang', BarangController::class)->middleware('auth');
