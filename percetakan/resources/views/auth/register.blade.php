@@ -26,6 +26,33 @@
                             </div>
                         </div>
 
+                        <div class="row mb-3">
+                            <label for="no_hp" class="col-md-4 col-form-label text-md-end">{{ __('no hp') }}</label>
+
+                            <div class="col-md-6">
+                                <input id="no_hp" type="text" class="form-control @error('no_hp') is-invalid @enderror" name="no_hp" value="{{ old('no_hp') }}">
+
+                                @error('no_hp')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                                @enderror
+                            </div>
+                        </div>
+
+                        <div class="row mb-3">
+                            <label for="alamat" class="col-md-4 col-form-label text-md-end">{{ __('alamat') }}</label>
+
+                            <div class="col-md-6">
+                                <input id="alamat" type="text" class="form-control @error('alamat') is-invalid @enderror" name="alamat" value="{{ old('alamat') }}">
+
+                                @error('alamat')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                                @enderror
+                            </div>
+                        </div>
 
                         <div class="row mb-3">
                             <label for="email" class="col-md-4 col-form-label text-md-end">{{ __('email address') }}</label>
@@ -61,20 +88,6 @@
 
                             <div class="col-md-6">
                                 <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required autocomplete="new-password">
-                            </div>
-                        </div>
-
-                        <div class="row mb-3">
-                            <label for="alamat" class="col-md-4 col-form-label text-md-end">{{ __('alamat') }}</label>
-
-                            <div class="col-md-6">
-                                <input id="alamat" type="text" class="form-control @error('alamat') is-invalid @enderror" name="alamat" value="{{ old('alamat') }}">
-
-                                @error('alamat')
-                                <span class="invalid-feedback" role="alert">
-                                    <strong>{{ $message }}</strong>
-                                </span>
-                                @enderror
                             </div>
                         </div>
 
