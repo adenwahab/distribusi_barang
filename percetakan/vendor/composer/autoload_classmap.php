@@ -32,6 +32,7 @@ return array(
     'App\\Http\\Middleware\\VerifyCsrfToken' => $baseDir . '/app/Http/Middleware/VerifyCsrfToken.php',
     'App\\Models\\Bahan' => $baseDir . '/app/Models/Bahan.php',
     'App\\Models\\Barang' => $baseDir . '/app/Models/Barang.php',
+    'App\\Models\\DataUser' => $baseDir . '/app/Models/DataUser.php',
     'App\\Models\\Kategori' => $baseDir . '/app/Models/Kategori.php',
     'App\\Models\\Transaksi' => $baseDir . '/app/Models/Transaksi.php',
     'App\\Models\\User' => $baseDir . '/app/Models/User.php',
@@ -5332,6 +5333,7 @@ return array(
     'Psy\\Sudo' => $vendorDir . '/psy/psysh/src/Sudo.php',
     'Psy\\Sudo\\SudoVisitor' => $vendorDir . '/psy/psysh/src/Sudo/SudoVisitor.php',
     'Psy\\SuperglobalsEnv' => $vendorDir . '/psy/psysh/src/SuperglobalsEnv.php',
+    'Psy\\SystemEnv' => $vendorDir . '/psy/psysh/src/SystemEnv.php',
     'Psy\\TabCompletion\\AutoCompleter' => $vendorDir . '/psy/psysh/src/TabCompletion/AutoCompleter.php',
     'Psy\\TabCompletion\\Matcher\\AbstractContextAwareMatcher' => $vendorDir . '/psy/psysh/src/TabCompletion/Matcher/AbstractContextAwareMatcher.php',
     'Psy\\TabCompletion\\Matcher\\AbstractDefaultParametersMatcher' => $vendorDir . '/psy/psysh/src/TabCompletion/Matcher/AbstractDefaultParametersMatcher.php',
@@ -5550,6 +5552,7 @@ return array(
     'Sabberworm\\CSS\\Value\\URL' => $vendorDir . '/sabberworm/php-css-parser/src/Value/URL.php',
     'Sabberworm\\CSS\\Value\\Value' => $vendorDir . '/sabberworm/php-css-parser/src/Value/Value.php',
     'Sabberworm\\CSS\\Value\\ValueList' => $vendorDir . '/sabberworm/php-css-parser/src/Value/ValueList.php',
+
     'SebastianBergmann\\CliParser\\AmbiguousOptionException' => $vendorDir . '/sebastian/cli-parser/src/exceptions/AmbiguousOptionException.php',
     'SebastianBergmann\\CliParser\\Exception' => $vendorDir . '/sebastian/cli-parser/src/exceptions/Exception.php',
     'SebastianBergmann\\CliParser\\OptionDoesNotAllowArgumentException' => $vendorDir . '/sebastian/cli-parser/src/exceptions/OptionDoesNotAllowArgumentException.php',

@@ -2,6 +2,7 @@
 
 @section('content')
 <br><br><br><br>
+@if (Auth::user()->level == 'admin')
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
@@ -37,6 +38,19 @@
                                     <strong>{{ $message }}</strong>
                                 </span>
                                 @enderror
+                            </div>
+                        </div>
+
+                        <div class="row mb-3">
+                            <label for="level" class="col-md-4 col-form-label text-md-end">{{ __('Role') }}</label>
+
+                            <div class="col-8">
+                                <select id="level" name="level" class="custom-select">
+                                    <option value="">Pilih Role</option>
+                                    <option value="admin">admin</option>
+                                    <option value="manajer">manajer</option>
+                                    <option value="staff">staff</option>
+                                </select>
                             </div>
                         </div>
 
@@ -104,4 +118,13 @@
         </div>
     </div>
 </div>
+@else
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <h1 class="text-center">Anda Tidak Memiliki Akses</h1>
+        </div>
+    </div>
+</div>
+@endif
 @endsection
