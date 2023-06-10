@@ -12,13 +12,16 @@
             <script>
                 // ambil data nama nama dan stok dari DashboardController di fungsi index
                 var lbl = [
-                    @foreach ($ar_stok as $s)
-                        '{{ $s->nama_barang }}',
+                    @foreach($ar_stok as $s)
+                    '{{ $s->nama_barang }}',
                     @endforeach
                 ];
                 var stk = [
-                    @foreach ($ar_stok as $s)
-                        {{ $s->stok }},
+                    @foreach($ar_stok as $s) {
+                        {
+                            $s - > stok
+                        }
+                    },
                     @endforeach
                 ];
                 document.addEventListener("DOMContentLoaded", () => {
