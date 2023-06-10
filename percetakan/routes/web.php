@@ -5,8 +5,10 @@ use App\Http\Controllers\BarangController;
 use App\Http\Controllers\KategoriController;
 use App\Http\Controllers\PelangganController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\Auth\loginController;
+use App\Http\Controllers\TransaksiController;
 use App\Http\Controllers\DashboardController;
-use App\Http\Controllers\Auth\LoginController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -22,11 +24,7 @@ use App\Http\Controllers\Auth\LoginController;
 
 
 
-Route::get('/transaksi', function () {
-    return view('formTransaksi', [
-        "title" => "Transaksi"
-    ]);
-});
+
 /*
 Route::get('/dashboard', function () {
     return view('dashboard', [
@@ -69,8 +67,13 @@ Route::resource('kategori', KategoriController::class)->middleware('auth');
 Route::resource('barang', BarangController::class)->middleware('auth');
 Route::resource('pelanggan', PelangganController::class)->middleware('auth');
 Route::resource('bahan', BahanController::class)->middleware('auth');
+Route::resource('transaksi', TransaksiController::class)->middleware('auth');
+Route::get('/transaksi-pdf', [TransaksiController::class, 'transaksiPDF']);
+Route::get('/transaksi-excel', [TransaksiController::class, 'transaksiExcel']);
 
 
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+

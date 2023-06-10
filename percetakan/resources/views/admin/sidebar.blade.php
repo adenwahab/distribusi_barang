@@ -19,8 +19,8 @@
                         data-bs-parent="#sidenavAccordion">
                         <nav class="sb-sidenav-menu-nested nav">
                             <a class="nav-link" href="{{ url('/barang') }}">Produk</a>
-                            <a class="nav-link" href="{{ url('/kategori') }}">Kategori Barang</a>
-                            <a class="nav-link" href="{{ url('/dashboard') }}">dashboard</a>
+                            <a class="nav-link" href="{{ url('/transaksi') }}">Transaksi</a>
+                            <a class="nav-link" href="{{url('/kategori')}}">Kategori Barang</a>
                         </nav>
                     </div>
                     <a class="nav-link collapsed" href="#" data-bs-toggle="collapse"
