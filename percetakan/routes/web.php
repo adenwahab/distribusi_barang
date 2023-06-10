@@ -70,12 +70,6 @@ Route::resource('barang', BarangController::class)->middleware('auth');
 Route::resource('pelanggan', PelangganController::class)->middleware('auth');
 Route::resource('bahan', BahanController::class)->middleware('auth');
 
-//login and logut
-// Route::get('/login', function () {
-//     return view('login', [
-//         "title" => "Login"
-//     ]);
-// });
 
 Auth::routes();
 
