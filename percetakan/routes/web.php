@@ -5,7 +5,6 @@ use App\Http\Controllers\BarangController;
 use App\Http\Controllers\KategoriController;
 use App\Http\Controllers\PelangganController;
 use App\Http\Controllers\UserController;
-use App\Http\Controllers\Auth\loginController;
 use App\Http\Controllers\TransaksiController;
 use App\Http\Controllers\DashboardController;
 
@@ -74,6 +73,4 @@ Route::get('/transaksi-excel', [TransaksiController::class, 'transaksiExcel']);
 
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-
-
+Route::get('/home', [DashboardController::class, 'index'])->name('home');

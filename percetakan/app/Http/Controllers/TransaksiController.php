@@ -140,17 +140,15 @@ class TransaksiController extends Controller
             ->get();
 
         return view('transaksi.index', compact('ar_transaksi'), ['title' => 'Data Transaksi']);
-
     }
     public function transaksiPDF()
     {
         $ar_transaksi = Transaksi::all(); //eloquent
-        $pdf = PDF::loadView('transaksi.transaksi_pdf', ['ar_transaksi'=>$ar_transaksi]);
-        return $pdf->download('data_transaksi_'.date('d-m-Y').'.pdf');
+        $pdf = PDF::loadView('transaksi.transaksi_pdf', ['ar_transaksi' => $ar_transaksi]);
+        return $pdf->download('data_transaksi_' . date('d-m-Y') . '.pdf');
     }
-    public function transaksiExcel() 
+    public function transaksiExcel()
     {
-        return Excel::download(new transaksiExport, 'data_transaksi_'.date('d-m-Y').'.xlsx');
+        return Excel::download(new transaksiExport, 'data_transaksi_' . date('d-m-Y') . '.xlsx');
     }
-
 }
