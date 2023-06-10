@@ -29,7 +29,7 @@ class barangController extends Controller
     public function dataBahan()
     {
         $ar_bahan = barang::all(); //eloquent
-        return view('landingpage.hero', compact('ar_bahan'));
+        return view('landingpage.hero', compact('ar_bahan'), ['title' => 'Data Barang']);
     }
 
     /**
@@ -94,6 +94,7 @@ class barangController extends Controller
         }
 
         //lakukan insert data dari request form
+        try{
         DB::table('barang')->insert(
             [
                 'kode' => $request->kode,
@@ -111,6 +112,12 @@ class barangController extends Controller
 
         return redirect()->route('barang.index')
             ->with('success', 'Data barang Baru Berhasil Disimpan');
+        }
+        catch (\Exception $e){
+            //return redirect()->back()
+            return redirect()->route('barang.index')
+                ->with('error', 'Terjadi Kesalahan Saat Input Data!');
+        }
     }
 
     /**
