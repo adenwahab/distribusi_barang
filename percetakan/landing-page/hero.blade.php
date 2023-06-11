@@ -38,7 +38,8 @@
               <div class="icon"><i class="ri-palette-line"></i></div>
               <h4 class="title"><a href="">Excellent Services</a></h4>
               <p class="description">
-                Service yang kami berikan memiliki tingkat kepuasan yang sangat tinggi
+                Duis aute irure dolor in reprehenderit in voluptate velit esse
+                cillum dolore
               </p>
             </div>
           </div>
@@ -52,7 +53,8 @@
               <div class="icon"><i class="ri-command-line"></i></div>
               <h4 class="title"><a href="">24/7 Support</a></h4>
               <p class="description">
-                Anda bisa menghubungi kami pada waktu kapanpun.
+                Excepteur sint occaecat cupidatat non proident, sunt in culpa
+                qui officia
               </p>
             </div>
           </div>
@@ -61,8 +63,5 @@
     </section>
 
 @include('landingpage.services')
-@include('landingpage.testimonials')
 @include('landingpage.counts')
-
-
 @endsection

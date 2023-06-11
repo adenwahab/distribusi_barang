@@ -1,6 +1,6 @@
 <header id="header" class="fixed-top">
       <div class="container d-flex align-items-center justify-content-between">
-        <h1 class="logo"><a href="{{ url('/') }}">Nyetak</a></h1>
+        <h1 class="logo"><a href="{{ url('/index') }}">Manajemen Percetakan</a></h1>
 
 
         <nav id="navbar" class="navbar">

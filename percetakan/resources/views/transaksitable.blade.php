@@ -71,6 +71,8 @@
 
 				<div class="text-center">
 					<button type="button" class="btn btn-primary">Cetak</button>
+					
+
 					<button type="button" class="btn btn-primary">Tambah Transaksi</button>
 
 					<button type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown">

@@ -1,9 +1,14 @@
+@extends('landingpage.index')
+@section('content')
 <section id="services" class="services section-bg">
         <div class="container" data-aos="fade-up">
           <div class="section-title">
-            <h2>Product</h2>
+            <h2>Services</h2>
             <p>
-              Berikut merupakan beberapa produk unggulan kami
+              Magnam dolores commodi suscipit. Necessitatibus eius consequatur
+              ex aliquid fuga eum quidem. Sit sint consectetur velit. Quisquam
+              quos quisquam cupiditate. Et nemo qui impedit suscipit alias ea.
+              Quia fugiat sit in iste officiis commodi quidem hic quas.
             </p>
           </div>
 
@@ -213,3 +218,4 @@
             </div>
         </div>
       </section>
+      @endsection

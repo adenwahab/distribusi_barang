@@ -6,7 +6,10 @@
           <div class="section-title">
             <h2>Contact</h2>
             <p>
-             Anda bisa menghubungi kami dengan mendatangi alamat di bawah ini, atau menghubungi beberapa kontak yang sudah tertera. Terimakasih Sobat Nyetak!
+              Magnam dolores commodi suscipit. Necessitatibus eius consequatur
+              ex aliquid fuga eum quidem. Sit sint consectetur velit. Quisquam
+              quos quisquam cupiditate. Et nemo qui impedit suscipit alias ea.
+              Quia fugiat sit in iste officiis commodi quidem hic quas.
             </p>
           </div>
 
