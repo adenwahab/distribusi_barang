@@ -168,6 +168,12 @@ return [
         // App\Providers\BroadcastServiceProvider::class,
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
+
+        // ============== TAMBAHAN ================
+        // RealRashid\SweetAlert\SweetAlertServiceProvider::class,
+        RealRashid\SweetAlert\SweetAlertServiceProvider::class,
+        Maatwebsite\Excel\ExcelServiceProvider::class,
+
     ])->toArray(),
 
     /*
@@ -183,6 +189,10 @@ return [
 
     'aliases' => Facade::defaultAliases()->merge([
         // 'Example' => App\Facades\Example::class,
+        //------------ TAMBAHAN -----------------
+        // 
+        'Alert' => RealRashid\SweetAlert\SweetAlertServiceProvider::class,
+        'Excel' => Maatwebsite\Excel\Facades\Excel::class,
     ])->toArray(),
 
 ];
