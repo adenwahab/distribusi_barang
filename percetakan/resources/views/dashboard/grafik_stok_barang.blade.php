@@ -17,11 +17,8 @@
                     @endforeach
                 ];
                 var stk = [
-                    @foreach($ar_stok as $s) {
-                        {
-                            $s - > stok
-                        }
-                    },
+                    @foreach($ar_stok as $s)
+                    '{{ $s -> stok }}',
                     @endforeach
                 ];
                 document.addEventListener("DOMContentLoaded", () => {
