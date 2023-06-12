@@ -10,7 +10,7 @@ class TransaksiController extends Controller
     //
     
     function show(){
-        $data=Transaksi::all();
-        return view('transaksitable',['transaksi'=>$data],['title' => 'Tabel Transaksi']);
+        $data=Transaksi::with('pelanggan')->get();
+        return view('transaksitable',compact('data'),['title' => 'Tabel Transaksi']);
     }
 }

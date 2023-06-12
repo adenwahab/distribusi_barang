@@ -40,11 +40,11 @@
 						    </tr>
 						  </thead>
 						  <tbody>
-							@foreach ($transaksi as $trs )
+							@foreach ($data as $trs )
 						    <tr>
 						      <th scope="row">{{$trs['id']}}</th>
 						      <td>{{$trs['tgl']}}</td>
-						      <td>{{$trs['pelanggan_id']}}</td>
+						      <td>{{$trs->pelanggan->nama}}</td>
 						      <td>{{$trs['barang_id']}}</td>
 						      <td>{{$trs['jumlah']}}</td>
 						      <td>	
