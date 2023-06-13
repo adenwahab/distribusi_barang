@@ -15,7 +15,7 @@
                 <!-- <a href="{{ route('barang.create') }}" class="btn btn-primary btn-sm"><i class="fas fa-plus"></i> <span style="font-weight: bold;">Tambah</span></a> -->
 
                 <div class="table-responsive">
-                    <table class="table text-nowrap mb-0 align-middle">
+                    <table class="table text-nowrap mb-0 align-middle" id="datatablesSimple">
                         <thead>
                             <tr>
                                 <th>No</th>
