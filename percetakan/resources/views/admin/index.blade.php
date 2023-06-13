@@ -41,10 +41,10 @@
                         <!---------footer----------->
                         <!---------end footer----------->
                     </div>
-                    @include('admin.footer')
                 </div>
             </div>
             <!-- </div> -->
+            @include('admin.footer')
     </div>
     </main>
 
@@ -82,6 +82,9 @@
                 }
             });
         });
+    </script>
+    <script>
+
     </script>
 </body>
 
