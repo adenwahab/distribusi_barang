@@ -11,7 +11,8 @@
 </div>
 @endif
 <div class="container px-5 my-5">
-    <form method="POST" action="{{ route('barang.store') }}" id="contactForm" data-sb-form-api-token="API_TOKEN">
+    <!-- <div class="container px-5 my-5"> -->
+    <form method="POST" action="{{ route('barang.store') }}" enctype="multipart/form-data">
         @csrf
         <div class="form-floating mb-3">
             <input class="form-control" name="kode" value="" id="kodebarang" type="text" placeholder="Kode barang" data-sb-validations="required" />
@@ -47,9 +48,10 @@
             <label for="satuan">Satuan</label>
             <div class="invalid-feedback" data-sb-feedback="satuan:required">Satuan is required.</div>
         </div>
+        <!-- UPLOAD FOTO -->
         <div class="form-floating mb-3">
-            <input class="form-control" name="foto" value="" id="foto" type="text" placeholder="Foto" data-sb-validations="required" />
-            <label for="foto">Foto</label>
+            <input class="form-control" name="foto" value="" id="foto" type="file" placeholder="Foto" data-sb-validations="required" />
+            <label for="foto"></label>
             <div class="invalid-feedback" data-sb-feedback="foto:required">Foto is required.</div>
         </div>
         <button class="btn btn-primary" name="proses" value="simpan" id="simpan" type="submit">Simpan</button>

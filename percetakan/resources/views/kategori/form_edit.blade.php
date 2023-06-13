@@ -16,14 +16,18 @@
             @csrf
             @method('PUT')
             <div class="form-floating mb-3">
-                <input class="form-control" name="nama_kategori" value="{{ $row->nama }}" id="kategori" type="text"
+                <input class="form-control" name="nama" value="{{ $row->nama }}" id="kategori" type="text"
                     placeholder="kategori" data-sb-validations="required" />
                 <label for="kategori">nama kategori</label>
                 <div class="invalid-feedback" data-sb-feedback="kategori:required">kategori is required.</div>
             </div>
 
-            <button class="btn btn-primary" name="proses" value="ubah" id="ubah" type="submit">Ubah</button>
-            <a href="{{ url('/kategori') }}" class="btn btn-info">Batal</a>
+            <button class="btn btn-primary" name="proses" value="ubah" id="ubah" type="submit">
+                <i class="fas fa-edit"></i> Ubah
+            </button>
+            <a href="{{ url('/kategori') }}" class="btn btn-info">
+                <i class="fas fa-times"></i> Batal
+            </a>
 
         </form>
     </div>

@@ -1,24 +1,13 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\StaffController;
 use App\Http\Controllers\BarangController;
 use App\Http\Controllers\KategoriController;
-use App\Http\Controllers\ProdukController;
 use App\Http\Controllers\PelangganController;
 use App\Http\Controllers\loginController;
+use App\Http\Controllers\UserController;
 use App\Http\Controllers\TransaksiController;
-
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider and all of them will
-| be assigned to the "web" middleware group. Make something great!
-|
-*/
+use App\Http\Controllers\DashboardController;
 
 
 Route::get('/dashboard', function () {
@@ -27,12 +16,10 @@ Route::get('/dashboard', function () {
     ]);
 });
 
+
 //---------route landingpage-------
 Route::get('/', function () {
     //return view('welcome');
-    return view('landingpage.hero');
-});
-Route::get('/beranda', function () {
     return view('landingpage.hero');
 });
 Route::get('/about', function () {
@@ -51,16 +38,15 @@ Route::get('/contact', function () {
     return view('landingpage.contact');
 });
 
+Route::get('datauser', [UserController::class, 'index'])->middleware('auth');
 
-Route::get('/beranda', [BarangController::class, 'dataBahan']);
+Route::get('/beranda', [BarangController::class, 'dataBahan'])->middleware('auth');
 
 
 //----------route admin------------
 
-Route::resource('kategori', KategoriController::class);
-Route::resource('barang', BarangController::class);
-Route::resource('pelanggan', PelangganController::class);
-Route::resource('bahan', BahanController::class);
+Route::get('/dashboard', [DashboardController::class, 'index']);
+
 
 //login and logut
 // Route::get('/login', function () {
@@ -82,3 +68,17 @@ Route::get('/transaksi', function () {
 });
 
 Route::get('transaksitable',[TransaksiController::class,'show']);
+
+Route::resource('kategori', KategoriController::class)->middleware('auth');
+Route::resource('barang', BarangController::class)->middleware('auth');
+Route::resource('pelanggan', PelangganController::class)->middleware('auth');
+Route::resource('bahan', BahanController::class)->middleware('auth');
+Route::resource('transaksi', TransaksiController::class)->middleware('auth');
+Route::get('/transaksi-pdf', [TransaksiController::class, 'transaksiPDF']);
+Route::get('/transaksi-excel', [TransaksiController::class, 'transaksiExcel']);
+
+
+Auth::routes();
+
+Route::get('/home', [DashboardController::class, 'index'])->name('home');
+

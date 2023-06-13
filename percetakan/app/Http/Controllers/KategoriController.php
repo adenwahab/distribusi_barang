@@ -16,26 +16,31 @@ class KategoriController extends Controller
      */
     public function index()
     {
-    $ar_kategori = DB::table('kategori')
-        ->orderBy('kategori.id', 'desc')
-        ->get();
+        $ar_kategori = DB::table('kategori')
+            ->orderBy('kategori.id', 'desc')
+            ->get();
 
-    return view('kategori.index', compact('ar_kategori'));
+
+        return view('kategori.index', compact('ar_kategori'),['title' => 'kategori']);
+
     }
 
-public function dataPilihan()
-{
-    $ar_pilihan = Kategori::all(); //eloquent
-    return view('landingpage.about', compact('ar_pilihan'));
-}
+    public function dataPilihan()
+    {
+        $ar_pilihan = Kategori::all(); //eloquent
 
-public function create()
-{
-    //ambil master untuk dilooping di select option
-    $ar_kategori = Kategori::all();
-    //arahkan ke form input data
-    return view('kategori.form', compact('ar_kategori'));
-}
+        return view('landingpage.about', compact('ar_pilihan'),['title' => 'kategori']);
+
+    }
+
+    public function create()
+    {
+        //ambil master untuk dilooping di select option
+        $ar_kategori = Kategori::all();
+        //arahkan ke form input data
+
+        return view('kategori.form', compact('ar_kategori'),['title' => 'kategori']);
+    }
 
 
     /**
@@ -44,26 +49,28 @@ public function create()
     public function store(Request $request)
     {
         //proses input kategori dari form
-        $request->validate([
-            'nama' => 'required|max:45',
+        $request->validate(
+            [
+                'nama' => 'required|max:45',
 
-        ],
-        //custom pesan errornya
-        [
-            'nama.required'=>'Nama Wajib Diisi',
-            'nama.max'=>'Nama Maksimal 45 karakter',
-        ]
+            ],
+            //custom pesan errornya
+            [
+                'nama.required' => 'Nama Wajib Diisi',
+                'nama.max' => 'Nama Maksimal 45 karakter',
+            ]
         );
         //Kategori::create($request->all());
 
         //lakukan insert data dari request form
         DB::table('kategori')->insert(
             [
-                'nama'=>$request->nama,
-            ]);
+                'nama' => $request->nama,
+            ]
+        );
 
         return redirect()->route('kategori.index')
-                        ->with('success','Data Kategori Baru Berhasil Disimpan');
+            ->with('success', 'Data Kategori Baru Berhasil Disimpan');
     }
 
     /**
@@ -71,8 +78,8 @@ public function create()
      */
     public function show(string $id)
     {
-        $rs = Kategori::find($id);
-        return view('kategori.detail',compact('rs'));
+        $rs = Barang::where('kategori_id', $id)->get();
+        return view('kategori.detail', compact('rs'), ['title' => 'Data Barang']);
     }
 
     /**
@@ -84,7 +91,8 @@ public function create()
         $ar_barang = Barang::all();
         //tampilkan data lama di form
         $row = Kategori::find($id);
-        return view('kategori.form_edit',compact('row','ar_barang'));
+
+        return view('kategori.form_edit', compact('row', 'ar_barang'), ['title' => 'Edit Data Kategori']);
     }
 
     /**
@@ -92,28 +100,30 @@ public function create()
      */
     public function update(Request $request, string $id)
     {
-     //proses input kategori dari form
-        $request->validate([
-            'nama' => 'required|max:45',
+        //proses input kategori dari form
+        $request->validate(
+            [
+                'nama' => 'required|max:45',
 
-        ],
-        //custom pesan errornya
-        [
-            'nama.required'=>'Nama Wajib Diisi',
-            'nama.max'=>'Nama Maksimal 45 karakter',
-        ]
+            ],
+            //custom pesan errornya
+            [
+                'nama.required' => 'Nama Wajib Diisi',
+                'nama.max' => 'Nama Maksimal 45 karakter',
+            ]
         );
         //Kategori::create($request->all());
 
         //lakukan insert data dari request form
-        DB::table('kategori')->where('id',$id)->update(
+        DB::table('kategori')->where('id', $id)->update(
             [
 
-                'nama'=>$request->nama,
-            ]);
+                'nama' => $request->nama,
+            ]
+        );
 
-        return redirect('/kategori'.'/'.$id)
-                        ->with('success','Data Kategori Berhasil Diubah');
+        return redirect('/kategori' . '/' . $id)
+            ->with('success', 'Data Kategori Berhasil Diubah');
     }
 
     /**
@@ -121,9 +131,9 @@ public function create()
      */
     public function destroy(string $id)
     {
-            Kategori::where('id',$id)->delete();
+        Kategori::where('id', $id)->delete();
         return redirect()->route('kategori.index')
-                        ->with('success','Data Kategori Berhasil Dihapus');
+            ->with('success', 'Data Kategori Berhasil Dihapus');
     }
 
     public function batal()
@@ -132,7 +142,6 @@ public function create()
             ->orderBy('kategori.id', 'desc')
             ->get();
 
-        return view('kategori.index', compact('ar_kategori'));
+        return view('kategori.index', compact('ar_kategori'), ['title' => 'Data Kategori']);
     }
-
 }
