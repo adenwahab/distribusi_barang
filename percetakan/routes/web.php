@@ -10,11 +10,19 @@ use App\Http\Controllers\TransaksiController;
 use App\Http\Controllers\DashboardController;
 
 
-Route::get('/dashboard', function () {
-    return view('dashboard', [
-        "title" => "Dashboard"
-    ]);
-});
+
+use App\Http\Controllers\AccountSettingController;
+use App\Http\Controllers\UpdatePasswordController;
+/*
+|--------------------------------------------------------------------------
+| Web Routes
+|--------------------------------------------------------------------------
+|
+| Here is where you can register web routes for your application. These
+| routes are loaded by the RouteServiceProvider and all of them will
+| be assigned to the "web" middleware group. Make something great!
+|
+*/
 
 
 //---------route landingpage-------
@@ -73,9 +81,14 @@ Route::resource('kategori', KategoriController::class)->middleware('auth');
 Route::resource('barang', BarangController::class)->middleware('auth');
 Route::resource('pelanggan', PelangganController::class)->middleware('auth');
 Route::resource('bahan', BahanController::class)->middleware('auth');
+Route::resource('user', UserController::class)->middleware('auth');
 Route::resource('transaksi', TransaksiController::class)->middleware('auth');
 Route::get('/transaksi-pdf', [TransaksiController::class, 'transaksiPDF']);
 Route::get('/transaksi-excel', [TransaksiController::class, 'transaksiExcel']);
+Route::get('/account/settings', [AccountSettingController::class, 'index'])->name('user.setting');
+Route::put('/account/settings', [AccountSettingController::class, 'update'])->name('user.setting.update');
+Route::get('/account/settings/updatePassword', [UpdatePasswordController::class, 'index'])->name('user.settingpassword');
+Route::put('/account/settings/updatePassword', [UpdatePasswordController::class, 'update'])->name('user.settingpassword.update');
 
 
 Auth::routes();
