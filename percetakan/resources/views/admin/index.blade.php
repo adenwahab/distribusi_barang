@@ -11,7 +11,7 @@
     <meta name="description" content="" />
     <title>{{ $title}}</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/css/bootstrap-icons.min.css">
-
+    <link rel="shortcut icon" href="{{ asset('assets/img/logo.png') }}">
     <link href="{{ asset('admin/css/styles.css') }}" rel="stylesheet" />
     <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
 </head>
