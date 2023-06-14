@@ -4,8 +4,8 @@
       <div class="container" data-aos="fade-up">
 
         <div class="section-title">
-          <h2>Team</h2>
-          <p>Magnam dolores commodi suscipit. Necessitatibus eius consequatur ex aliquid fuga eum quidem. Sit sint consectetur velit. Quisquam quos quisquam cupiditate. Et nemo qui impedit suscipit alias ea. Quia fugiat sit in iste officiis commodi quidem hic quas.</p>
+          <h2>Team 2</h2>
+          <p>Tim kami adalah kelompok yang berdedikasi untuk mengembangkan aplikasi manajemen toko percetakan yang efisien dan inovatif. Kami memiliki keahlian dalam pengembangan perangkat lunak, desain antarmuka pengguna, dan pemahaman mengenai industri percetakan.</p>
         </div>
 
         <div class="row">
@@ -13,17 +13,15 @@
           <div class="col-lg-3 col-md-6 d-flex align-items-stretch" data-aos="fade-up" data-aos-delay="100">
             <div class="member">
               <div class="member-img">
-                <img src="assets/img/team/team-1.jpg" class="img-fluid" alt="">
+                <img src="{{ asset('assets/img/team/afkar.jpg') }}" class="img-fluid" alt="">
                 <div class="social">
-                  <a href=""><i class="bi bi-twitter"></i></a>
-                  <a href=""><i class="bi bi-facebook"></i></a>
-                  <a href=""><i class="bi bi-instagram"></i></a>
-                  <a href=""><i class="bi bi-linkedin"></i></a>
+                  <a href="instagram.com/afkar.siddiq"><i class="bi bi-instagram"></i></a>
+                  <a href="https://www.linkedin.com/in/afkar-siddiq-092556222?trk=contact-info"><i class="bi bi-linkedin"></i></a>
                 </div>
               </div>
               <div class="member-info">
-                <h4>Walter White</h4>
-                <span>Chief Executive Officer</span>
+                <h4>M. Afkar Siddiq</h4>
+                <span>Ketua Tim</span>
               </div>
             </div>
           </div>
@@ -31,7 +29,7 @@
           <div class="col-lg-3 col-md-6 d-flex align-items-stretch" data-aos="fade-up" data-aos-delay="200">
             <div class="member">
               <div class="member-img">
-                <img src="assets/img/team/team-2.jpg" class="img-fluid" alt="">
+                <img src="{{ asset('assets/img/team/wahab.jpg') }}" class="img-fluid" alt="">
                 <div class="social">
                   <a href=""><i class="bi bi-twitter"></i></a>
                   <a href=""><i class="bi bi-facebook"></i></a>
@@ -40,8 +38,8 @@
                 </div>
               </div>
               <div class="member-info">
-                <h4>Sarah Jhonson</h4>
-                <span>Product Manager</span>
+                <h4>Abdul Wahab</h4>
+                <span>Backend</span>
               </div>
             </div>
           </div>
@@ -49,7 +47,7 @@
           <div class="col-lg-3 col-md-6 d-flex align-items-stretch" data-aos="fade-up" data-aos-delay="300">
             <div class="member">
               <div class="member-img">
-                <img src="assets/img/team/team-3.jpg" class="img-fluid" alt="">
+                <img src="{{ asset('assets/img/team/irfan.jpg') }}" class="img-fluid" alt="">
                 <div class="social">
                   <a href=""><i class="bi bi-twitter"></i></a>
                   <a href=""><i class="bi bi-facebook"></i></a>
@@ -58,8 +56,8 @@
                 </div>
               </div>
               <div class="member-info">
-                <h4>William Anderson</h4>
-                <span>CTO</span>
+                <h4>Irfan Nurrahman</h4>
+                <span>Frontend</span>
               </div>
             </div>
           </div>
@@ -67,7 +65,7 @@
           <div class="col-lg-3 col-md-6 d-flex align-items-stretch" data-aos="fade-up" data-aos-delay="400">
             <div class="member">
               <div class="member-img">
-                <img src="assets/img/team/team-4.jpg" class="img-fluid" alt="">
+                <img src="{{ asset('assets/img/team/alam.jpg') }}" class="img-fluid" alt="">
                 <div class="social">
                   <a href=""><i class="bi bi-twitter"></i></a>
                   <a href=""><i class="bi bi-facebook"></i></a>
@@ -76,8 +74,24 @@
                 </div>
               </div>
               <div class="member-info">
-                <h4>Amanda Jepson</h4>
-                <span>Accountant</span>
+                <h4>Alam Cahyo Laksono</h4>
+                <span>UI/UX</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-3 col-md-6 d-flex align-items-stretch" data-aos="fade-up" data-aos-delay="200">
+            <div class="member">
+              <div class="member-img">
+                <img src="{{ asset('assets/img/team/nina.jpg') }}" class="img-fluid" alt="">
+                <div class="social">
+                  <a href="https://twitter.com/Ninaapriy13"><i class="bi bi-twitter"></i></a>
+                  <a href="https://instagram.com/ninaapriy13?igshid=MzNlNGNkZWQ4Mg=="><i class="bi bi-instagram"></i></a>
+                </div>
+              </div>
+              <div class="member-info">
+                <h4>Nina Apriyanti</h4>
+                <span>Database</span>
               </div>
             </div>
           </div>
