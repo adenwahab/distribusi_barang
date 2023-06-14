@@ -3,14 +3,33 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\User;
+use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Facades\Auth;
 
 class UserController extends Controller
 {
     //
     public function index()
     {
-        $data = \App\Models\User::all();
+        $data = User::all();
 
         return view('user.index', ['title' => 'data user'], compact('data'));
+    }
+
+    public function destroy(string $id)
+    {
+        if (Auth::user()->level == 'admin') {
+            $deletedAccount = User::where('id', $id)->delete();
+            if ($deletedAccount) {
+                session()->flash('success', 'Account deleted successfully.');
+            } else {
+                Session()->flash('error', 'Failed to delete the account.');
+            }
+            return redirect()->back();
+        } else {
+            session()->flash('error', 'You are not authorized to delete this account.');
+            return back();
+        }
     }
 }

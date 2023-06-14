@@ -6,14 +6,24 @@
         <div class="card w-100">
             <div class="card-body p-4">
                 <h1 class="mt-4">Data User</h1>
-                @if ($message = Session::get('success'))
-                <div class="alert alert-success">
-                    <p>{{ $message }}</p>
-                </div>
+                <!-- Place this code within your view file -->
+                @if(Session::has('success'))
+                <script>
+                    $(document).ready(function() {
+                        alert("{{ Session::get('success') }}");
+                    });
+                </script>
                 @endif
-                <br />
-                <!-- <a href="{{ route('barang.create') }}" class="btn btn-primary btn-sm"><i class="fas fa-plus"></i> <span style="font-weight: bold;">Tambah</span></a> -->
 
+                @if(Session::has('error'))
+                <script>
+                    $(document).ready(function() {
+                        alert("{{ Session::get('error') }}");
+                    });
+                </script>
+                @endif
+
+                <br />
                 <div class="table-responsive">
                     <table class="table text-nowrap mb-0 align-middle" id="datatablesSimple">
                         <thead>
@@ -24,6 +34,7 @@
                                 <th>Level</th>
                                 <th>Email</th>
                                 <th>Alamat</th>
+                                <th>Hapus akun</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -38,6 +49,30 @@
                                 <td>{{ $data->level }}</td>
                                 <td>{{ $data->email }}</td>
                                 <td>{{ $data->alamat }}</td>
+                                <td>
+                                    <form method="POST" action="{{ route('user.destroy', $data->id) }}">
+                                        @csrf
+                                        @method('DELETE')
+                                        <button class="btn btn-danger btn-sm delete-confirm" type="submit" title="Hapus" name="proses" value="hapus" onclick="return confirm('Anda Yakin Data Dihapus?')">
+                                            <i class="fas fa-trash-alt"></i>
+                                        </button>
+                                        @if(session('success'))
+                                        <script>
+                                            window.onload = function() {
+                                                alert("{{ session('success') }}");
+                                            };
+                                        </script>
+                                        @endif
+
+                                        @if(session('error'))
+                                        <script>
+                                            window.onload = function() {
+                                                alert("{{ session('error') }}");
+                                            };
+                                        </script>
+                                        @endif
+                                    </form>
+                                </td>
                             </tr>
                             @php $no++ @endphp
                             @endforeach
