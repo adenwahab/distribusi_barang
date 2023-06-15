@@ -32,4 +32,16 @@ class UserController extends Controller
             return back();
         }
     }
+
+    public function update(Request $request, User $user)
+    {
+        $request->validate([
+            'level' => 'required',
+        ]);
+
+        $user->update($request->all());
+
+        return redirect()->route('user.index')
+            ->with('success', 'User updated successfully');
+    }
 }

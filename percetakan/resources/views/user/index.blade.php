@@ -34,7 +34,7 @@
                                 <th>Level</th>
                                 <th>Email</th>
                                 <th>Alamat</th>
-                                <th>Hapus akun</th>
+                                <th>Action</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -53,6 +53,11 @@
                                     <form method="POST" action="{{ route('user.destroy', $data->id) }}">
                                         @csrf
                                         @method('DELETE')
+                                        @if(Auth::user()->level == 'admin')
+                                        <a class="btn btn-warning btn-sm" href="{{ route('updatelevel.edit', $data->id) }}" title="Ubah">
+                                            Ubah Level
+                                        </a>
+                                        @endif
                                         <button class="btn btn-danger btn-sm delete-confirm" type="submit" title="Hapus" name="proses" value="hapus" onclick="return confirm('Anda Yakin Data Dihapus?')">
                                             <i class="fas fa-trash-alt"></i>
                                         </button>
@@ -81,7 +86,9 @@
                 </div>
             </div>
             <div class="row">
-                <a href="{{url('/register')}}"> <button type="button" class="btn btn-success">tambah</button></a>
+                <div class="col-md-4 .offsife-md-2">
+                    <a href="{{url('/register')}}"> <button type="button" class="btn btn-success">Daftarkan akun</button></a>
+                </div>
             </div>
             <br>
         </div>
