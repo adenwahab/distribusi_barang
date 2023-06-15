@@ -8,7 +8,8 @@ use App\Models\User;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
-
+use Illuminate\Validation\Rule;
+use Illuminate\Support\Facades\Auth; //tambahkan ini untuk auth
 class RegisterController extends Controller
 {
     /*
@@ -29,7 +30,7 @@ class RegisterController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/dashboard';
+    protected $redirectTo = '/datauser';
 
     /**
      * Create a new controller instance.
@@ -38,7 +39,7 @@ class RegisterController extends Controller
      */
     public function __construct()
     {
-        $this->middleware("guest");
+        $this->middleware("auth");
     }
 
     /**
@@ -49,13 +50,17 @@ class RegisterController extends Controller
      */
     protected function validator(array $data)
     {
-        return Validator::make($data, [
+        $validator =  Validator::make($data, [
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
+            'level' => ['required', Rule::in(['admin', 'manajer', 'kasir'])], //tambahkan validasi level
             'password' => ['required', 'string', 'min:8', 'confirmed'],
             'alamat' => ['string', 'max:255'],
             'no_hp' => ['numeric', 'min:11'],
+
         ]);
+
+        return $validator;
     }
 
     /**
@@ -66,12 +71,27 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-        return User::create([
-            'name' => $data['name'],
-            'email' => $data['email'],
-            'password' => Hash::make($data['password']),
-            'alamat' => $data['alamat'],
-            'no_hp' => $data['no_hp'],
-        ]);
+        if (Auth::user()->level == 'admin') {
+            $account =  User::create([
+                'name' => $data['name'],
+                'email' => $data['email'],
+                'level' => $data['level'],
+                'password' => Hash::make($data['password']),
+                'alamat' => $data['alamat'],
+                'no_hp' => $data['no_hp'],
+            ]);
+
+            if ($account) {
+                // Display success message to the admin
+                session()->flash('success', 'Account created successfully.');
+            } else {
+                session()->flash('error', 'Failed to create the account.');
+            }
+            Auth::loginUsingId($account->id);
+            return $account;
+        } else {
+            session()->flash('error', 'Failed to create the account.');
+            return back();
+        }
     }
 }
