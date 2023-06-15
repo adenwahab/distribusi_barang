@@ -44,6 +44,12 @@
                 <div class="invalid-feedback" data-sb-feedback="harga:required">Harga is required.</div>
             </div>
             <div class="form-floating mb-3">
+                <input class="form-control" name="harga_member" value="{{ $row->harga_member }}" id="harga_member"
+                    type="text" placeholder="Harga_member" data-sb-validations="required" />
+                <label for="harga_member">Harga Member</label>
+                <div class="invalid-feedback" data-sb-feedback="harga:required">Harga Member is required.</div>
+            </div>
+            <div class="form-floating mb-3">
                 <input class="form-control" name="stok" value="{{ $row->stok }}" id="stok" type="text"
                     placeholder="Stok" data-sb-validations="required" />
                 <label for="stok">Stok</label>
@@ -52,8 +58,8 @@
             <div class="form-floating mb-3">
                 <input class="form-control" name="satuan" value="{{ $row->satuan }}" id="satuan" type="text"
                     placeholder="Satuan" data-sb-validations="required" />
-                <label for="satuan">Satuan</label>
-                <div class="invalid-feedback" data-sb-feedback="satuan:required">Satuan is required.</div>
+                <label for="satuan">Volume</label>
+                <div class="invalid-feedback" data-sb-feedback="satuan:required">Volume is required.</div>
             </div>
 
 
