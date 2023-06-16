@@ -38,13 +38,14 @@
                                 </tr>
                             </section>
                         </table>
-                        <a href="{{ url('/barang') }}" class="btn btn-primary">
-                            <i class="fas fa-arrow-left"></i> Go Back
-                        </a>
                     </div>
 
                 </div>
             </div>
         @endforeach
+
     </div>
+    <a href="{{ url('/barang') }}" class="btn btn-primary">
+        <i class="fas fa-arrow-left"></i> Go Back
+    </a>
 @endsection

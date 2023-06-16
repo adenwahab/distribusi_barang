@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\BarangController;
 use App\Http\Controllers\KategoriController;
+use App\Http\Controllers\SuplierController;
 use App\Http\Controllers\PelangganController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\TransaksiController;
@@ -57,6 +58,7 @@ Route::get('/dashboard', [DashboardController::class, 'index']);
 Route::resource('kategori', KategoriController::class)->middleware('auth');
 Route::resource('barang', BarangController::class)->middleware('auth');
 Route::resource('pelanggan', PelangganController::class)->middleware('auth');
+Route::resource('suplier', SuplierController::class)->middleware('auth');
 Route::resource('bahan', BahanController::class)->middleware('auth');
 Route::resource('user', UserController::class)->middleware('auth');
 Route::resource('transaksi', TransaksiController::class)->middleware('auth');
