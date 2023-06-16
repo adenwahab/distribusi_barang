@@ -18,24 +18,30 @@
                         <img src="{{ url('admin/assets/img') }}/{{ $data->foto }}" class="card-img-top" alt="...">
                     @endempty
                     <div class="card-body">
-                        <h5 class="card-title">{{ $data->nama_barang }}</h5>
+                        <h5 class="card-title">{{ $data->nama }}</h5>
                         <table class="table">
                             <section class="section">
                                 <tr>
-                                    <td>Kode Barang</td>
+                                    <td>Nama Suplier</td>
                                     <td>:</td>
-                                    <td>{{ $data->kode }}</td>
+                                    <td>{{ $data->nama }}</td>
                                 </tr>
                                 <tr>
-                                    <td>Harga Barang</td>
+                                    <td>Alamatr</td>
                                     <td>:</td>
-                                    <td>Rp. {{ number_format($data->harga, 0, ',', '.') }}</td>
+                                    <td>{{ $data->alamat }}</td>
                                 </tr>
                                 <tr>
-                                    <td>Stok Barang</td>
+                                    <td>No HP</td>
                                     <td>:</td>
-                                    <td>{{ $data->stok }}</td>
+                                    <td>{{ $data->no_hp }}</td>
                                 </tr>
+                                <tr>
+                                    <td>Email</td>
+                                    <td>:</td>
+                                    <td>{{ $data->email }}</td>
+                                </tr>
+
                             </section>
                         </table>
                     </div>
@@ -45,7 +51,7 @@
         @endforeach
 
     </div>
-    <a href="{{ url('/barang') }}" class="btn btn-primary">
+    <a href="{{ url('/suplier') }}" class="btn btn-primary">
         <i class="fas fa-arrow-left"></i> Go Back
     </a>
 @endsection

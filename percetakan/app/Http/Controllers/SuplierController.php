@@ -27,7 +27,7 @@ class SuplierController extends Controller
 
     public function dataPilihan()
     {
-        $ar_pilihan = Suplier::all(); //eloquent
+        $ar_pilihan = suplier::all(); //eloquent
 
         return view('landingpage.about', compact('ar_pilihan'),['title' => 'suplier']);
 
@@ -36,7 +36,7 @@ class SuplierController extends Controller
     public function create()
     {
         //ambil master untuk dilooping di select option
-        $ar_suplier = Suplier::all();
+        $ar_suplier = suplier::all();
         //arahkan ke form input data
 
         return view('suplier.form', compact('ar_suplier'),['title' => 'suplier']);
@@ -82,6 +82,12 @@ class SuplierController extends Controller
     /**
      * Display the specified resource.
      */
+    public function show(string $id)
+    {
+        $rs = Suplai_barang::where('suplier_id', $id)->get();
+        return view('suplier.detail', compact('rs'), ['title' => 'Data Suplai_barang']);
+    }
+
 
     /**
      * Show the form for editing the specified resource.
@@ -93,7 +99,7 @@ class SuplierController extends Controller
         //tampilkan data lama di form
         $row = Suplier::find($id);
 
-        return view('suplier.form_edit', compact('row', 'ar_suplai_barang'), ['title' => 'Edit Data Suplier']);
+        return view('suplier.form_edit', compact('row'), ['title' => 'Edit Data Suplier']);
     }
 
     /**

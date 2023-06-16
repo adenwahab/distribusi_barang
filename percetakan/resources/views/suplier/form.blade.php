@@ -21,21 +21,21 @@
             </div>
 
             <div class="form-floating mb-3">
-                <input class="form-control" name="nama" value="" id="alamat" type="text" placeholder="alamat"
+                <input class="form-control" name="alamat" value="" id="alamat" type="text" placeholder="alamat"
                     data-sb-validations="required" />
                 <label for="alamat">alamat</label>
                 <div class="invalid-feedback" data-sb-feedback="alamat:required">alamat is required.</div>
             </div>
 
             <div class="form-floating mb-3">
-                <input class="form-control" name="nama" value="" id="no_hp" type="text" placeholder="no_hp"
+                <input class="form-control" name="no_hp" value="" id="no_hp" type="text" placeholder="no_hp"
                     data-sb-validations="required" />
                 <label for="no_hp">no_hp</label>
                 <div class="invalid-feedback" data-sb-feedback="no_hp:required">no_hp is required.</div>
             </div>
 
             <div class="form-floating mb-3">
-                <input class="form-control" name="nama" value="" id="email" type="text" placeholder="email"
+                <input class="form-control" name="email" value="" id="email" type="text" placeholder="email"
                     data-sb-validations="required" />
                 <label for="email">email</label>
                 <div class="invalid-feedback" data-sb-feedback="email:required">email is required.</div>
