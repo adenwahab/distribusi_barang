@@ -18,7 +18,7 @@
             <select id="barang" name="barang" class="form-control">
                 <option value="">--Pilih Barang--</option>
                 @foreach($ar_barang as $barang)
-                <option value="{{$barang->nama_barang}} | {{$barang->kode}} | {{$barang->id}}">{{$barang->nama_barang}} - {{$barang -> kode}}</option>
+                <option value="{{$barang->nama_barang}} | {{$barang->kode}} | {{$barang->id}} | {{$barang->stok}}">{{$barang -> kode}} - {{$barang->nama_barang}}</option>
                 @endforeach
             </select>
         </div>
@@ -28,24 +28,24 @@
             <select id="suplier" name="suplier" class="form-control">
                 <option value="">--Pilih Suplier--</option>
                 @foreach($ar_suplier as $suplier)
-                <option value="{{$suplier->nama}} | {{$suplier->id}}">{{$suplier->nama}}</option>
+                <option value="{{$suplier->nama}} | {{$suplier->id}} ">{{$suplier->nama}}</option>
                 @endforeach
             </select>
         </div>
 
-        <div class="form-floating mb-3">
+        <div class="form-group form-floating mb-3">
             <input class="form-control" name="jumlah" value="" id="jumlah" type="text" placeholder="jumlah" data-sb-validations="required" />
             <label for="jumlah">Jumlah Masuk</label>
             <div class="invalid-feedback" data-sb-feedback="jumlah:required">jumlah is required.</div>
         </div>
 
-        <div class="form-floating mb-3">
+        <div class="form-group form-floating mb-3">
             <input class="form-control" name="date" value="" id="date" type="text" placeholder="date" data-sb-validations="required" />
             <label for="date">date</label>
             <div class="invalid-feedback" data-sb-feedback="date:required">date is required.</div>
         </div>
 
-        <div class="form-floating mb-3">
+        <div class="form-group form-floating mb-3">
             <input class="form-control" name="keterangan" value="" id="keterangan" type="text" placeholder="keterangan" data-sb-validations="required" />
             <label for="keterangan">keterangan</label>
             <div class="invalid-feedback" data-sb-feedback="keterangan:required">keterangan is required.</div>

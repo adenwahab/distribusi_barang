@@ -2,9 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Support\Facades\DB;
-
+use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Models\SuplaiBarang; //panggil model
+use Illuminate\Support\Facades\DB; //
+use App\Models\Suplier; //panggil model
+use App\Models\Barang; //panggil model
 
 class SuplaiBarangController extends Controller
 {
@@ -29,7 +32,7 @@ class SuplaiBarangController extends Controller
         $ar_barang = DB::table('barang')
             ->orderBy('barang.id', 'desc')
             ->get();
-        return view('suplaibarang.form', compact('ar_suplier', 'ar_barang'), ['title' => 'suplier']);
+        return view('suplaibarang.form', compact('ar_suplier', 'ar_barang'), ['title' => 'Barang Masuk']);
     }
 
     public function store(Request $request)
@@ -51,12 +54,12 @@ class SuplaiBarangController extends Controller
         );
 
         $selectedBarang = $request->input('barang');
-        $quantity = $request->input('stok');
 
         $dataBarang = explode(' | ', $selectedBarang);
         $idBarang = $dataBarang[2];
 
-        $dataSuplier = explode(' | ', $request->input('suplier'));
+        $selectedSuplier = $request->input('suplier');
+        $dataSuplier = explode(' | ', $selectedSuplier);
         $idSuplier = $dataSuplier[1];
 
 
@@ -69,7 +72,64 @@ class SuplaiBarangController extends Controller
                 'keterangan' => $request->keterangan,
             ]
         );
+        DB::table('barang')->where('id', $idBarang)->update(
+            [
+                'stok' => DB::raw('stok + ' . $request->jumlah),
+            ]
+        );
 
         return redirect('/suplaibarang')->with('pesan', 'Barang Masuk berhasil disimpan');
+    }
+
+    public function destroy($id)
+    {
+        SuplaiBarang::destroy($id);
+        return redirect('/suplaibarang')->with('pesan', 'Barang Masuk berhasil dihapus');
+    }
+
+    public function edit(string $id)
+    {
+
+        $ar_suplier = Suplier::all();
+        $ar_barang = Barang::all();
+        $row = SuplaiBarang::find($id);
+        return view('suplaibarang.form_edit', compact('ar_suplier', 'ar_barang', 'row'), ['title' => 'Edit Barang Masuk']);
+    }
+
+    public function update(Request $request, $id)
+    {
+        $request->validate([
+            'barang' => 'required',
+            'suplier' => 'required',
+            'jumlah' => 'required|integer',
+            'date' => 'required',
+            'keterangan' => '',
+        ], [
+            'jumlah.required' => 'Jumlah wajib diisi',
+            'jumlah.integer' => 'Jumlah harus berupa angka',
+        ]);
+
+        $suplaiBarang = SuplaiBarang::find($id);
+
+        if ($suplaiBarang) {
+            $suplaiBarang->barang_id = $request->input('barang');
+            $suplaiBarang->suplier_id = $request->input('suplier');
+            $suplaiBarang->tgl = $request->input('date');
+            $suplaiBarang->jumlah = $request->input('jumlah');
+            $suplaiBarang->keterangan = $request->input('keterangan');
+            $suplaiBarang->save();
+
+            return redirect()->route('suplaibarang.show', $id)
+                ->with('success', 'Data Suplai Berhasil Diubah');
+        }
+
+        return redirect()->back()
+            ->with('error', 'Data Suplai tidak ditemukan');
+    }
+
+    public function show($id)
+    {
+
+        return redirect('/suplaibarang')->with('error', 'Invalid request. Cannot access specific resource.');
     }
 }

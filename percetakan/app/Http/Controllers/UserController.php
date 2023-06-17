@@ -6,8 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\User;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Auth;
-use Alert;
-
+use RealRashid\SweetAlert\Facades\Alert;
 
 class UserController extends Controller
 {

@@ -43,16 +43,15 @@
                             <td>{{ $data->tgl }}</td>
                             <td>{{$data->keterangan}}</td>
                             <td align="justify">
+                                <a class="btn btn-warning" href="{{ route('suplaibarang.edit', $data->id) }}" title="ubah">
+                                    <i class="fas fa-pencil-alt"></i>
+                                </a>
                                 <form method="POST" action="{{ route('suplaibarang.destroy', $data->id) }}">
                                     @csrf
                                     @method('DELETE')
-                                    <a class="btn btn-warning" href="{{ route('suplier.edit', $data->id) }}" title="ubah">
-                                        <i class="fas fa-pencil-alt"></i>
-                                    </a>
-                                    <button class="btn btn-danger" type="submit" title="Hapus" name="proses" value="hapus" onclick="return confirm('Anda Yakin Data Dihapus?')">
+                                    <button class="btn btn-danger" type="submit" onclick="return confirm('Anda Yakin Data Dihapus?')">
                                         <i class="fas fa-trash-alt"></i>
                                     </button>
-                                    <input type="hidden" name="idx" value="" />
                                 </form>
                             </td>
                         </tr>
