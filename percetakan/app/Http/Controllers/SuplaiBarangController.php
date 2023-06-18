@@ -72,11 +72,11 @@ class SuplaiBarangController extends Controller
                 'keterangan' => $request->keterangan,
             ]
         );
-        DB::table('barang')->where('id', $idBarang)->update(
-            [
-                'stok' => DB::raw('stok + ' . $request->jumlah),
-            ]
-        );
+        // DB::table('barang')->where('id', $idBarang)->update(
+        //     [
+        //         'stok' => DB::raw('stok + ' . $request->jumlah),
+        //     ]
+        // );
 
         return redirect('/suplaibarang')->with('pesan', 'Barang Masuk berhasil disimpan');
     }

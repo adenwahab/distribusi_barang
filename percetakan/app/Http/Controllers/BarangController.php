@@ -8,6 +8,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB; // jika pakai query builder
 use Illuminate\Database\Eloquent\Model; //jika pakai eloquent
+use Illuminate\Support\Facades\Storage;
 
 class barangController extends Controller
 {
@@ -233,7 +234,10 @@ class barangController extends Controller
 
         //sebelum hapus data, hapus terlebih dahulu fisik file fotonya jika ada
         $row = Barang::find($id);
-        if (!empty($row->foto)) unlink('admin/assets/img/' . $row->foto);
+        if ($row->foto && Storage::exists('admin/assets/img/' . $row->foto)) {
+            Storage::delete('admin/assets/img/' . $row->foto);
+            if (!empty($row->foto)) unlink('admin/assets/img/' . $row->foto);
+        }
         //hapus data di database
         Barang::where('id', $id)->delete();
         return redirect()->route('barang.index')
