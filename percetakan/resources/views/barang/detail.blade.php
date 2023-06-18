@@ -37,6 +37,12 @@
                                                 </td>
                                             </tr>
                                             <tr>
+                                                <td class="h6">Harga Member</td>
+                                                <td class="h6">:</td>
+                                                <td class="h6">Rp. {{ number_format($rs->harga_member, 0, ',', '.') }}
+                                                </td>
+                                            </tr>
+                                            <tr>
                                                 <td class="h6">Stok Barang</td>
                                                 <td class="h6">:</td>
                                                 <td class="h6">{{ $rs->stok }}</td>

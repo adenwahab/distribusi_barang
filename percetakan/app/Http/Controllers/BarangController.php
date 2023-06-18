@@ -55,6 +55,7 @@ class barangController extends Controller
                 'nama_barang' => 'required|max:45',
                 //'harga' => 'required|double',
                 'harga' => 'required|regex:/^[0-9]+(\.[0-9][0-9]?)?$/',
+                'harga_member' => 'regex:/^[0-9]+(\.[0-9][0-9]?)?$/',
                 'stok' => 'required|integer',
                 'satuan' => 'required|max:45',
                 'kategori' => 'required|integer',
@@ -70,6 +71,7 @@ class barangController extends Controller
                 'nama_barang.max' => 'Nama Maksimal 45 karakter',
                 'harga.required' => 'Harga Wajib Diisi',
                 'harga.regex' => 'Harga Harus Berupa Angka',
+                'harga_member.regex' => 'harga_member Harus Berupa Angka',
                 'stok.required' => 'Stok Wajib Diisi',
                 'stok.integer' => 'Stok Harus Berupa Angka',
                 'satuan.required' => 'satuan Wajib Diisi',
@@ -94,26 +96,26 @@ class barangController extends Controller
         }
 
         //lakukan insert data dari request form
-        try{
-        DB::table('barang')->insert(
-            [
-                'kode' => $request->kode,
-                'nama_barang' => $request->nama_barang,
-                'kategori_id' => $request->kategori,
-                'harga' => $request->harga,
-                'stok' => $request->stok,
-                'satuan' => $request->satuan,
-                //'foto'=>$request->foto,
-                'foto' => $fileName,
+        try {
+            DB::table('barang')->insert(
+                [
+                    'kode' => $request->kode,
+                    'nama_barang' => $request->nama_barang,
+                    'kategori_id' => $request->kategori,
+                    'harga' => $request->harga,
+                    'harga_member' => $request->harga_member,
+                    'stok' => $request->stok,
+                    'satuan' => $request->satuan,
+                    //'foto'=>$request->foto,
+                    'foto' => $fileName,
 
-                //'created_at'=>now(),
-            ]
-        );
+                    //'created_at'=>now(),
+                ]
+            );
 
-        return redirect()->route('barang.index')
-            ->with('success', 'Data barang Baru Berhasil Disimpan');
-        }
-        catch (\Exception $e){
+            return redirect()->route('barang.index')
+                ->with('success', 'Data barang Baru Berhasil Disimpan');
+        } catch (\Exception $e) {
             //return redirect()->back()
             return redirect()->route('barang.index')
                 ->with('error', 'Terjadi Kesalahan Saat Input Data!');
@@ -128,7 +130,6 @@ class barangController extends Controller
         $rs = barang::find($id);
 
         return view('barang.detail', compact('rs'), ['title' => 'Detail Barang']);
-
     }
 
     /**
@@ -142,7 +143,6 @@ class barangController extends Controller
         $row = barang::find($id);
 
         return view('barang.form_edit', compact('row', 'ar_kategori'), ['title' => 'Edit Barang']);
-
     }
 
     /**
@@ -157,6 +157,7 @@ class barangController extends Controller
                 'nama_barang' => 'required|max:45',
                 //'harga' => 'required|double',
                 'harga' => 'required|regex:/^[0-9]+(\.[0-9][0-9]?)?$/',
+                'harga_member' => 'regex:/^[0-9]+(\.[0-9][0-9]?)?$/',
                 'stok' => 'required|integer',
                 'satuan' => 'required|max:45',
                 'kategori' => 'required|integer',
@@ -172,6 +173,7 @@ class barangController extends Controller
                 'nama_barang.max' => 'Nama Maksimal 45 karakter',
                 'harga.required' => 'Harga Wajib Diisi',
                 'harga.regex' => 'Harga Harus Berupa Angka',
+                'harga_member.regex' => 'Harga Harus Berupa Angka',
                 'stok.required' => 'Stok Wajib Diisi',
                 'stok.integer' => 'Stok Harus Berupa Angka',
                 'satuan.required' => 'Satuan Wajib Diisi',
@@ -209,6 +211,7 @@ class barangController extends Controller
                 'nama_barang' => $request->nama_barang,
                 'kategori_id' => $request->kategori,
                 'harga' => $request->harga,
+                'harga_member' => $request->harga_member,
                 'stok' => $request->stok,
                 'satuan' => $request->satuan,
                 //'foto'=>$request->foto,
