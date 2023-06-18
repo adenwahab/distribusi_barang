@@ -2,7 +2,7 @@
     <div class="container d-flex align-items-center justify-content-between">
 
         <h1 class="logo">
-            <a href="/"><img src="{{ asset('assets/img/logo.png') }}" width="50" height="60"></a>
+            <a href="/"><img src="{{ asset('assets/img/logo-test.png') }}" width="50" height="60"></a>
         </h1>
 
         <nav id="navbar" class="navbar">
