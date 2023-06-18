@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\BarangController;
 use App\Http\Controllers\KategoriController;
+use App\Http\Controllers\SuplierController;
 use App\Http\Controllers\PelangganController;
 use App\Http\Controllers\loginController;
 use App\Http\Controllers\UserController;
@@ -47,6 +48,9 @@ Route::get('/team', function () {
 Route::get('/contact', function () {
     return view('landingpage.contact');
 });
+Route::get('/ourbarang', function () {
+    return view('landingpage.ourbarang');
+});
 
 Route::get('datauser', [UserController::class, 'index'])->middleware('auth');
 
@@ -82,6 +86,7 @@ Route::get('transaksitable',[TransaksiController::class,'show']);
 Route::resource('kategori', KategoriController::class)->middleware('auth');
 Route::resource('barang', BarangController::class)->middleware('auth');
 Route::resource('pelanggan', PelangganController::class)->middleware('auth');
+Route::resource('suplier', SuplierController::class)->middleware('auth');
 Route::resource('bahan', BahanController::class)->middleware('auth');
 Route::resource('user', UserController::class)->middleware('auth');
 Route::resource('transaksi', TransaksiController::class)->middleware('auth');

@@ -4,7 +4,7 @@
 
 namespace Composer\Autoload;
 
-class ComposerStaticInite69e6948a37848bd2671ffbf6b3074e6
+class ComposerStaticInitc2b06e43b1f41fc29299a92474db4650
 {
     public static $files = array (
         '0e6d7bf4a5811bfa5cf40c5ccd6fae6a' => __DIR__ . '/..' . '/symfony/polyfill-mbstring/bootstrap.php',
@@ -617,6 +617,7 @@ class ComposerStaticInite69e6948a37848bd2671ffbf6b3074e6
         'App\\Http\\Controllers\\DashboardController' => __DIR__ . '/../..' . '/app/Http/Controllers/DashboardController.php',
         'App\\Http\\Controllers\\HomeController' => __DIR__ . '/../..' . '/app/Http/Controllers/HomeController.php',
         'App\\Http\\Controllers\\KategoriController' => __DIR__ . '/../..' . '/app/Http/Controllers/KategoriController.php',
+        'App\\Http\\Controllers\\SuplierController' => __DIR__ . '/../..' . '/app/Http/Controllers/SuplierController.php',
         'App\\Http\\Controllers\\TransaksiController' => __DIR__ . '/../..' . '/app/Http/Controllers/TransaksiController.php',
         'App\\Http\\Controllers\\UpdateLevelController' => __DIR__ . '/../..' . '/app/Http/Controllers/UpdateLevelController.php',
         'App\\Http\\Controllers\\UpdatePasswordController' => __DIR__ . '/../..' . '/app/Http/Controllers/UpdatePasswordController.php',
@@ -639,6 +640,8 @@ class ComposerStaticInite69e6948a37848bd2671ffbf6b3074e6
         'App\\Models\\DataUser' => __DIR__ . '/../..' . '/app/Models/DataUser.php',
         'App\\Models\\Kategori' => __DIR__ . '/../..' . '/app/Models/Kategori.php',
         'App\\Models\\Pelanggan' => __DIR__ . '/../..' . '/app/Models/Pelanggan.php',
+        'App\\Models\\Suplai_barang' => __DIR__ . '/../..' . '/app/Models/Suplai_barang.php',
+        'App\\Models\\Suplier' => __DIR__ . '/../..' . '/app/Models/Suplier.php',
         'App\\Models\\Transaksi' => __DIR__ . '/../..' . '/app/Models/Transaksi.php',
         'App\\Models\\User' => __DIR__ . '/../..' . '/app/Models/User.php',
         'App\\Providers\\AppServiceProvider' => __DIR__ . '/../..' . '/app/Providers/AppServiceProvider.php',
@@ -7595,10 +7598,10 @@ class ComposerStaticInite69e6948a37848bd2671ffbf6b3074e6
     public static function getInitializer(ClassLoader $loader)
     {
         return \Closure::bind(function () use ($loader) {
-            $loader->prefixLengthsPsr4 = ComposerStaticInite69e6948a37848bd2671ffbf6b3074e6::$prefixLengthsPsr4;
-            $loader->prefixDirsPsr4 = ComposerStaticInite69e6948a37848bd2671ffbf6b3074e6::$prefixDirsPsr4;
-            $loader->prefixesPsr0 = ComposerStaticInite69e6948a37848bd2671ffbf6b3074e6::$prefixesPsr0;
-            $loader->classMap = ComposerStaticInite69e6948a37848bd2671ffbf6b3074e6::$classMap;
+            $loader->prefixLengthsPsr4 = ComposerStaticInitc2b06e43b1f41fc29299a92474db4650::$prefixLengthsPsr4;
+            $loader->prefixDirsPsr4 = ComposerStaticInitc2b06e43b1f41fc29299a92474db4650::$prefixDirsPsr4;
+            $loader->prefixesPsr0 = ComposerStaticInitc2b06e43b1f41fc29299a92474db4650::$prefixesPsr0;
+            $loader->classMap = ComposerStaticInitc2b06e43b1f41fc29299a92474db4650::$classMap;
 
         }, null, ClassLoader::class);
     }
