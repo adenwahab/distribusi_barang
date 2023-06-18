@@ -23,26 +23,7 @@
                         <br>
                         <button type="submit" class="btn btn-primary">Update Level</button>
                     </form>
-
-
-                    @if(Session::has('success'))
-                    <script>
-                        $(document).ready(function() {
-                            alert("{{ Session::get('success') }}");
-                        });
-                    </script>
-                    @endif
-
-                    @if(Session::has('error'))
-                    <script>
-                        $(document).ready(function() {
-                            alert("{{ Session::get('error') }}");
-                        });
-                    </script>
-                    @endif
-
                 </div>
-                </form>
             </div>
         </div>
     </div>

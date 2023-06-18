@@ -14,12 +14,14 @@
     <link rel="shortcut icon" href="{{ asset('assets/img/logo.png') }}">
     <link href="{{ asset('admin/css/styles.css') }}" rel="stylesheet" />
     <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.css" rel="stylesheet" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.js"></script>
+</head>
 </head>
 
 
 <body class="sb-nav-fixed">
 
-    @include('sweetalert::alert')
 
     <!-----------navbar----------->
     @include('admin.navbar')
@@ -86,6 +88,7 @@
     <script>
 
     </script>
+    @include('sweetalert::alert')
 </body>
 
 </html>

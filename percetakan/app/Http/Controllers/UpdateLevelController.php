@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Auth;
 use App\Models\User;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Validation\Rule;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class UpdateLevelController extends Controller
 
@@ -38,7 +39,7 @@ class UpdateLevelController extends Controller
             ]
         );
         // Redirect back or to a specific page
-        return redirect()->route('user.index')
-            ->with('success', 'User updated successfully');
+        Alert::success('Success', 'Data berhasil diubah');
+        return redirect()->route('user.index')->withAlert('Task Created Successfully!');
     }
 }
