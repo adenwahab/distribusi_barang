@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Auth;
 use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
 use App\Models\User;
+use RealRashid\SweetAlert\Facades\Alert;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
@@ -60,6 +61,10 @@ class RegisterController extends Controller
 
         ]);
 
+        if ($validator->fails()) {
+            Alert::error('Error Title', 'Error Message');
+            return back();
+        }
         return $validator;
     }
 
@@ -83,14 +88,14 @@ class RegisterController extends Controller
 
             if ($account) {
                 // Display success message to the admin
-                session()->flash('success', 'Account created successfully.');
+                Alert::success('Success Title', 'Success Message');
+                return $account;
             } else {
-                session()->flash('error', 'Failed to create the account.');
+                Alert::error('Error Title', 'Error Message');
+                return back();
             }
-            Auth::loginUsingId($account->id);
-            return $account;
         } else {
-            session()->flash('error', 'Failed to create the account.');
+            Alert::error('Error Title', 'Error Message');
             return back();
         }
     }
