@@ -23,6 +23,7 @@
                             <a class="nav-link" href="{{ url('/barang') }}">Produk</a>
                             <a class="nav-link" href="{{ url('/transaksi') }}">Transaksi</a>
                             <a class="nav-link" href="{{ url('/kategori') }}">Kategori Barang</a>
+                            <a class="nav-link" href="{{ url('/kategori') }}">Kategori Barang</a>
                         </nav>
                     </div>
                     <a class="nav-link collapsed" href="#" data-bs-toggle="collapse"
@@ -34,7 +35,8 @@
                     <div class="collapse" id="collapsePages" aria-labelledby="headingTwo"
                         data-bs-parent="#sidenavAccordion">
                         <nav class="sb-sidenav-menu-nested nav accordion" id="sidenavAccordionPages">
-                            <a class="nav-link" href="{{ url('/member') }}">Data Member</a>
+                            <a class="nav-link" href="{{ url('/pelanggan') }}">Data Pelanggan</a>
+                            <a class="nav-link" href="{{ url('/pelanggan/member') }}">Data Member</a>
 
 
                             <a class="nav-link collapsed" href="#" data-bs-toggle="collapse"
