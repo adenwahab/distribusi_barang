@@ -229,7 +229,7 @@ class barangController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    /*public function destroy(string $id)
     {
 
         //sebelum hapus data, hapus terlebih dahulu fisik file fotonya jika ada
@@ -242,7 +242,24 @@ class barangController extends Controller
         Barang::where('id', $id)->delete();
         return redirect()->route('barang.index')
             ->with('success', 'Data Barang Berhasil Dihapus');
+    }*/
+
+    public function destroy($id)
+{
+    // Find the record to be deleted
+    $barang = Barang::findOrFail($id);
+
+    // Check if the associated foto exists and delete it
+    if ($barang->foto && Storage::exists('admin/assets/img/' . $barang->foto)) {
+        Storage::delete('admin/assets/img/' . $barang->foto);
     }
+
+    // Delete the record from the database
+    $barang->delete();
+
+    return redirect()->route('barang.index')
+        ->with('success', 'Data Barang Berhasil Dihapus');
+}
 
     public function batal()
     {
