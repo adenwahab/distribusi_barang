@@ -1,5 +1,6 @@
 @extends('admin.index')
 @section('content')
+    <h1 class="mt-4">Pelanggan Detail</h1>
     <div class="card-body p-4">
         @if ($message = Session::get('success'))
             <div class="alert alert-success">
@@ -22,43 +23,42 @@
                             </div>
                             <div class="col-md-8">
                                 <div class="card-body">
-                                    <h2 class="card-title">{{ $rs->nama_barang }}</h2>
+                                    <h2 class="card-title">{{ $rs->nama }}</h2>
                                     <table class="table table-hover">
                                         <tr>
-                                            <td class="h6">Kode Barang</td>
+                                            <td class="h6">Alamat</td>
                                             <td class="h6">:</td>
-                                            <td class="h6">{{ $rs->kode }}</td>
+                                            <td class="h6">{{ $rs->alamat }}</td>
                                         </tr>
                                         <tr>
-                                            <td class="h6">Harga Barang</td>
+                                            <td class="h6">No Hp</td>
                                             <td class="h6">:</td>
-                                            <td class="h6">Rp. {{ number_format($rs->harga, 0, ',', '.') }}
+                                            <td class="h6">{{ $rs->no_hp }}</td>
+                                        </tr>
+
+                                        <tr>
+                                            <td class="h6">Email</td>
+                                            <td class="h6">:</td>
+                                            <td class="h6">{{ $rs->email }}</td>
+                                        </tr>
+
+                                        <tr>
+                                            <td class="h6">Status Member</td>
+                                            <td class="h6">:</td>
+                                            <td class="h6">
+                                                @if ($rs->status_member)
+                                                    Member
+                                                @else
+                                                    Bukan Member
+                                                @endif
                                             </td>
                                         </tr>
-                                        <tr>
-                                            <td class="h6">Harga Member</td>
-                                            <td class="h6">:</td>
-                                            <td class="h6">Rp. {{ number_format($rs->harga_member, 0, ',', '.') }}
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td class="h6">Stok Barang</td>
-                                            <td class="h6">:</td>
-                                            <td class="h6">{{ $rs->stok }}</td>
-                                        </tr>
-                                        <tr>
-                                            <td class="h6">Kategori Barang</td>
-                                            <td class="h6">:</td>
-                                            <td class="h6">{{ $rs->kategori->nama }}</td>
-                                        </tr>
+
+
                                     </table>
                                     <hr>
-                                    <a href="{{ url('/barang') }}" class="btn btn-primary">
+                                    <a href="{{ url('/pelanggan') }}" class="btn btn-primary">
                                         <i class="fas fa-arrow-left"></i> Go Back
-                                    </a>
-                                    &nbsp; &nbsp;
-                                    <a href="https://wa.me/6285888560861" class="btn btn-success">
-                                        <i class="fab fa-whatsapp"></i> Pesan Sekarang
                                     </a>
 
 
