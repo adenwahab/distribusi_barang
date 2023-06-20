@@ -97,27 +97,26 @@ class barangController extends Controller
         }
 
         //lakukan insert data dari request form
-        try{
-        DB::table('barang')->insert(
-            [
-                'kode' => $request->kode,
-                'nama_barang' => $request->nama_barang,
-                'kategori_id' => $request->kategori,
-                'harga' => $request->harga,
-                'harga_member' => $request->harga_member,
-                'stok' => $request->stok,
-                'satuan' => $request->satuan,
-                //'foto'=>$request->foto,
-                'foto' => $fileName,
+        try {
+            DB::table('barang')->insert(
+                [
+                    'kode' => $request->kode,
+                    'nama_barang' => $request->nama_barang,
+                    'kategori_id' => $request->kategori,
+                    'harga' => $request->harga,
+                    'harga_member' => $request->harga_member,
+                    'stok' => $request->stok,
+                    'satuan' => $request->satuan,
+                    //'foto'=>$request->foto,
+                    'foto' => $fileName,
 
-                //'created_at'=>now(),
-            ]
-        );
+                    //'created_at'=>now(),
+                ]
+            );
 
-        return redirect()->route('barang.index')
-            ->with('success', 'Data barang Baru Berhasil Disimpan');
-        }
-        catch (\Exception $e){
+            return redirect()->route('barang.index')
+                ->with('success', 'Data barang Baru Berhasil Disimpan');
+        } catch (\Exception $e) {
             //return redirect()->back()
             return redirect()->route('barang.index')
                 ->with('error', 'Terjadi Kesalahan Saat Input Data!');
@@ -132,7 +131,6 @@ class barangController extends Controller
         $rs = barang::find($id);
 
         return view('barang.detail', compact('rs'), ['title' => 'Detail Barang']);
-
     }
 
     /**
@@ -146,7 +144,6 @@ class barangController extends Controller
         $row = barang::find($id);
 
         return view('barang.form_edit', compact('row', 'ar_kategori'), ['title' => 'Edit Barang']);
-
     }
 
     /**

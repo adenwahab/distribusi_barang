@@ -110,21 +110,6 @@
                                 <button type="submit" class="btn btn-primary">
                                     {{ __('Register') }}
                                 </button>
-                                @if(Session::has('success'))
-                                <script>
-                                    $(document).ready(function() {
-                                        alert("{{ Session::get('success') }}");
-                                    });
-                                </script>
-                                @endif
-
-                                @if(Session::has('error'))
-                                <script>
-                                    $(document).ready(function() {
-                                        alert("{{ Session::get('error') }}");
-                                    });
-                                </script>
-                                @endif
                             </div>
                         </div>
                     </form>
