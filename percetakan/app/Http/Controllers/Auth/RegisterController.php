@@ -5,11 +5,12 @@ namespace App\Http\Controllers\Auth;
 use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
 use App\Models\User;
+use RealRashid\SweetAlert\Facades\Alert;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Validation\Rule;
-
+use Illuminate\Support\Facades\Auth; //tambahkan ini untuk auth
 class RegisterController extends Controller
 {
     /*
@@ -50,14 +51,21 @@ class RegisterController extends Controller
      */
     protected function validator(array $data)
     {
-        return Validator::make($data, [
+        $validator =  Validator::make($data, [
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
-            'level' => ['required', Rule::in(['admin', 'manajer', 'staff'])], //tambahkan validasi level
+            'level' => ['required', Rule::in(['admin', 'manajer', 'kasir'])], //tambahkan validasi level
             'password' => ['required', 'string', 'min:8', 'confirmed'],
             'alamat' => ['string', 'max:255'],
             'no_hp' => ['numeric', 'min:11'],
+
         ]);
+
+        if ($validator->fails()) {
+            Alert::error('Error Title', 'Error Message');
+            return back();
+        }
+        return $validator;
     }
 
     /**
@@ -68,13 +76,27 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-        return User::create([
-            'name' => $data['name'],
-            'email' => $data['email'],
-            'level' => $data['level'], //tambahkan level
-            'password' => Hash::make($data['password']),
-            'alamat' => $data['alamat'],
-            'no_hp' => $data['no_hp'],
-        ]);
+        if (Auth::user()->level == 'admin') {
+            $account =  User::create([
+                'name' => $data['name'],
+                'email' => $data['email'],
+                'level' => $data['level'],
+                'password' => Hash::make($data['password']),
+                'alamat' => $data['alamat'],
+                'no_hp' => $data['no_hp'],
+            ]);
+
+            if ($account) {
+                // Display success message to the admin
+                Alert::success('Success Title', 'Success Message');
+                return $account;
+            } else {
+                Alert::error('Error Title', 'Error Message');
+                return back();
+            }
+        } else {
+            Alert::error('Error Title', 'Error Message');
+            return back();
+        }
     }
 }
