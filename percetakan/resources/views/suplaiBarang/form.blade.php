@@ -61,7 +61,19 @@
             // Set the value of the date input field
             document.getElementById("date").value = formattedDate;
         </script>
-
+        @if ($message = Session::get('success'))
+        <div class="alert alert-success" hidden>
+            <p id="message">{{ $message }}</p>
+            <script>
+                Swal.fire({
+                    title: 'Success',
+                    text: $('#message').text(),
+                    icon: 'Success',
+                    confirmButtonText: 'Cool'
+                })
+            </script>
+        </div>
+        @endif
         <button class="btn btn-primary" name="proses" value="simpan" id="simpan" type="submit">Simpan</button>
         <a href="{{ url('/suplaibarang') }}" class="btn btn-info">Batal</a>
 

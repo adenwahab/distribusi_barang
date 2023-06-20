@@ -12,7 +12,6 @@ use App\Http\Controllers\AccountSettingController;
 use App\Http\Controllers\SuplaiBarangController;
 use App\Http\Controllers\UpdateLevelController;
 use App\Http\Controllers\UpdatePasswordController;
-use RealRashid\SweetAlert\Facades\Alert;
 
 /*
 |--------------------------------------------------------------------------
@@ -30,7 +29,6 @@ use RealRashid\SweetAlert\Facades\Alert;
 //---------route landingpage-------
 Route::get('/', function () {
     //return view('welcome');
-    Alert::html('Selamat Datang', 'Selamat Datang di Website Kami');
     return view('landingpage.hero');
 });
 Route::get('/about', function () {
@@ -67,6 +65,7 @@ Route::resource('user', UserController::class)->middleware('auth');
 Route::resource('transaksi', TransaksiController::class)->middleware('auth');
 Route::resource('updatelevel', UpdateLevelController::class)->middleware('auth');
 Route::resource('suplaibarang', SuplaiBarangController::class)->middleware('auth');
+Route::delete('/suplaibarang/deleteAll', [SuplaiBarangController::class, 'deleteAll']);
 Route::get('/transaksi-pdf', [TransaksiController::class, 'transaksiPDF']);
 Route::get('/transaksi-excel', [TransaksiController::class, 'transaksiExcel']);
 Route::get('/account/settings', [AccountSettingController::class, 'index'])->name('user.setting');

@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Models\Suplai_barang; //panggil model
+use App\Models\SuplaiBarang; //panggil model
 use App\Models\Suplier; //panggil model
 use Illuminate\Support\Facades\DB; // jika pakai query builder
 use Illuminate\Database\Eloquent\Model; //jika pakai eloquent
@@ -21,16 +21,14 @@ class SuplierController extends Controller
             ->get();
 
 
-        return view('suplier.index', compact('ar_suplier'),['title' => 'suplier']);
-
+        return view('suplier.index', compact('ar_suplier'), ['title' => 'suplier']);
     }
 
     public function dataPilihan()
     {
         $ar_pilihan = suplier::all(); //eloquent
 
-        return view('landingpage.about', compact('ar_pilihan'),['title' => 'suplier']);
-
+        return view('landingpage.about', compact('ar_pilihan'), ['title' => 'suplier']);
     }
 
     public function create()
@@ -39,7 +37,7 @@ class SuplierController extends Controller
         $ar_suplier = suplier::all();
         //arahkan ke form input data
 
-        return view('suplier.form', compact('ar_suplier'),['title' => 'suplier']);
+        return view('suplier.form', compact('ar_suplier'), ['title' => 'suplier']);
     }
 
 
@@ -84,7 +82,7 @@ class SuplierController extends Controller
      */
     public function show(string $id)
     {
-        $rs = Suplai_barang::where('suplier_id', $id)->get();
+        $rs = SuplaiBarang::where('suplier_id', $id)->get();
         return view('suplier.detail', compact('rs'), ['title' => 'Data Suplai_barang']);
     }
 

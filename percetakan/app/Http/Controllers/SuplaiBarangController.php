@@ -78,13 +78,15 @@ class SuplaiBarangController extends Controller
         //     ]
         // );
 
-        return redirect('/suplaibarang')->with('pesan', 'Barang Masuk berhasil disimpan');
+        return redirect('/suplaibarang')
+            ->with('pesan', 'Barang Masuk berhasil disimpan');
     }
 
     public function destroy($id)
     {
         SuplaiBarang::destroy($id);
-        return redirect('/suplaibarang')->with('pesan', 'Barang Masuk berhasil dihapus');
+        return redirect('/suplaibarang')
+            ->with('pesan', 'Barang Masuk berhasil dihapus');
     }
 
     public function edit(string $id)
@@ -129,7 +131,14 @@ class SuplaiBarangController extends Controller
 
     public function show($id)
     {
+        return redirect('/suplaibarang')
+            ->with('error', 'Invalid request. Cannot access specific resource.');
+    }
 
-        return redirect('/suplaibarang')->with('error', 'Invalid request. Cannot access specific resource.');
+    public function deleteAll()
+    {
+        SuplaiBarang::truncate();
+        return redirect('/suplaibarang')
+            ->with('pesan', 'Data Suplai Berhasil Dihapus');
     }
 }
