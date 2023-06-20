@@ -14,10 +14,10 @@
                             <div class="col-md-4">
                                 @empty($rs->foto)
                                     <img src="{{ url('admin/assets/img/noimage.jpg') }}" class="img-fluid rounded-start"
-                                        alt="...">
+                                        alt="..." style="height: 100%;">
                                 @else
                                     <img src="{{ url('admin/assets/img') }}/{{ $rs->foto }}" class="img-fluid rounded-start"
-                                        alt="...">
+                                        alt="..." style="height: 100%;">
                                 @endempty
                             </div>
                             <div class="col-md-8">
@@ -52,16 +52,17 @@
                                             <td class="h6">{{ $rs->kategori->nama }}</td>
                                         </tr>
                                     </table>
-                                    <hr>
-                                    <a href="{{ url('/barang') }}" class="btn btn-primary">
-                                        <i class="fas fa-arrow-left"></i> Go Back
-                                    </a>
-                                    &nbsp; &nbsp;
-                                    <a href="https://wa.me/6285888560861" class="btn btn-success">
-                                        <i class="fab fa-whatsapp"></i> Pesan Sekarang
-                                    </a>
 
-
+                                    <div class="d-flex justify-content-end">
+                                        <a href="{{ url('/barang') }}" class="btn btn-primary">
+                                            <i class="fas fa-arrow-left"></i> Kembali
+                                        </a>
+                                        &nbsp; &nbsp;
+                                        <a href="{{ route('barang.edit', $rs->id) }}" title="Ubah"
+                                            class="btn btn-warning">
+                                            <i class="fas fa-edit"></i> Edit
+                                        </a>
+                                    </div>
                                 </div>
                             </div>
                         </div>

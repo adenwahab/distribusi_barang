@@ -60,12 +60,12 @@
                         User
                     </a>
                     <a class="nav-link" href="{{ url('/suplaibarang') }}">
-                        <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
+                        <div class="sb-nav-link-icon"><i class="fas fa-cart-plus"></i></div>
                         Barang Masuk
                     </a>
 
                     <a class="nav-link" href="{{ url('/suplier') }}">
-                        <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
+                        <div class="sb-nav-link-icon"><i class="fas fa-truck"></i></div>
                         Suplier
                     </a>
 
