@@ -49,7 +49,7 @@
                                     <option value="">Pilih Role</option>
                                     <option value="admin">admin</option>
                                     <option value="manajer">manajer</option>
-                                    <option value="staff">staff</option>
+                                    <option value="kasir">kasir</option>
                                 </select>
                             </div>
                         </div>
@@ -125,6 +125,6 @@
             <h1 class="text-center">Anda Tidak Memiliki Akses</h1>
         </div>
     </div>
-</div>
-@endif
+</div> -->
+<!-- @endif
 @endsection

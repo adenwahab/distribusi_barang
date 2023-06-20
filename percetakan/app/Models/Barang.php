@@ -13,7 +13,7 @@ class Barang extends Model
     protected $table = 'barang';
 
     protected $fillable = [
-        'kode', 'nama_barang', 'kategiri_id', 'harga', 'stok', 'satuan', 'foto'
+        'kode', 'nama_barang', 'kategori_id', 'harga', 'harga_member', 'stok', 'satuan', 'foto'
     ];
 
     public function kategori(): BelongsTo
