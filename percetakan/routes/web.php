@@ -5,9 +5,13 @@ use App\Http\Controllers\BarangController;
 use App\Http\Controllers\KategoriController;
 use App\Http\Controllers\SuplierController;
 use App\Http\Controllers\PelangganController;
+use App\Http\Controllers\loginController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\TransaksiController;
 use App\Http\Controllers\DashboardController;
+
+
+
 use App\Http\Controllers\AccountSettingController;
 use App\Http\Controllers\SuplaiBarangController;
 use App\Http\Controllers\UpdateLevelController;
@@ -24,7 +28,6 @@ use RealRashid\SweetAlert\Facades\Alert;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
-
 
 
 //---------route landingpage-------
@@ -58,6 +61,28 @@ Route::get('/beranda', [BarangController::class, 'dataBahan'])->middleware('auth
 
 Route::get('/dashboard', [DashboardController::class, 'index']);
 
+
+//login and logut
+// Route::get('/login', function () {
+//     return view('login', [
+//         "title" => "Login"
+//     ]);
+// });
+Route::get('/login', [loginController::class, 'login']);
+Route::post('/login', [loginController::class, 'authenticate']);
+
+
+// routes transaksi //
+
+
+Route::get('/transaksi', function () {
+    return view('formTransaksi', [
+        "title" => "Transaksi"
+    ]);
+});
+
+Route::get('transaksitable',[TransaksiController::class,'show']);
+
 Route::resource('kategori', KategoriController::class)->middleware('auth');
 Route::resource('barang', BarangController::class)->middleware('auth');
 Route::resource('pelanggan', PelangganController::class)->middleware('auth');
@@ -79,3 +104,4 @@ Route::put('/account/settings/updatePassword', [UpdatePasswordController::class,
 Auth::routes();
 
 Route::get('/home', [DashboardController::class, 'index'])->name('home');
+
