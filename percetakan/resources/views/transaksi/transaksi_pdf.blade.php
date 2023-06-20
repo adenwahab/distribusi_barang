@@ -4,11 +4,11 @@
                             <tr>
                                 <th>No</th>
                                 <th>Kode Barang</th>
-                                <th>ID Barang</th>
-                                <th>ID Pelanggan</th>
+                                <th>Nama Pelanggan</th>
                                 <th>Tanggal</th>
                                 <th>Jumlah</th>
                                 <th>Keterangan</th>
+                                <th>Total Harga</th>
                             </tr>
                             </thead>
                             <tbody>
@@ -19,10 +19,10 @@
                                  <tr>
                                  <th>{{ $no }}</th>
                                     <td>{{ $trs->kode }}</td>
-                                    <td>{{ $trs->barang_id }}</td>
-                                    <td>{{ $trs->pelanggan_id }}</td>
+                                    <td>{{ $trs->pelanggan }}</td>
                                     <td>{{ $trs->tgl }}</td>
                                     <td>{{ $trs->jumlah }}</td>
+                                    <td>{{ $trs->keterangan }}</td>
                                     <td>{{ $trs->keterangan }}</td>
                                     </tr>
                                     @php $no++ @endphp

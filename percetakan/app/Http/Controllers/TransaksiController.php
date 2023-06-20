@@ -27,7 +27,7 @@ class TransaksiController extends Controller
             ->join('barang', 'barang.id', '=', 'transaksi.barang_id')
             ->select('transaksi.*', 'barang.kode as barang')
             ->join('pelanggan', 'pelanggan.id', '=', 'transaksi.pelanggan_id')
-            ->select('transaksi.*', 'pelanggan.id as pelanggan')
+            ->select('transaksi.*', 'barang.nama_barang as barang', 'barang.kode as kode', 'pelanggan.nama as pelanggan')
             ->orderBy('transaksi.id', 'desc')
             ->get();
 
@@ -41,11 +41,16 @@ class TransaksiController extends Controller
     public function create()
     {
         //ambil master untuk dilooping di select option
-        $ar_barang = barang::all();
+        $ar_barang = DB::table('barang')
+            ->orderBy('barang.id', 'desc')
+            ->get();
+        $ar_pelanggan = DB::table('pelanggan')
+            ->orderBy('pelanggan.id', 'desc')
+             ->get();
         //arahkan ke form input data
-        return view('transaksi.form', compact('ar_barang'), ['title' => 'Input Transaksi Baru']);
+        return view('transaksi.form', compact('ar_barang', 'ar_pelanggan'), ['title' => 'Input Transaksi Baru']);
     }
-
+    
     /**
      * Store a newly created resource in storage.
      */
@@ -57,8 +62,9 @@ class TransaksiController extends Controller
                 'kode' => 'required|max:5',
                 'barang_id' => 'required|integer',
                 'pelanggan_id' => 'required|integer',
-                'tanggal' => 'required|datetime',
+                'tanggal' => 'required|date',
                 'jumlah' => 'required|max:45',
+                'total' => 'required|max:100',
                 'status_member' => 'required|max:100',
             ]
 
@@ -73,6 +79,7 @@ class TransaksiController extends Controller
                 'tanggal' => $request->tanggal,
                 'jumlah' => $request->jumlah,
                 'keterangan' => $request->keterangan,
+                'total' => $request->total,
                 //'updated_at'=>now(),
             ]
         );
@@ -84,9 +91,10 @@ class TransaksiController extends Controller
     {
         //ambil master untuk dilooping di select option
         $ar_barang = barang::all();
+        $ar_pelanggan = pelanggan::all();
         //tampilkan data lama di form
         $row = transaksi::find($id);
-        return view('transaksi.form_edit', compact('row', 'ar_barang'), ['title' => 'Edit Data Transaksi']);
+        return view('transaksi.form_edit', compact('row', 'ar_barang', 'ar_pelanggan'), ['title' => 'Edit Data Transaksi']);
     }
 
     /**
@@ -102,6 +110,7 @@ class TransaksiController extends Controller
                 'pelanggan_id' => 'required|integer',
                 'tanggal' => 'required|datetime',
                 'jumlah' => 'required|max:45',
+                'total' => 'required|max:100',
                 'status_member' => 'required|max:100',
             ]
         );
@@ -115,6 +124,7 @@ class TransaksiController extends Controller
                 'tanggal' => $request->tanggal,
                 'jumlah' => $request->jumlah,
                 'keterangan' => $request->keterangan,
+                'total' => $request->total,
                 //'updated_at'=>now(),
             ]
         );
@@ -140,7 +150,7 @@ class TransaksiController extends Controller
             ->join('barang', 'barang.id', '=', 'transaksi.barang_id')
             ->select('transaksi.*', 'barang.kode as barang')
             ->join('pelanggan', 'pelanggan.id', '=', 'transaksi.pelanggan_id')
-            ->select('transaksi.*', 'pelanggan.id as pelanggan')
+            ->select('transaksi.*', 'barang.nama_barang as barang', 'barang.kode as kode', 'pelanggan.nama as pelanggan')
             ->orderBy('transaksi.id', 'desc')
             ->get();
 
@@ -149,6 +159,7 @@ class TransaksiController extends Controller
     public function transaksiPDF()
     {
         $ar_transaksi = Transaksi::all(); //eloquent
+        
         $pdf = PDF::loadView('transaksi.transaksi_pdf', ['ar_transaksi' => $ar_transaksi]);
         return $pdf->download('data_transaksi_' . date('d-m-Y') . '.pdf');
     }

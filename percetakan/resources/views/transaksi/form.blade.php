@@ -15,26 +15,20 @@
                 <select class="form-select" name="kode" aria-label="Kode barang">
                     <option value="">-- Pilih Kode Barang --</option>
                     @foreach ($ar_barang as $b)
-                    <option value="{{ $b->id }}">{{ $b->kode }}</option>
+                    <option value="{{ $b->id }} | {{$b->nama_barang}} | {{$b->kode}}">{{ $b->kode }} | {{$b->nama_barang}}</option>
                     @endforeach
                 </select>
             </div>
         </div>
         <div class="form-group row">
-            <label for="text" class="col-3 col-form-label">ID Barang</label>
+            <label for="namapelanggan" class="col-3 col-form-label">Nama Pelanggan</label>
             <div class="col-9">
-                <select class="form-select" name="id" aria-label="ID barang">
-                    <option value="">-- Pilih ID Barang --</option>
-                    @foreach ($ar_barang as $b)
-                    <option value="{{ $b->id }}">{{ $b->id }}</option>
+                <select class="form-select" name="nama" aria-label="Nama pelanggan">
+                    <option value="">-- Pilih Nama Pelanggan --</option>
+                    @foreach ($ar_pelanggan as $p)
+                    <option value="{{ $p->id }} | {{$p->nama}}">{{ $p->nama }}</option>
                     @endforeach
                 </select>
-            </div>
-        </div>
-        <div class="form-group row">
-            <label for="text" class="col-3 col-form-label">ID Pelanggan</label>
-            <div class="col-9">
-                <input class="form-control" name="pelanggan_id" value="" id="pelanggan_id" type="text" data-sb-validations="required" />
             </div>
         </div>
         <div class="form-group row">
@@ -54,6 +48,12 @@
             <label for="select" class="col-3 col-form-label">Keterangan</label>
             <div class="col-9">
                 <input class="form-control" name="keterangan" value="" id="keterangan" type="text" data-sb-validations="required" />
+            </div>
+        </div>
+        <div class="form-group row">
+            <label for="select" class="col-3 col-form-label">Harga</label>
+            <div class="col-9">
+                <input class="form-control" name="harga" value="" id="harga" type="text" data-sb-validations="required" />
             </div>
         </div>
         <button class="btn btn-primary" name="proses" value="simpan" id="simpan" type="submit">Simpan</button>
