@@ -7,6 +7,7 @@ use App\Http\Controllers\SuplierController;
 use App\Http\Controllers\PelangganController;
 use App\Http\Controllers\loginController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\MemberController;
 use App\Http\Controllers\TransaksiController;
 use App\Http\Controllers\DashboardController;
 
