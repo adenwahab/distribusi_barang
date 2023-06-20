@@ -79,7 +79,7 @@ Route::get('/transaksi', function () {
     ]);
 });
 
-Route::get('transaksitable',[TransaksiController::class,'show']);
+Route::get('transaksitable', [TransaksiController::class, 'show']);
 
 Route::resource('kategori', KategoriController::class)->middleware('auth');
 Route::resource('barang', BarangController::class)->middleware('auth');
@@ -97,10 +97,8 @@ Route::get('/account/settings', [AccountSettingController::class, 'index'])->nam
 Route::put('/account/settings', [AccountSettingController::class, 'update'])->name('user.setting.update');
 Route::get('/account/settings/updatePassword', [UpdatePasswordController::class, 'index'])->name('user.settingpassword');
 Route::put('/account/settings/updatePassword', [UpdatePasswordController::class, 'update'])->name('user.settingpassword.update');
-// Route::put('updatelevel', [UpdateLevelController::class, 'updatelevel'])->name('user.updatelevel.update');
 
 
 Auth::routes();
 
 Route::get('/home', [DashboardController::class, 'index'])->name('home');
-

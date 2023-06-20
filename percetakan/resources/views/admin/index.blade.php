@@ -37,7 +37,7 @@
             <!-- <div class="container-fluid px-4"> -->
             <div class="row">
                 <!-- <div class="card w-100"> -->
-                <div class="card-body p-4">
+                <div class="card-body mb-4 mx-5">
                     <!---------main--------------->
                     @yield('content')
                     <!---------end main--------------->
@@ -63,17 +63,6 @@
     <script src="{{ asset('admin/js/datatables-simple-demo.js') }}"></script>
     <script src="https://cdn.jsdelivr.net/npm/simple-datatables@latest" type="text/javascript"></script>
 
-
-    <script>
-        function success() {
-            Swal.fire({
-                title: 'Success',
-                text: 'Data Berhasil Ditambahkan',
-                icon: 'Success',
-                confirmButtonText: 'Cool'
-            })
-        }
-    </script>
     <script>
 
     </script>
