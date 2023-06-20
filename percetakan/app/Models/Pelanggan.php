@@ -7,17 +7,14 @@ use Illuminate\Database\Eloquent\Model;
 
 use Illuminate\Database\Eloquent\Relations\HasMany;
 
-
 class Pelanggan extends Model
 {
+    protected $table = "pelanggan";
     use HasFactory;
-    protected $table = 'pelanggan';
 
-    protected $fillable = ['nama','alamat','no_hp','email','status_member','foto'];
-
-    public function transaksi(): HasMany
+    public function transaksi() : HasMany
     {
-        return $this->hasMany(Transaksi::class);
+        return $this->hasMany(Transaksi::class, 'pelanggan_id');
     }
 
 }

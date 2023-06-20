@@ -23,7 +23,6 @@
                             <a class="nav-link" href="{{ url('/barang') }}">Produk</a>
                             <a class="nav-link" href="{{ url('/transaksi') }}">Transaksi</a>
                             <a class="nav-link" href="{{ url('/kategori') }}">Kategori Barang</a>
-                            <a class="nav-link" href="{{ url('/kategori') }}">Kategori Barang</a>
                         </nav>
                     </div>
                     <a class="nav-link collapsed" href="#" data-bs-toggle="collapse"
@@ -60,11 +59,17 @@
                         <div class="sb-nav-link-icon"><i class="fas fa-solid fa-user"></i></div>
                         User
                     </a>
+                    <a class="nav-link" href="{{ url('/suplaibarang') }}">
+                        <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
+                        Barang Masuk
+                    </a>
 
                     <a class="nav-link" href="{{ url('/suplier') }}">
                         <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
                         Suplier
                     </a>
+
+
                     <a class="nav-link" href="tables.html">
                         <div class="sb-nav-link-icon"><i class="fas fa-table"></i></div>
                         Tables

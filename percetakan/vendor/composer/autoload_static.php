@@ -385,8 +385,8 @@ class ComposerStaticInitc2b06e43b1f41fc29299a92474db4650
         ),
         'Psr\\Http\\Message\\' => 
         array (
-            0 => __DIR__ . '/..' . '/psr/http-message/src',
-            1 => __DIR__ . '/..' . '/psr/http-factory/src',
+            0 => __DIR__ . '/..' . '/psr/http-factory/src',
+            1 => __DIR__ . '/..' . '/psr/http-message/src',
         ),
         'Psr\\Http\\Client\\' => 
         array (
@@ -617,10 +617,12 @@ class ComposerStaticInitc2b06e43b1f41fc29299a92474db4650
         'App\\Http\\Controllers\\DashboardController' => __DIR__ . '/../..' . '/app/Http/Controllers/DashboardController.php',
         'App\\Http\\Controllers\\HomeController' => __DIR__ . '/../..' . '/app/Http/Controllers/HomeController.php',
         'App\\Http\\Controllers\\KategoriController' => __DIR__ . '/../..' . '/app/Http/Controllers/KategoriController.php',
+        'App\\Http\\Controllers\\SuplaiBarangController' => __DIR__ . '/../..' . '/app/Http/Controllers/SuplaiBarangController.php',
+        'App\\Http\\Controllers\\SuplierController' => __DIR__ . '/../..' . '/app/Http/Controllers/SuplierController.php',
         'App\\Http\\Controllers\\TransaksiController' => __DIR__ . '/../..' . '/app/Http/Controllers/TransaksiController.php',
+        'App\\Http\\Controllers\\UpdateLevelController' => __DIR__ . '/../..' . '/app/Http/Controllers/UpdateLevelController.php',
         'App\\Http\\Controllers\\UpdatePasswordController' => __DIR__ . '/../..' . '/app/Http/Controllers/UpdatePasswordController.php',
         'App\\Http\\Controllers\\UserController' => __DIR__ . '/../..' . '/app/Http/Controllers/UserController.php',
-        'App\\Http\\Controllers\\UsersController' => __DIR__ . '/../..' . '/app/Http/Controllers/UsersController.php',
         'App\\Http\\Kernel' => __DIR__ . '/../..' . '/app/Http/Kernel.php',
         'App\\Http\\Middleware\\Authenticate' => __DIR__ . '/../..' . '/app/Http/Middleware/Authenticate.php',
         'App\\Http\\Middleware\\EncryptCookies' => __DIR__ . '/../..' . '/app/Http/Middleware/EncryptCookies.php',
@@ -637,6 +639,10 @@ class ComposerStaticInitc2b06e43b1f41fc29299a92474db4650
         'App\\Models\\Barang' => __DIR__ . '/../..' . '/app/Models/Barang.php',
         'App\\Models\\DataUser' => __DIR__ . '/../..' . '/app/Models/DataUser.php',
         'App\\Models\\Kategori' => __DIR__ . '/../..' . '/app/Models/Kategori.php',
+        'App\\Models\\Pelanggan' => __DIR__ . '/../..' . '/app/Models/Pelanggan.php',
+        'App\\Models\\SuplaiBarang' => __DIR__ . '/../..' . '/app/Models/SuplaiBarang.php',
+        'App\\Models\\Suplai_barang' => __DIR__ . '/../..' . '/app/Models/Suplai_barang.php',
+        'App\\Models\\Suplier' => __DIR__ . '/../..' . '/app/Models/Suplier.php',
         'App\\Models\\Transaksi' => __DIR__ . '/../..' . '/app/Models/Transaksi.php',
         'App\\Models\\User' => __DIR__ . '/../..' . '/app/Models/User.php',
         'App\\Providers\\AppServiceProvider' => __DIR__ . '/../..' . '/app/Providers/AppServiceProvider.php',
@@ -776,6 +782,7 @@ class ComposerStaticInitc2b06e43b1f41fc29299a92474db4650
         'Database\\Factories\\UserFactory' => __DIR__ . '/../..' . '/database/factories/UserFactory.php',
         'Database\\Seeders\\DatabaseSeeder' => __DIR__ . '/../..' . '/database/seeders/DatabaseSeeder.php',
         'Database\\Seeders\\UserTableSedeers' => __DIR__ . '/../..' . '/database/seeders/UserTableSedeers.php',
+        'Database\\Seeders\\UsersSeeder' => __DIR__ . '/../..' . '/database/seeders/UsersSeeder.php',
         'DeepCopy\\DeepCopy' => __DIR__ . '/..' . '/myclabs/deep-copy/src/DeepCopy/DeepCopy.php',
         'DeepCopy\\Exception\\CloneException' => __DIR__ . '/..' . '/myclabs/deep-copy/src/DeepCopy/Exception/CloneException.php',
         'DeepCopy\\Exception\\PropertyException' => __DIR__ . '/..' . '/myclabs/deep-copy/src/DeepCopy/Exception/PropertyException.php',

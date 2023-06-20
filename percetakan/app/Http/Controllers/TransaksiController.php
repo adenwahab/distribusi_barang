@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+
+
+
 use App\Http\Controllers\Controller;
 use App\Models\Transaksi;
 use App\Models\Barang; //panggil model
@@ -16,6 +19,8 @@ use Maatwebsite\Excel\Facades\Excel;
 
 class TransaksiController extends Controller
 {
+
+
     public function index()
     {
         $ar_transaksi = DB::table('transaksi')
@@ -150,5 +155,6 @@ class TransaksiController extends Controller
     public function transaksiExcel()
     {
         return Excel::download(new transaksiExport, 'data_transaksi_' . date('d-m-Y') . '.xlsx');
+
     }
 }
