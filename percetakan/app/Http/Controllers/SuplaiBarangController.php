@@ -56,7 +56,7 @@ class SuplaiBarangController extends Controller
         $selectedBarang = $request->input('barang');
 
         $dataBarang = explode(' | ', $selectedBarang);
-        $idBarang = $dataBarang[2];
+        $idBarang = $dataBarang[3];
 
         $selectedSuplier = $request->input('suplier');
         $dataSuplier = explode(' | ', $selectedSuplier);
@@ -72,19 +72,21 @@ class SuplaiBarangController extends Controller
                 'keterangan' => $request->keterangan,
             ]
         );
-        DB::table('barang')->where('id', $idBarang)->update(
-            [
-                'stok' => DB::raw('stok + ' . $request->jumlah),
-            ]
-        );
+        // DB::table('barang')->where('id', $idBarang)->update(
+        //     [
+        //         'stok' => DB::raw('stok + ' . $request->jumlah),
+        //     ]
+        // );
 
-        return redirect('/suplaibarang')->with('pesan', 'Barang Masuk berhasil disimpan');
+        return redirect('/suplaibarang')
+            ->with('pesan', 'Barang Masuk berhasil disimpan');
     }
 
     public function destroy($id)
     {
         SuplaiBarang::destroy($id);
-        return redirect('/suplaibarang')->with('pesan', 'Barang Masuk berhasil dihapus');
+        return redirect('/suplaibarang')
+            ->with('pesan', 'Barang Masuk berhasil dihapus');
     }
 
     public function edit(string $id)
@@ -129,7 +131,14 @@ class SuplaiBarangController extends Controller
 
     public function show($id)
     {
+        return redirect('/suplaibarang')
+            ->with('error', 'Invalid request. Cannot access specific resource.');
+    }
 
-        return redirect('/suplaibarang')->with('error', 'Invalid request. Cannot access specific resource.');
+    public function deleteAll()
+    {
+        SuplaiBarang::truncate();
+        return redirect('/suplaibarang')
+            ->with('pesan', 'Data Suplai Berhasil Dihapus');
     }
 }
