@@ -13,3 +13,4 @@ class Transaksi extends Model
         'kode', 'barang_id', 'pelanggan_id', 'tanggal', 'jumlah', 'keterangan'
     ];
 }
+
