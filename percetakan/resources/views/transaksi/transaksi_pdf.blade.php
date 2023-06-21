@@ -23,7 +23,7 @@
                                     <td>{{ $trs->tgl }}</td>
                                     <td>{{ $trs->jumlah }}</td>
                                     <td>{{ $trs->keterangan }}</td>
-                                    <td>{{ $trs->keterangan }}</td>
+                                    <td>Rp. {{ '' }}</td>
                                     </tr>
                                     @php $no++ @endphp
                                 @endforeach

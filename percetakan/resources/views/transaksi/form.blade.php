@@ -51,9 +51,20 @@
             </div>
         </div>
         <div class="form-group row">
+            <label for="statusmember" class="col-3 col-form-label">Status Member</label>
+            <div class="col-9">
+                <select class="form-select" name="nama" aria-label="Status member">
+                    <option value="">-- Pilih Status Member --</option>
+                    @foreach ($ar_pelanggan as $p)
+                    <option value="{{ $p->id }} | {{$p->status_member}}">{{ $p->status_member }}</option>
+                    @endforeach
+                </select>
+            </div>
+        </div>
+        <div class="form-group row">
             <label for="select" class="col-3 col-form-label">Harga</label>
             <div class="col-9">
-                <input class="form-control" name="harga" value="" id="harga" type="text" data-sb-validations="required" />
+                <input class="form-control" name="harga_barang" value="" id="harga_barang" type="text" data-sb-validations="required" />
             </div>
         </div>
         <button class="btn btn-primary" name="proses" value="simpan" id="simpan" type="submit">Simpan</button>

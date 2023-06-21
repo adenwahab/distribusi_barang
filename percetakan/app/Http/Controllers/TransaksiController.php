@@ -27,7 +27,8 @@ class TransaksiController extends Controller
             ->join('barang', 'barang.id', '=', 'transaksi.barang_id')
             ->select('transaksi.*', 'barang.kode as barang')
             ->join('pelanggan', 'pelanggan.id', '=', 'transaksi.pelanggan_id')
-            ->select('transaksi.*', 'barang.nama_barang as barang', 'barang.kode as kode', 'pelanggan.nama as pelanggan')
+            ->select('transaksi.*', 'barang.nama_barang as barang', 'barang.kode as barang', 'barang.harga as barang',
+            'barang.harga_member as barang', 'pelanggan.nama as pelanggan')
             ->orderBy('transaksi.id', 'desc')
             ->get();
 
@@ -59,27 +60,35 @@ class TransaksiController extends Controller
         //proses input barang dari form
         $request->validate(
             [
-                'kode' => 'required|max:5',
-                'barang_id' => 'required|integer',
-                'pelanggan_id' => 'required|integer',
+                'kode_barang' => 'required|max:5',
+                'nama_pelanggan' => 'required|integer',
                 'tanggal' => 'required|date',
                 'jumlah' => 'required|max:45',
-                'total' => 'required|max:100',
+                'keterangan' => 'required | max:100',
+                'total' => 'required|max:45',
                 'status_member' => 'required|max:100',
             ]
 
         );
+        // Dapatkan data barang berdasarkan kode barang yang diinputkan
+        $barang = Barang::where('kode_barang', $request->kode_barang)->first();
+    
+        // Tentukan harga barang berdasarkan apakah pelanggan member atau bukan
+        $harga_barang = $request->is_member ? $barang->harga_member : $barang->harga_non_member;
+
+        // Hitung total harga berdasarkan harga barang dan jumlah transaksi
+        $total = $harga_barang * $request->jumlah;
 
         //lakukan insert data dari request form
         DB::table('transaksi')->insert(
             [
-                'kode' => $request->kode,
-                'barang_id' => $request->barang,
-                'pelanggan_id' => $request->pelanggan,
+                'kode_barang' => $request->kode_barang,
+                'nama_pelanggan' => $request->nama_pelanggan,
                 'tanggal' => $request->tanggal,
                 'jumlah' => $request->jumlah,
                 'keterangan' => $request->keterangan,
-                'total' => $request->total,
+                'status_member' => $request->status_member_pelanggan,
+                'total' => $total,
                 //'updated_at'=>now(),
             ]
         );
@@ -105,12 +114,12 @@ class TransaksiController extends Controller
         //proses input barang dari form
         $request->validate(
             [
-                'kode' => 'required|max:5',
-                'barang_id' => 'required|integer',
-                'pelanggan_id' => 'required|integer',
-                'tanggal' => 'required|datetime',
+                'kode_barang' => 'required|max:5',
+                'nama_pelanggan' => 'required|integer',
+                'tanggal' => 'required|date',
                 'jumlah' => 'required|max:45',
-                'total' => 'required|max:100',
+                'keterangan' => 'required | max:100',
+                'total' => 'required|max:45',
                 'status_member' => 'required|max:100',
             ]
         );
@@ -118,13 +127,13 @@ class TransaksiController extends Controller
         //lakukan update data dari request form edit
         DB::table('transaksi')->where('id', $id)->update(
             [
-                'kode' => $request->kode,
-                'barang_id' => $request->barang,
-                'pelanggan_id' => $request->pelanggan,
+                'kode_barang' => $request->kode_barang,
+                'nama_pelanggan' => $request->nama_pelanggan,
                 'tanggal' => $request->tanggal,
                 'jumlah' => $request->jumlah,
                 'keterangan' => $request->keterangan,
-                'total' => $request->total,
+                'status_member' => $request->status_member_pelanggan,
+                'total' => $total,
                 //'updated_at'=>now(),
             ]
         );
@@ -158,7 +167,15 @@ class TransaksiController extends Controller
     }
     public function transaksiPDF()
     {
-        $ar_transaksi = Transaksi::all(); //eloquent
+        //$ar_transaksi = Transaksi::all(); //eloquent
+        $ar_transaksi = DB::table('transaksi')
+        ->join('barang', 'barang.id', '=', 'transaksi.barang_id')
+        ->select('transaksi.*', 'barang.kode as barang')
+        ->join('pelanggan', 'pelanggan.id', '=', 'transaksi.pelanggan_id')
+        ->select('transaksi.*', 'barang.nama_barang as barang', 'barang.kode as barang', 'barang.harga as barang',
+        'barang.harga_member as barang', 'pelanggan.nama as pelanggan')
+        ->orderBy('transaksi.id', 'desc')
+        ->get();
         
         $pdf = PDF::loadView('transaksi.transaksi_pdf', ['ar_transaksi' => $ar_transaksi]);
         return $pdf->download('data_transaksi_' . date('d-m-Y') . '.pdf');
