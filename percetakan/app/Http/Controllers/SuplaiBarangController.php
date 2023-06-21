@@ -56,7 +56,7 @@ class SuplaiBarangController extends Controller
         $selectedBarang = $request->input('barang');
 
         $dataBarang = explode(' | ', $selectedBarang);
-        $idBarang = $dataBarang[2];
+        $idBarang = $dataBarang[3];
 
         $selectedSuplier = $request->input('suplier');
         $dataSuplier = explode(' | ', $selectedSuplier);
