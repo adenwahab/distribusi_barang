@@ -6,8 +6,29 @@
         <div class="card-body p-4">
             <h1 class="mt-4">Daftar Kategori</h1>
             @if ($message = Session::get('success'))
-            <div class="alert alert-success">
-                <p>{{ $message }}</p>
+            <div class="alert alert-success" hidden>
+                <p id="message">{{ $message }}</p>
+                <script>
+                    Swal.fire({
+                        title: 'Success',
+                        text: $('#message').text(),
+                        icon: 'Success',
+                        confirmButtonText: 'Oke!'
+                    })
+                </script>
+            </div>
+            @endif
+            @if ($message = Session::get('error'))
+            <div class="alert alert-danger" hidden>
+                <p id="message">{{ $message }}</p>
+                <script>
+                    Swal.fire({
+                        title: 'Failed',
+                        text: $('#message').text(),
+                        icon: 'error',
+                        confirmButtonText: 'Oke!'
+                    })
+                </script>
             </div>
             @endif
             <br />
@@ -37,13 +58,18 @@
                                     <a class="btn btn-info" href="{{ route('kategori.show', $data->id) }}" title="detail">
                                         <i class="fas fa-eye"></i>
                                     </a>
+                                    @if(Auth::user()->level != 'kasir')
+                                    <!-- ubah data -->
                                     <a class="btn btn-warning" href="{{ route('kategori.edit', $data->id) }}" title="ubah">
                                         <i class="fas fa-pencil-alt"></i>
                                     </a>
+                                    @endif
                                     <!-- hapus data -->
+                                    @if (Auth::user()->level == 'admin'))
                                     <button class="btn btn-danger" type="submit" title="Hapus" name="proses" value="hapus" onclick="return confirm('Anda Yakin Data Dihapus?')">
                                         <i class="fas fa-trash-alt"></i>
                                     </button>
+                                    @endif
                                     <input type="hidden" name="idx" value="" />
                                 </form>
                             </td>

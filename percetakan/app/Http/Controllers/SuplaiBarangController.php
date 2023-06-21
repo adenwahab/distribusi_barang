@@ -89,6 +89,7 @@ class SuplaiBarangController extends Controller
             ->with('pesan', 'Barang Masuk berhasil dihapus');
     }
 
+
     public function edit(string $id)
     {
 

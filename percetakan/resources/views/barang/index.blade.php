@@ -26,6 +26,7 @@
                 <thead>
                     <tr>
                         <th>No</th>
+                        <th>Kode</th>
                         <th>Nama Barang</th>
                         <th>Volume</th>
                         <th>Harga</th>
@@ -43,6 +44,7 @@
                     @foreach ($ar_barang as $data)
                     <tr>
                         <th>{{ $no }}</th>
+                        <td>{{ $data->kode }}</td>
                         <td>{{ $data->nama_barang }}</td>
                         <td>{{ $data->satuan }}</td>
                         <td>Rp. {{ number_format($data->harga, 0, ',', '.') }}</td>
@@ -63,9 +65,12 @@
                                 <a class="btn btn-info btn-sm" href="{{ route('barang.show', $data->id) }}" title="Detail">
                                     <i class="fas fa-eye"></i>
                                 </a>
+                                @if (Auth::user()->level == 'kasir')
+                                @else
                                 <a class="btn btn-warning btn-sm" href="{{ route('barang.edit', $data->id) }}" title="Ubah">
                                     <i class="fas fa-edit"></i>
                                 </a>
+                                @endif
                                 @if (Auth::user()->level == 'admin')
                                 <!-- hapus data -->
                                 <button class="btn btn-danger btn-sm delete-confirm" type="submit" title="Hapus" name="proses" value="hapus" onclick="return confirm('Anda Yakin Data Dihapus?')">
