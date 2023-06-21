@@ -42,7 +42,7 @@
                     }
                 }
             },
-            "installation-source": "source",
+            "installation-source": "dist",
             "autoload": {
                 "psr-4": {
                     "Barryvdh\\DomPDF\\": "src"
@@ -512,7 +512,7 @@
             },
             "time": "2023-02-07T12:51:48+00:00",
             "type": "library",
-            "installation-source": "source",
+            "installation-source": "dist",
             "autoload": {
                 "psr-4": {
                     "Dompdf\\": "src/"
@@ -781,7 +781,7 @@
                     "dev-main": "v1.21-dev"
                 }
             },
-            "installation-source": "source",
+            "installation-source": "dist",
             "autoload": {
                 "psr-4": {
                     "Faker\\": "src/Faker/"
@@ -1701,17 +1701,17 @@
         },
         {
             "name": "laravel/pint",
-            "version": "v1.10.2",
-            "version_normalized": "1.10.2.0",
+            "version": "v1.10.3",
+            "version_normalized": "1.10.3.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel/pint.git",
-                "reference": "f78de1a1bbab7aa41a6ea211c5962b0530d1a301"
+                "reference": "c472786bca01e4812a9bb7933b23edfc5b6877b7"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel/pint/zipball/f78de1a1bbab7aa41a6ea211c5962b0530d1a301",
-                "reference": "f78de1a1bbab7aa41a6ea211c5962b0530d1a301",
+                "url": "https://api.github.com/repos/laravel/pint/zipball/c472786bca01e4812a9bb7933b23edfc5b6877b7",
+                "reference": "c472786bca01e4812a9bb7933b23edfc5b6877b7",
                 "shasum": ""
             },
             "require": {
@@ -1722,7 +1722,7 @@
                 "php": "^8.1.0"
             },
             "require-dev": {
-                "friendsofphp/php-cs-fixer": "^3.17.0",
+                "friendsofphp/php-cs-fixer": "^3.18.0",
                 "illuminate/view": "^10.5.1",
                 "laravel-zero/framework": "^10.0.2",
                 "mockery/mockery": "^1.5.1",
@@ -1730,12 +1730,12 @@
                 "nunomaduro/termwind": "^1.15.1",
                 "pestphp/pest": "^2.4.0"
             },
-            "time": "2023-06-12T10:50:04+00:00",
+            "time": "2023-06-20T15:55:03+00:00",
             "bin": [
                 "builds/pint"
             ],
             "type": "project",
-            "installation-source": "source",
+            "installation-source": "dist",
             "autoload": {
                 "psr-4": {
                     "App\\": "app/",
@@ -1770,17 +1770,17 @@
         },
         {
             "name": "laravel/sail",
-            "version": "v1.22.0",
-            "version_normalized": "1.22.0.0",
+            "version": "v1.23.0",
+            "version_normalized": "1.23.0.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel/sail.git",
-                "reference": "923e1e112b6a8598664dbb0ee79dd3137f1c9d56"
+                "reference": "a2e046f748e87d3ef8b2b381e0e5c5a11f34e46b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel/sail/zipball/923e1e112b6a8598664dbb0ee79dd3137f1c9d56",
-                "reference": "923e1e112b6a8598664dbb0ee79dd3137f1c9d56",
+                "url": "https://api.github.com/repos/laravel/sail/zipball/a2e046f748e87d3ef8b2b381e0e5c5a11f34e46b",
+                "reference": "a2e046f748e87d3ef8b2b381e0e5c5a11f34e46b",
                 "shasum": ""
             },
             "require": {
@@ -1794,7 +1794,7 @@
                 "orchestra/testbench": "^6.0|^7.0|^8.0",
                 "phpstan/phpstan": "^1.10"
             },
-            "time": "2023-05-04T14:52:56+00:00",
+            "time": "2023-06-16T21:20:12+00:00",
             "bin": [
                 "bin/sail"
             ],
@@ -2077,7 +2077,7 @@
                     ]
                 }
             },
-            "installation-source": "source",
+            "installation-source": "dist",
             "autoload": {
                 "psr-4": {
                     "Laravel\\Ui\\": "src/",
@@ -2550,7 +2550,7 @@
                     }
                 }
             },
-            "installation-source": "source",
+            "installation-source": "dist",
             "autoload": {
                 "psr-4": {
                     "Maatwebsite\\Excel\\": "src/"
@@ -2820,7 +2820,7 @@
                     "dev-master": "2.7-dev"
                 }
             },
-            "installation-source": "source",
+            "installation-source": "dist",
             "autoload": {
                 "psr-4": {
                     "Masterminds\\": "src"
@@ -3755,7 +3755,7 @@
             },
             "time": "2021-12-17T19:44:54+00:00",
             "type": "library",
-            "installation-source": "source",
+            "installation-source": "dist",
             "autoload": {
                 "psr-4": {
                     "FontLib\\": "src/FontLib"
@@ -3804,7 +3804,7 @@
             },
             "time": "2022-09-06T12:16:56+00:00",
             "type": "library",
-            "installation-source": "source",
+            "installation-source": "dist",
             "autoload": {
                 "psr-4": {
                     "Svg\\": "src/Svg"
@@ -4405,7 +4405,7 @@
                     "dev-main": "10.2-dev"
                 }
             },
-            "installation-source": "source",
+            "installation-source": "dist",
             "autoload": {
                 "files": [
                     "src/Framework/Assert/Functions.php"
@@ -4700,7 +4700,7 @@
                     "dev-master": "2.0.x-dev"
                 }
             },
-            "installation-source": "source",
+            "installation-source": "dist",
             "autoload": {
                 "psr-4": {
                     "Psr\\Http\\Message\\": "src/"
@@ -5152,99 +5152,6 @@
             "install-path": "../ramsey/uuid"
         },
         {
-            "name": "realrashid/sweet-alert",
-            "version": "v7.0.0",
-            "version_normalized": "7.0.0.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/realrashid/sweet-alert.git",
-                "reference": "81eb61745002b7fbe2276cbb64214f678584df5c"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/realrashid/sweet-alert/zipball/81eb61745002b7fbe2276cbb64214f678584df5c",
-                "reference": "81eb61745002b7fbe2276cbb64214f678584df5c",
-                "shasum": ""
-            },
-            "require": {
-                "laravel/framework": "^5.6|^6.0|^7.0|^8.0|^9.0|^9.11|9.14.*|^10.0",
-                "php": "^7.2|^8.0|^8.1"
-            },
-            "require-dev": {
-                "symfony/thanks": "^1.0"
-            },
-            "time": "2023-04-20T01:23:24+00:00",
-            "type": "library",
-            "extra": {
-                "laravel": {
-                    "providers": [
-                        "RealRashid\\SweetAlert\\SweetAlertServiceProvider"
-                    ],
-                    "aliases": {
-                        "Alert": "RealRashid\\SweetAlert\\Facades\\Alert"
-                    }
-                }
-            },
-            "installation-source": "source",
-            "autoload": {
-                "files": [
-                    "src/functions.php"
-                ],
-                "psr-4": {
-                    "RealRashid\\SweetAlert\\": "src/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Rashid Ali",
-                    "email": "realrashid05@gmail.com",
-                    "homepage": "https://realrashid.com",
-                    "role": "Developer"
-                }
-            ],
-            "description": "Laravel Sweet Alert Is A Package For Laravel Provides An Easy Way To Display Alert Messages Using The SweetAlert2 Library.",
-            "homepage": "https://github.com/realrashid/sweet-alert",
-            "keywords": [
-                "alert",
-                "laravel",
-                "laravel-package",
-                "notifier",
-                "noty",
-                "sweet-alert",
-                "sweet-alert2",
-                "toast"
-            ],
-            "support": {
-                "docs": "https://realrashid.github.io/sweet-alert/",
-                "email": "realrashid05@gmail.com",
-                "issues": "https://github.com/realrashid/sweet-alert/issues",
-                "source": "https://github.com/realrashid/sweet-alert"
-            },
-            "funding": [
-                {
-                    "url": "https://ko-fi.com/realrashid",
-                    "type": "custom"
-                },
-                {
-                    "url": "https://www.buymeacoffee.com/realrashid",
-                    "type": "custom"
-                },
-                {
-                    "url": "https://issuehunt.io/r/realrashid",
-                    "type": "issuehunt"
-                },
-                {
-                    "url": "https://tidelift.com/funding/github/packagist/realrashid/sweet-alert",
-                    "type": "tidelift"
-                }
-            ],
-            "install-path": "../realrashid/sweet-alert"
-        },
-        {
             "name": "sabberworm/php-css-parser",
             "version": "8.4.0",
             "version_normalized": "8.4.0.0",
@@ -5272,7 +5179,7 @@
             },
             "time": "2021-12-11T13:40:54+00:00",
             "type": "library",
-            "installation-source": "source",
+            "installation-source": "dist",
             "autoload": {
                 "psr-4": {
                     "Sabberworm\\CSS\\": "src/"
@@ -6281,7 +6188,7 @@
             },
             "time": "2023-06-13T14:35:04+00:00",
             "type": "library",
-            "installation-source": "source",
+            "installation-source": "dist",
             "autoload": {
                 "psr-4": {
                     "Spatie\\Backtrace\\": "src"
@@ -8102,7 +8009,7 @@
                     "url": "https://github.com/symfony/polyfill"
                 }
             },
-            "installation-source": "source",
+            "installation-source": "dist",
             "autoload": {
                 "files": [
                     "bootstrap.php"

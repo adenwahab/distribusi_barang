@@ -8,16 +8,26 @@
         <nav id="navbar" class="navbar">
             <ul>
                 <li><a class="nav-link scrollto active" href="{{ url('/') }}">Home</a></li>
-                <li><a class="nav-link scrollto" href="{{ url('/about') }}">About</a></li>
-                <li><a class="nav-link scrollto" href="{{ url('/ourbarang') }}">Our Barang</a></li>
-                <li><a class="nav-link scrollto" href="{{ url('/team') }}">Team</a></li>
+                <li><a class="nav-link scrollto " href="{{ url('/about') }}">About</a></li>
+                <li><a class="nav-link scrollto " href="{{ url('/ourbarang') }}">Product</a></li>
+                <li><a class="nav-link scrollto " href="{{ url('/team') }}">Team</a></li>
 
                 <li class="dropdown"><a href="#"><span>Kategori</span> <i class="bi bi-chevron-down"></i></a>
                     <ul>
-                        <li><a href="#">Drop Down 1</a></li>
-                        <li><a href="#">Drop Down 2</a></li>
-                        <li><a href="#">Drop Down 3</a></li>
-                        <li><a href="#">Drop Down 4</a></li>
+                        <li><a href="{{ url('/coworking') }}">Coworking Space</a></li>
+                        <li><a href="{{ url('/foto') }}">Foto</a></li>
+                        <li><a href="{{ url('/largform') }}">Large Format</a></li>
+                        <li><a href="{{ url('/marketing') }}">Marketing Tools</a></li>
+                        <li><a href="{{ url('/packaging') }}">Packaging</a></li>
+                        <li><a href="{{ url('/printkain') }}">Print Kain</a></li>
+                        <li><a href="{{ url('/printlembar') }}">Print Lembaran</a></li>
+                        <li><a href="{{ url('/printterior') }}">Printterior</a></li>
+                        <li><a href="{{ url('/promo') }}">Promo and Gift</a></li>
+                        <li><a href="{{ url('/signage') }}">Signage</a></li>
+                        <li><a href="{{ url('/stationary') }}">Stationary</a></li>
+                        <li><a href="{{ url('/umkm') }}">UMKM</a></li>
+
+
                     </ul>
                 </li>
                 <li><a class="nav-link scrollto" href="{{ url('/contact') }}">Contact</a></li>

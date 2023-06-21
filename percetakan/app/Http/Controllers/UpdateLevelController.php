@@ -7,7 +7,6 @@ use Illuminate\Support\Facades\Auth;
 use App\Models\User;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Validation\Rule;
-use RealRashid\SweetAlert\Facades\Alert;
 
 class UpdateLevelController extends Controller
 
@@ -29,7 +28,7 @@ class UpdateLevelController extends Controller
         $request->validate([
             'level' => ['required', Rule::in(['admin', 'manajer', 'kasir'])], //tambahkan validasi level
         ]);
-        Auth::user()->level == 'admin';
+        // Auth::user()->level == 'admin';
 
         // Update the member's level
         DB::table('users')->where('id', $id)->update(
@@ -39,7 +38,8 @@ class UpdateLevelController extends Controller
             ]
         );
         // Redirect back or to a specific page
-        Alert::success('Success', 'Data berhasil diubah');
-        return redirect()->route('user.index')->withAlert('Task Created Successfully!');
+
+        return redirect()->route('user.index')
+            ->with('success', 'Berhasil Ganti Level');
     }
 }

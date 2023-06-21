@@ -170,8 +170,6 @@ return [
         App\Providers\RouteServiceProvider::class,
 
         // ============== TAMBAHAN ================
-        // RealRashid\SweetAlert\SweetAlertServiceProvider::class,
-        RealRashid\SweetAlert\SweetAlertServiceProvider::class,
         Maatwebsite\Excel\ExcelServiceProvider::class,
 
     ])->toArray(),
@@ -191,7 +189,6 @@ return [
         // 'Example' => App\Facades\Example::class,
         //------------ TAMBAHAN -----------------
         // 
-        'Alert' => RealRashid\SweetAlert\SweetAlertServiceProvider::class,
         'Excel' => Maatwebsite\Excel\Facades\Excel::class,
     ])->toArray(),
 

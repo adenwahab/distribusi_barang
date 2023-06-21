@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "4ed479762c585cbc7f35950e8f84e4e6",
+    "content-hash": "0158325165da7a761894450da82988d7",
     "packages": [
         {
             "name": "barryvdh/laravel-dompdf",
@@ -3868,96 +3868,6 @@
             "time": "2023-04-15T23:01:58+00:00"
         },
         {
-            "name": "realrashid/sweet-alert",
-            "version": "v7.0.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/realrashid/sweet-alert.git",
-                "reference": "81eb61745002b7fbe2276cbb64214f678584df5c"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/realrashid/sweet-alert/zipball/81eb61745002b7fbe2276cbb64214f678584df5c",
-                "reference": "81eb61745002b7fbe2276cbb64214f678584df5c",
-                "shasum": ""
-            },
-            "require": {
-                "laravel/framework": "^5.6|^6.0|^7.0|^8.0|^9.0|^9.11|9.14.*|^10.0",
-                "php": "^7.2|^8.0|^8.1"
-            },
-            "require-dev": {
-                "symfony/thanks": "^1.0"
-            },
-            "type": "library",
-            "extra": {
-                "laravel": {
-                    "providers": [
-                        "RealRashid\\SweetAlert\\SweetAlertServiceProvider"
-                    ],
-                    "aliases": {
-                        "Alert": "RealRashid\\SweetAlert\\Facades\\Alert"
-                    }
-                }
-            },
-            "autoload": {
-                "files": [
-                    "src/functions.php"
-                ],
-                "psr-4": {
-                    "RealRashid\\SweetAlert\\": "src/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Rashid Ali",
-                    "email": "realrashid05@gmail.com",
-                    "homepage": "https://realrashid.com",
-                    "role": "Developer"
-                }
-            ],
-            "description": "Laravel Sweet Alert Is A Package For Laravel Provides An Easy Way To Display Alert Messages Using The SweetAlert2 Library.",
-            "homepage": "https://github.com/realrashid/sweet-alert",
-            "keywords": [
-                "alert",
-                "laravel",
-                "laravel-package",
-                "notifier",
-                "noty",
-                "sweet-alert",
-                "sweet-alert2",
-                "toast"
-            ],
-            "support": {
-                "docs": "https://realrashid.github.io/sweet-alert/",
-                "email": "realrashid05@gmail.com",
-                "issues": "https://github.com/realrashid/sweet-alert/issues",
-                "source": "https://github.com/realrashid/sweet-alert"
-            },
-            "funding": [
-                {
-                    "url": "https://ko-fi.com/realrashid",
-                    "type": "custom"
-                },
-                {
-                    "url": "https://www.buymeacoffee.com/realrashid",
-                    "type": "custom"
-                },
-                {
-                    "url": "https://issuehunt.io/r/realrashid",
-                    "type": "issuehunt"
-                },
-                {
-                    "url": "https://tidelift.com/funding/github/packagist/realrashid/sweet-alert",
-                    "type": "tidelift"
-                }
-            ],
-            "time": "2023-04-20T01:23:24+00:00"
-        },
-        {
             "name": "sabberworm/php-css-parser",
             "version": "8.4.0",
             "source": {
@@ -6716,16 +6626,16 @@
         },
         {
             "name": "laravel/pint",
-            "version": "v1.10.2",
+            "version": "v1.10.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel/pint.git",
-                "reference": "f78de1a1bbab7aa41a6ea211c5962b0530d1a301"
+                "reference": "c472786bca01e4812a9bb7933b23edfc5b6877b7"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel/pint/zipball/f78de1a1bbab7aa41a6ea211c5962b0530d1a301",
-                "reference": "f78de1a1bbab7aa41a6ea211c5962b0530d1a301",
+                "url": "https://api.github.com/repos/laravel/pint/zipball/c472786bca01e4812a9bb7933b23edfc5b6877b7",
+                "reference": "c472786bca01e4812a9bb7933b23edfc5b6877b7",
                 "shasum": ""
             },
             "require": {
@@ -6736,7 +6646,7 @@
                 "php": "^8.1.0"
             },
             "require-dev": {
-                "friendsofphp/php-cs-fixer": "^3.17.0",
+                "friendsofphp/php-cs-fixer": "^3.18.0",
                 "illuminate/view": "^10.5.1",
                 "laravel-zero/framework": "^10.0.2",
                 "mockery/mockery": "^1.5.1",
@@ -6778,20 +6688,20 @@
                 "issues": "https://github.com/laravel/pint/issues",
                 "source": "https://github.com/laravel/pint"
             },
-            "time": "2023-06-12T10:50:04+00:00"
+            "time": "2023-06-20T15:55:03+00:00"
         },
         {
             "name": "laravel/sail",
-            "version": "v1.22.0",
+            "version": "v1.23.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel/sail.git",
-                "reference": "923e1e112b6a8598664dbb0ee79dd3137f1c9d56"
+                "reference": "a2e046f748e87d3ef8b2b381e0e5c5a11f34e46b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel/sail/zipball/923e1e112b6a8598664dbb0ee79dd3137f1c9d56",
-                "reference": "923e1e112b6a8598664dbb0ee79dd3137f1c9d56",
+                "url": "https://api.github.com/repos/laravel/sail/zipball/a2e046f748e87d3ef8b2b381e0e5c5a11f34e46b",
+                "reference": "a2e046f748e87d3ef8b2b381e0e5c5a11f34e46b",
                 "shasum": ""
             },
             "require": {
@@ -6843,7 +6753,7 @@
                 "issues": "https://github.com/laravel/sail/issues",
                 "source": "https://github.com/laravel/sail"
             },
-            "time": "2023-05-04T14:52:56+00:00"
+            "time": "2023-06-16T21:20:12+00:00"
         },
         {
             "name": "mockery/mockery",
