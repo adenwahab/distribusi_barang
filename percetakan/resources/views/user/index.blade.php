@@ -1,13 +1,24 @@
 @extends('admin.index')
 @section('content')
-@include('sweetalert::alert')
 <br><br>
 <!-- <div class="container-fluid px-4"> -->
 <div class="row">
     <div class="card w-100">
         <div class="card-body p-4">
             <h1 class="mt-4">Data User</h1>
-
+            @if ($message = Session::get('success'))
+            <div class="alert alert-success" hidden>
+                <p id="message">{{ $message }}</p>
+                <script>
+                    Swal.fire({
+                        title: 'Success',
+                        text: $('#message').text(),
+                        icon: 'Success',
+                        confirmButtonText: 'Cool'
+                    })
+                </script>
+            </div>
+            @endif
             <br />
             <div class="table-responsive">
                 <table class="table text-nowrap mb-0 align-middle" id="datatablesSimple">
@@ -46,21 +57,6 @@
                                     <button class="btn btn-danger btn-sm delete-confirm" type="submit" title="Hapus" name="proses" value="hapus" onclick="return confirm('Anda Yakin Data Dihapus?')">
                                         <i class="fas fa-trash-alt"></i>
                                     </button>
-                                    @if(session('success'))
-                                    <script>
-                                        window.onload = function() {
-                                            alert("{{ session('success') }}");
-                                        };
-                                    </script>
-                                    @endif
-
-                                    @if(session('error'))
-                                    <script>
-                                        window.onload = function() {
-                                            alert("{{ session('error') }}");
-                                        };
-                                    </script>
-                                    @endif
                                 </form>
                             </td>
                         </tr>

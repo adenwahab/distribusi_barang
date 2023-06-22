@@ -14,9 +14,10 @@
     <link rel="shortcut icon" href="{{ asset('assets/img/logo.png') }}">
     <link href="{{ asset('admin/css/styles.css') }}" rel="stylesheet" />
     <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.css" rel="stylesheet" />
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.js"></script>
-</head>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.7.12/dist/sweetalert2.all.min.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/sweetalert2@11.7.12/dist/sweetalert2.min.css" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-3.7.0.min.js" integrity="sha256-2Pmvv0kuTBOenSvLm6bvfBSSHrUJ+3A7x6P5Ebd07/g=" crossorigin="anonymous"></script>
+
 </head>
 
 
@@ -35,15 +36,15 @@
         <main>
             <!-- <div class="container-fluid px-4"> -->
             <div class="row">
-                <div class="card w-100">
-                    <div class="card-body p-4">
-                        <!---------main--------------->
-                        @yield('content')
-                        <!---------end main--------------->
-                        <!---------footer----------->
-                        <!---------end footer----------->
-                    </div>
+                <!-- <div class="card w-100"> -->
+                <div class="card-body mb-4 mx-5">
+                    <!---------main--------------->
+                    @yield('content')
+                    <!---------end main--------------->
+                    <!---------footer----------->
+                    <!---------end footer----------->
                 </div>
+                <!-- </div> -->
             </div>
             <!-- </div> -->
             @include('admin.footer')
@@ -62,33 +63,9 @@
     <script src="{{ asset('admin/js/datatables-simple-demo.js') }}"></script>
     <script src="https://cdn.jsdelivr.net/npm/simple-datatables@latest" type="text/javascript"></script>
 
-
-    <script>
-        $('.delete-confirm').on('click', function(event) {
-            event.preventDefault();
-            //const url = $(this).attr('href');
-            var form = $(this).closest("form");
-            var name = $(this).data("name");
-            swal({
-                title: "Anda Yakin Data dihapus?",
-                text: "Jika yakin dihapus, data akan hilang selamanya",
-                icon: "warning",
-                type: "warning",
-                buttons: ["Cancel", "Yes!"],
-                confirmButtonColor: '#3085d6',
-                cancelButtonColor: '#d33',
-                confirmButtonText: 'Yes, delete it!'
-            }).then((willDelete) => {
-                if (willDelete) {
-                    form.submit();
-                }
-            });
-        });
-    </script>
     <script>
 
     </script>
-    @include('sweetalert::alert')
 </body>
 
 </html>
