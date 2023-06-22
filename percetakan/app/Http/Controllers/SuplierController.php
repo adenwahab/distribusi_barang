@@ -8,6 +8,9 @@ use App\Models\SuplaiBarang; //panggil model
 use App\Models\Suplier; //panggil model
 use Illuminate\Support\Facades\DB; // jika pakai query builder
 use Illuminate\Database\Eloquent\Model; //jika pakai eloquent
+use Illuminate\Database\QueryException;
+
+use function PHPUnit\Framework\callback;
 
 class SuplierController extends Controller
 {
@@ -140,9 +143,21 @@ class SuplierController extends Controller
      */
     public function destroy(string $id)
     {
-        Suplier::where('id', $id)->delete();
-        return redirect()->route('suplier.index')
-            ->with('success', 'Data Suplier Berhasil Dihapus');
+        try {
+
+            Suplier::where('id', $id)->delete();
+            return redirect()->route('suplier.index')
+                ->with('success', 'Data Suplier Berhasil Dihapus');
+        } catch (QueryException $e) {
+            $errorCode = $e->getCode();
+            if ($errorCode == 23000) {
+                return redirect()->route('suplier.index')
+                    ->with('error', 'Data Suplier Gagal Dihapus, Karena Data Masih Digunakan');
+            } else {
+                return redirect()->route('suplier.index')
+                    ->with('error', 'Data Suplier Gagal Dihapus');
+            }
+        }
     }
 
     public function batal()

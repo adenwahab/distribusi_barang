@@ -8,6 +8,7 @@ use App\Models\Barang; //panggil model
 use App\Models\Kategori; //panggil model
 use Illuminate\Support\Facades\DB; // jika pakai query builder
 use Illuminate\Database\Eloquent\Model; //jika pakai eloquent
+use Illuminate\Database\QueryException;
 
 class KategoriController extends Controller
 {
@@ -21,16 +22,14 @@ class KategoriController extends Controller
             ->get();
 
 
-        return view('kategori.index', compact('ar_kategori'),['title' => 'kategori']);
-
+        return view('kategori.index', compact('ar_kategori'), ['title' => 'kategori']);
     }
 
     public function dataPilihan()
     {
         $ar_pilihan = Kategori::all(); //eloquent
 
-        return view('landingpage.about', compact('ar_pilihan'),['title' => 'kategori']);
-
+        return view('landingpage.about', compact('ar_pilihan'), ['title' => 'kategori']);
     }
 
     public function create()
@@ -39,7 +38,7 @@ class KategoriController extends Controller
         $ar_kategori = Kategori::all();
         //arahkan ke form input data
 
-        return view('kategori.form', compact('ar_kategori'),['title' => 'kategori']);
+        return view('kategori.form', compact('ar_kategori'), ['title' => 'kategori']);
     }
 
 
@@ -131,9 +130,22 @@ class KategoriController extends Controller
      */
     public function destroy(string $id)
     {
-        Kategori::where('id', $id)->delete();
-        return redirect()->route('kategori.index')
-            ->with('success', 'Data Kategori Berhasil Dihapus');
+        try {
+
+            Kategori::where('id', $id)->delete();
+            return redirect()->route('kategori.index')
+                ->with('success', 'Data Kategori Berhasil Dihapus');
+        } catch (QueryException $e) {
+            $errorCode = $e->getCode();
+
+            if ($errorCode == 23000) {
+                return redirect()->route('kategori.index')
+                    ->with('error', 'Data Kategori Gagal Dihapus, Karena Masih Digunakan Pada Tabel Lain');
+            } else {
+                return redirect()->route('kategori.index')
+                    ->with('error', 'Data Kategori Gagal Dihapus');
+            }
+        }
     }
 
     public function batal()

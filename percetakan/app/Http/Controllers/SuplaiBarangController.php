@@ -44,7 +44,7 @@ class SuplaiBarangController extends Controller
                 'suplier' => 'required',
                 'jumlah' => 'required|integer',
                 'date' => 'required|date',
-                'kode'  => '',
+                // 'kode'  => '',
             ],
             //custom pesan errornya
             [
@@ -56,7 +56,7 @@ class SuplaiBarangController extends Controller
         $selectedBarang = $request->input('barang');
 
         $dataBarang = explode(' | ', $selectedBarang);
-        $idBarang = $dataBarang[3];
+        $idBarang = $dataBarang[1];
 
         $selectedSuplier = $request->input('suplier');
         $dataSuplier = explode(' | ', $selectedSuplier);
@@ -88,6 +88,7 @@ class SuplaiBarangController extends Controller
         return redirect('/suplaibarang')
             ->with('pesan', 'Barang Masuk berhasil dihapus');
     }
+
 
     public function edit(string $id)
     {
