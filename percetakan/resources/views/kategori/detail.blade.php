@@ -16,9 +16,7 @@
                     @endif
                     @foreach ($rs as $data)
                         <div class="col-md-3 mb-4">
-
                             <a href="{{ route('barang.show', $data->id) }}" style="color: black; text-decoration:none;">
-
                                 <div class="card" style="width: 18rem;">
                                     @empty($data->foto)
                                         <img src="{{ url('admin/assets/img/noimage.jpg') }}" class="card-img-top"
@@ -46,16 +44,6 @@
                                                     <td>:</td>
                                                     <td>{{ $data->stok }}</td>
                                                 </tr>
-                                                <td>
-                                                    <form method="POST" action="{{ route('barang.destroy', $data->id) }}">
-
-                                                        <a class="btn btn-info btn-sm"
-                                                            href="{{ route('barang.show', $data->id) }}" title="Detail">
-                                                            <i class="fas fa-eye"></i> Lihat
-                                                        </a>
-
-                                                    </form>
-                                                </td>
                                             </section>
                                         </table>
                                     </div>

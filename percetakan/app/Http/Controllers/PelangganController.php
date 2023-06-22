@@ -17,10 +17,11 @@ class pelangganController extends Controller
     {
         $ar_pelanggan = Pelanggan::orderBy('id', 'desc')->get();
 
+
         return view('pelanggan.index', compact('ar_pelanggan'), ['title' => 'Data Pelanggan']);
     }
 
-   /* public function dataBahan()
+    /* public function dataBahan()
     {
         $ar_bahan = Pelanggan::all();
 
@@ -40,7 +41,7 @@ class pelangganController extends Controller
      */
     public function store(Request $request)
     {
-            $request->validate([
+        $request->validate([
             'nama' => 'required|max:45',
             'alamat' => 'required',
             'no_hp' => 'required|max:15',
@@ -98,18 +99,20 @@ class pelangganController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        $request->validate([
-            'nama' => 'required|max:45',
-            'alamat' => 'required',
-            'no_hp' => 'required|max:15',
-            'email' => 'required|email|max:45',
-            'status_member' => 'required|boolean',
-            'foto' => 'nullable|image|mimes:jpg,jpeg,png,gif,svg|max:2048',
-        ],
+        $request->validate(
+            [
+                'nama' => 'required|max:45',
+                'alamat' => 'required',
+                'no_hp' => 'required|max:15',
+                'email' => 'required|email|max:45',
+                'status_member' => 'required|boolean',
+                'foto' => 'nullable|image|mimes:jpg,jpeg,png,gif,svg|max:2048',
+            ],
 
-        [
-            // Custom error messages
-        ]);
+            [
+                // Custom error messages
+            ]
+        );
 
         $foto = DB::table('pelanggan')->select('foto')->where('id', $id)->get();
         foreach ($foto as $f) {
@@ -126,11 +129,11 @@ class pelangganController extends Controller
 
         DB::table('pelanggan')->where('id', $id)->update([
             'nama' => $request->nama,
-                'alamat' => $request->alamat,
-                'no_hp' => $request->no_hp,
-                'email' => $request->email,
-                'status_member' => $request->status_member,
-                'foto' => $fileName,
+            'alamat' => $request->alamat,
+            'no_hp' => $request->no_hp,
+            'email' => $request->email,
+            'status_member' => $request->status_member,
+            'foto' => $fileName,
         ]);
 
         return redirect('/pelanggan' . '/' . $id)->with('success', 'Data pelanggan Berhasil Diubah');
