@@ -54,6 +54,7 @@
                                     </table>
 
                                     <div class="d-flex justify-content-end">
+
                                         <a href="{{ url('/barang') }}" class="btn btn-primary">
                                             <i class="fas fa-arrow-left"></i> Kembali
                                         </a>
