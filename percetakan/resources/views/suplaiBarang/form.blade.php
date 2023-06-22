@@ -18,7 +18,7 @@
             <select id="barang" name="barang" class="form-control">
                 <option value="">--Pilih Barang--</option>
                 @foreach($ar_barang as $barang)
-                <option value="{{$barang->nama_barang}} | {{$barang->kode}} | {{$barang->id}} | {{$barang->stok}}">{{$barang -> kode}} - {{$barang->nama_barang}}</option>
+                <option value="{{$barang->nama_barang}} | {{$barang->id}} ">{{$barang -> kode}} - {{$barang->nama_barang}}</option>
                 @endforeach
             </select>
         </div>
@@ -61,6 +61,8 @@
             // Set the value of the date input field
             document.getElementById("date").value = formattedDate;
         </script>
+
+        <button class="btn btn-primary" name="proses" value="simpan" id="simpan" type="submit">Simpan</button>
         @if ($message = Session::get('success'))
         <div class="alert alert-success" hidden>
             <p id="message">{{ $message }}</p>
@@ -69,12 +71,11 @@
                     title: 'Success',
                     text: $('#message').text(),
                     icon: 'Success',
-                    confirmButtonText: 'Cool'
+                    confirmButtonText: 'Oke!'
                 })
             </script>
         </div>
         @endif
-        <button class="btn btn-primary" name="proses" value="simpan" id="simpan" type="submit">Simpan</button>
         <a href="{{ url('/suplaibarang') }}" class="btn btn-info">Batal</a>
 
     </form>

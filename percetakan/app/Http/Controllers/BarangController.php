@@ -179,8 +179,8 @@ class barangController extends Controller
                 'stok.integer' => 'Stok Harus Berupa Angka',
                 'satuan.required' => 'Satuan Wajib Diisi',
                 'satuan.max' => 'Satuan Maksimal 45 karakter',
-                'kategori_id.required' => 'kategori barang Wajib Diisi',
-                'kategori_id.integer' => 'kategori barang Wajib Diisi Berupa dari Pilihan yg Tersedia',
+                'kategori.required' => 'kategori barang Wajib Diisi',
+                'kategori.integer' => 'kategori barang Wajib Diisi Berupa dari Pilihan yg Tersedia',
                 'foto.min' => 'Ukuran file kurang 2 MB',
                 'foto.max' => 'Ukuran file melebihi 2 MB',
                 'foto.image' => 'File foto bukan gambar',
@@ -245,21 +245,21 @@ class barangController extends Controller
     }*/
 
     public function destroy($id)
-{
-    // Find the record to be deleted
-    $barang = Barang::findOrFail($id);
+    {
+        // Find the record to be deleted
+        $barang = Barang::findOrFail($id);
 
-    // Check if the associated foto exists and delete it
-    if ($barang->foto && Storage::exists('admin/assets/img/' . $barang->foto)) {
-        Storage::delete('admin/assets/img/' . $barang->foto);
+        // Check if the associated foto exists and delete it
+        if ($barang->foto && Storage::exists('admin/assets/img/' . $barang->foto)) {
+            Storage::delete('admin/assets/img/' . $barang->foto);
+        }
+
+        // Delete the record from the database
+        $barang->delete();
+
+        return redirect()->route('barang.index')
+            ->with('success', 'Data Barang Berhasil Dihapus');
     }
-
-    // Delete the record from the database
-    $barang->delete();
-
-    return redirect()->route('barang.index')
-        ->with('success', 'Data Barang Berhasil Dihapus');
-}
 
     public function batal()
     {
