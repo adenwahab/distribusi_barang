@@ -44,7 +44,6 @@
                                     </section>
                                 </table>
                             </div>
-
                         </div>
                     </a>
                 </div>
