@@ -47,7 +47,12 @@
                                             </section>
                                         </table>
                                     </div>
-
+                                    <div class="btn justify-content-center">
+                                        <a class="btn btn-info btn-sm" href="{{ route('barang.show', $data->id) }}"
+                                            title="Detail">
+                                            <i class="fas fa-eye"></i> Lihat Barang
+                                        </a>
+                                    </div>
                                 </div>
                             </a>
                         </div>
