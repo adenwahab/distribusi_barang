@@ -18,11 +18,12 @@
                         <tr>
                             <th>No</th>
                             <th>Kode Barang</th>
-                            <th>ID Barang</th>
-                            <th>ID Pelanggan</th>
+                            <th>Nama Pelanggan</th>
+                            <th>Status</th>
                             <th>Tanggal</th>
                             <th>Jumlah</th>
                             <th>Keterangan</th>
+                            <th>Total Harga</th>
                             <th>Action</th>
                         </tr>
                     </thead>
@@ -33,12 +34,17 @@
                         @foreach ($ar_transaksi as $trs )
                         <tr>
                             <th>{{ $no }}</th>
-                            <td>{{ $trs->kode }}</td>
-                            <td>{{ $trs->barang_id }}</td>
-                            <td>{{ $trs->pelanggan_id }}</td>
+                            <td>{{ $trs->barang }}</td>
+                            <td>{{ $trs->pelanggan }}</td>
+                            @if ($trs->pelanggan)
+                            <td>Member</td>
+                            @else
+                            <td>Bukan Member</td>
+                            @endif
                             <td>{{ $trs->tgl }}</td>
                             <td>{{ $trs->jumlah }}</td>
                             <td>{{ $trs->keterangan }}</td>
+                            <td>Rp. {{ $trs->total_harga }}</td>
                             <td>
                                 <form method="POST" action="{{ route('transaksi.destroy', $trs->id) }}">
                                     @csrf
@@ -60,9 +66,9 @@
                 </table>
             </div>
             <a href="{{ url('/transaksi-pdf') }}" class="btn btn-primary">Cetak PDF</a>
-            <a href="{{ url('/transaksi-excel') }}" class="btn btn-primary">Cetak Excel</a>
+            <!-- <a href="{{ url('/transaksi-excel') }}" class="btn btn-primary">Cetak Excel</a> -->
         </div>
     </div>
 </div>
-<!-- </div> -->
+<!-- </div> -->
 @endsection
