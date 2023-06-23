@@ -7,6 +7,8 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Database\QueryException;
+
 
 class pelangganController extends Controller
 {
@@ -144,15 +146,26 @@ class pelangganController extends Controller
      */
     public function destroy($id)
     {
-        $pelanggan = Pelanggan::findOrFail($id);
+        try {
+            $pelanggan = Pelanggan::findOrFail($id);
 
-        if ($pelanggan->foto && Storage::exists('admin/assets/img/' . $pelanggan->foto)) {
-            Storage::delete('admin/assets/img/' . $pelanggan->foto);
+            if ($pelanggan->foto && Storage::exists('admin/assets/img/' . $pelanggan->foto)) {
+                Storage::delete('admin/assets/img/' . $pelanggan->foto);
+            }
+
+            $pelanggan->delete();
+
+            return redirect()->route('pelanggan.index')->with('success', 'Data Pelanggan Berhasil Dihapus');
+        } catch (QueryException $e) {
+            $errorCode = $e->getCode();
+            if ($errorCode == 23000) {
+                return redirect()->route('pelanggan.index')
+                    ->with('error', 'Data pelanggan Gagal Dihapus, Karena Data Masih Digunakan');
+            } else {
+                return redirect()->route('pelanggan.index')
+                    ->with('error', 'Data pelanggan Gagal Dihapus');
+            }
         }
-
-        $pelanggan->delete();
-
-        return redirect()->route('pelanggan.index')->with('success', 'Data Pelanggan Berhasil Dihapus');
     }
 
     public function batal()

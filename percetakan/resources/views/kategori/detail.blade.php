@@ -11,7 +11,6 @@
                     <div class="alert alert-success">
                         <p>{{ $message }}</p>
                     </div>
-
                 </div>
                 @endif
                 @foreach ($rs as $data)
@@ -45,7 +44,6 @@
                                     </section>
                                 </table>
                             </div>
-
                         </div>
                     </a>
                 </div>

@@ -37,7 +37,7 @@
             <!-- <div class="container-fluid px-4"> -->
             <div class="row">
                 <!-- <div class="card w-100"> -->
-                <div class="card-body mb-4 m-5">
+                <div class="card-body mb-5 m-5 px-3">
                     <!---------main--------------->
                     @yield('content')
                     <!---------end main--------------->
