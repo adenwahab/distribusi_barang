@@ -50,11 +50,52 @@ Route::get('/team', function () {
 Route::get('/contact', function () {
     return view('landingpage.contact');
 });
+Route::get('/ourbarang', function () {
+    return view('landingpage.ourbarang');
+});
 
 Route::get('datauser', [UserController::class, 'index'])->middleware('auth');
 
 Route::get('/beranda', [BarangController::class, 'dataBahan'])->middleware('auth');
 
+
+//---------route landingpage kategori-------
+Route::get('/coworking', function () {
+    return view('landingpage.kategori-prod.coworking');
+});
+Route::get('/foto', function () {
+    return view('landingpage.kategori-prod.foto');
+});
+Route::get('/largform', function () {
+    return view('landingpage.kategori-prod.largform');
+});
+Route::get('/marketing', function () {
+    return view('landingpage.kategori-prod.marketing');
+});
+Route::get('/packaging', function () {
+    return view('landingpage.kategori-prod.packaging');
+});
+Route::get('/printkain', function () {
+    return view('landingpage.kategori-prod.printkain');
+});
+Route::get('/printlembar', function () {
+    return view('landingpage.kategori-prod.printlembar');
+});
+Route::get('/printterior', function () {
+    return view('landingpage.kategori-prod.printterior');
+});
+Route::get('/promo', function () {
+    return view('landingpage.kategori-prod.promo');
+});
+Route::get('/signage', function () {
+    return view('landingpage.kategori-prod.signage');
+});
+Route::get('/stationary', function () {
+    return view('landingpage.kategori-prod.stationary');
+});
+Route::get('/umkm', function () {
+    return view('landingpage.kategori-prod.umkm');
+});
 
 //----------route admin------------
 
