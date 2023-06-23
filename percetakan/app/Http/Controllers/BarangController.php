@@ -286,4 +286,43 @@ class barangController extends Controller
 
         return view('barang.index', compact('ar_barang'), ['title' => 'Data Barang']);
     }
+    //--------------------Rest API-----------------------
+    public function apiBarang(){
+        $ar_barang = DB::table('barang')
+        ->join('kategori', 'kategori.id', '=', 'barang.kategori_id')
+        ->select('barang.*', 'kategori.nama as kategori')
+        ->orderBy('barang.id', 'desc')
+        ->get();
+
+    return response ()->json(
+        [
+            'success'=>true,
+            'message'=>'Data Barang',
+            'data'=>$ar_barang,
+        ]
+    );
+    }
+        public function apiBarangDetail($id){
+            $rs = DB::table('barang')
+            ->join('kategori', 'kategori.id', '=', 'barang.kategori_id')
+            ->select('barang.*', 'kategori.nama as kategori')
+            ->where('barang.id', '=', $id)
+            ->get();
+        if(!empty($rs)){
+            return response ()->json(
+                [
+                    'success'=>true,
+                    'message'=>'Detail Barang',
+                    'data'=>$rs,
+                ]
+            );
+        }else{
+            return response ()->json(
+                [
+                    'success'=>false,
+                    'message'=>'Data Barang Tidak Ditemukan',
+                ]
+            );
+        }
+        }
 }
