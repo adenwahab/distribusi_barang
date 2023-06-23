@@ -10,6 +10,7 @@ use Illuminate\Support\Facades\DB; // jika pakai query builder
 use Illuminate\Database\Eloquent\Model; //jika pakai eloquent
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Database\QueryException;
+use File;
 
 
 class barangController extends Controller
@@ -250,16 +251,20 @@ class barangController extends Controller
     {
         // Find the record to be deleted
         try {
-            $barang = Barang::findOrFail($id);
-
             // Check if the associated foto exists and delete it
-            if ($barang->foto && Storage::exists('admin/assets/img/' . $barang->foto)) {
-                Storage::delete('admin/assets/img/' . $barang->foto);
-            }
+            $row = Barang::where('id', $id)->first();
 
-            // Delete the record from the database
-            $barang->delete();
-
+            // hapus data
+            Barang::where('id', $id)->delete();
+            File::delete('admin/assets/img/' . $row->foto);
+            // if (!empty($row->foto)) {
+            //     unlink('admin/assets/img/' . $row->foto);
+            //     Barang::where('id', $id)->delete();
+            //     //hapus data di database
+            // }
+            // if (empty($row->foto)) {
+            //     Barang::where('id', $id)->delete();
+            // }
             return redirect()->route('barang.index')
                 ->with('success', 'Data Barang Berhasil Dihapus');
         } catch (QueryException $e) {
@@ -287,42 +292,45 @@ class barangController extends Controller
         return view('barang.index', compact('ar_barang'), ['title' => 'Data Barang']);
     }
     //--------------------Rest API-----------------------
-    public function apiBarang(){
+    public function apiBarang()
+    {
         $ar_barang = DB::table('barang')
-        ->join('kategori', 'kategori.id', '=', 'barang.kategori_id')
-        ->select('barang.*', 'kategori.nama as kategori')
-        ->orderBy('barang.id', 'desc')
-        ->get();
+            ->join('kategori', 'kategori.id', '=', 'barang.kategori_id')
+            ->select('barang.*', 'kategori.nama as kategori')
+            ->orderBy('barang.id', 'desc')
+            ->get();
 
-    return response ()->json(
-        [
-            'success'=>true,
-            'message'=>'Data Barang',
-            'data'=>$ar_barang,
-        ]
-    );
+
+        return response()->json(
+            [
+                'success' => true,
+                'message' => 'Data Barang',
+                'data' => $ar_barang,
+            ]
+        );
     }
-        public function apiBarangDetail($id){
-            $rs = DB::table('barang')
+    public function apiBarangDetail($id)
+    {
+        $rs = DB::table('barang')
             ->join('kategori', 'kategori.id', '=', 'barang.kategori_id')
             ->select('barang.*', 'kategori.nama as kategori')
             ->where('barang.id', '=', $id)
             ->get();
-        if(!empty($rs)){
-            return response ()->json(
+        if (!empty($rs)) {
+            return response()->json(
                 [
-                    'success'=>true,
-                    'message'=>'Detail Barang',
-                    'data'=>$rs,
+                    'success' => true,
+                    'message' => 'Detail Barang',
+                    'data' => $rs,
                 ]
             );
-        }else{
-            return response ()->json(
+        } else {
+            return response()->json(
                 [
-                    'success'=>false,
-                    'message'=>'Data Barang Tidak Ditemukan',
+                    'success' => false,
+                    'message' => 'Data Barang Tidak Ditemukan',
                 ]
             );
         }
-        }
+    }
 }

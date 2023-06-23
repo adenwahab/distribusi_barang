@@ -4,7 +4,7 @@
 <!-- <div class="container-fluid px-4"> -->
 <div class="row">
     <div class="card w-100">
-        <div class="card-body p-4">
+        <div class="card-body">
             <h1 class="mt-4">Data User</h1>
             @if ($message = Session::get('success'))
             <div class="alert alert-success" hidden>
@@ -46,7 +46,7 @@
                             <td>{{ $data->email }}</td>
                             <td>{{ $data->alamat }}</td>
                             <td>
-                                <form method="POST" action="{{ route('user.destroy', $data->id) }}">
+                                <form id='deleteForm' method="POST" action="{{ route('user.destroy', $data->id) }}">
                                     @csrf
                                     @method('DELETE')
                                     @if(Auth::user()->level == 'admin')
@@ -54,7 +54,7 @@
                                         Ubah Level
                                     </a>
                                     @endif
-                                    <button class="btn btn-danger btn-sm delete-confirm" type="submit" title="Hapus" name="proses" value="hapus" onclick="return confirm('Anda Yakin Data Dihapus?')">
+                                    <button class="btn btn-danger btn-sm" onclick="showConfirmationDialog(event)">
                                         <i class="fas fa-trash-alt"></i>
                                     </button>
                                 </form>
@@ -75,4 +75,28 @@
     </div>
 </div>
 <!-- </div> -->
+<script>
+    function showConfirmationDialog(e) {
+        e = e || window.event;
+        e.preventDefault();
+        Swal.fire({
+            title: 'Are you sure?',
+            text: "You won't be able to revert this!",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonText: 'Yes, delete it!',
+            cancelButtonText: 'No, cancel!',
+            reverseButtons: true
+        }).then((result) => {
+            if (result.isConfirmed) {
+                console.log('afkar ganteng')
+                // Trigger the form submission to delete the record
+                document.getElementById('deleteForm').submit();
+            } else if (result.dismiss === Swal.DismissReason.cancel) {
+                // User canceled the action, show a message or redirect as needed
+                Swal.fire('Cancelled', 'The Account delete is cancelled', 'error');
+            }
+        });
+    }
+</script>
 @endsection
