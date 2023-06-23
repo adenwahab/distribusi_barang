@@ -5,7 +5,6 @@
     <div class="card w-100">
         <div class="card-body p-4">
             <h1 class="mt-4">Daftar Kategori</h1>
-            <h5>Kategori Barang</h5>
             @if ($message = Session::get('success'))
             <div class="alert alert-success" hidden>
                 <p id="message">{{ $message }}</p>
@@ -59,7 +58,7 @@
                                     <a class="btn btn-info" href="{{ route('kategori.show', $data->id) }}" title="detail">
                                         <i class="fas fa-eye"></i>
                                     </a>
-                                    @if(Auth::user()->level != 'kasir')
+                                    @if (Auth::user()->level != 'kasir')
                                     <!-- ubah data -->
                                     <a class="btn btn-warning" href="{{ route('kategori.edit', $data->id) }}" title="ubah">
                                         <i class="fas fa-pencil-alt"></i>
@@ -82,6 +81,5 @@
             </div>
         </div>
     </div>
-    <!-- </div> -->
 </div>
 @endsection

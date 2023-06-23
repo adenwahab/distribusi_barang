@@ -56,17 +56,17 @@
 
 
                                     </table>
-                                    <hr>
-                                    <a href="{{ url('/pelanggan') }}" class="btn btn-primary">
-                                        <i class="fas fa-arrow-left"></i> Go Back
-                                    </a>
-
-
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
+            </div>
+            <div class="d-flex justify-content-end">
+                <a href="{{ url('/pelanggan') }}" class="btn btn-primary">
+                    <i class="fas fa-arrow-left"></i> Kembali
+                </a>
+
             </div>
         </section>
     </div>

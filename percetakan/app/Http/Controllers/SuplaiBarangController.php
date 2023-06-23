@@ -8,6 +8,7 @@ use App\Models\SuplaiBarang; //panggil model
 use Illuminate\Support\Facades\DB; //
 use App\Models\Suplier; //panggil model
 use App\Models\Barang; //panggil model
+use PDF;
 
 class SuplaiBarangController extends Controller
 {
@@ -141,5 +142,19 @@ class SuplaiBarangController extends Controller
         SuplaiBarang::truncate();
         return redirect('/suplaibarang')
             ->with('pesan', 'Data Suplai Berhasil Dihapus');
+    }
+
+    public function suplaibarangPDF()
+    {
+        $ar_suplai_barang = DB::table('suplai_barang')
+        ->join('suplier', 'suplai_barang.suplier_id', '=', 'suplier.id')
+        ->join('barang', 'suplai_barang.barang_id', '=', 'barang.id')
+        ->join('kategori', 'barang.kategori_id', '=', 'kategori.id')
+        ->select('suplai_barang.*', 'suplier.nama as suplier', 'barang.nama_barang as barang', 'kategori.nama as kategori', 'barang.kode as kode',)
+        ->orderBy('suplai_barang.id', 'desc')
+        ->get();
+
+        $pdf = PDF::loadView('suplaiBarang.suplaibarang_pdf', ['ar_suplai_barang' => $ar_suplai_barang]);
+        return $pdf->download('Data_SuplaiBarang_' . date('d-m-Y') . '.pdf');
     }
 }
