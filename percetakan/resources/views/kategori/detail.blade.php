@@ -9,6 +9,7 @@
 
     </div>
     @endif
+    <h1 class="mt-4">Daftar Kategori</h1>
     @foreach ($rs as $data)
     <div class="col-md-3 mb-4">
         <a href="{{ route('barang.show', $data->id) }}" style="color: black; text-decoration:none;">

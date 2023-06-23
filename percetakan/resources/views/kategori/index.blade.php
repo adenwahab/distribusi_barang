@@ -5,6 +5,7 @@
     <div class="card w-100">
         <div class="card-body p-4">
             <h1 class="mt-4">Daftar Kategori</h1>
+            <h5>Kategori Barang</h5>
             @if ($message = Session::get('success'))
             <div class="alert alert-success" hidden>
                 <p id="message">{{ $message }}</p>
@@ -65,7 +66,7 @@
                                     </a>
                                     @endif
                                     <!-- hapus data -->
-                                    @if (Auth::user()->level == 'admin'))
+                                    @if (Auth::user()->level == 'admin')
                                     <button class="btn btn-danger" type="submit" title="Hapus" name="proses" value="hapus" onclick="return confirm('Anda Yakin Data Dihapus?')">
                                         <i class="fas fa-trash-alt"></i>
                                     </button>

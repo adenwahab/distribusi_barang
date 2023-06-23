@@ -18,6 +18,19 @@
                 </script>
             </div>
             @endif
+            @if ($message = Session::get('error'))
+            <div class="alert alert-danger" hidden>
+                <p id="message">{{ $message }}</p>
+                <script>
+                    Swal.fire({
+                        title: 'Failed',
+                        text: $('#message').text(),
+                        icon: 'error',
+                        confirmButtonText: 'Oke!'
+                    })
+                </script>
+            </div>
+            @endif
             <br />
             <a href="{{ route('barang.create') }}" class="btn btn-primary btn-sm"><i class="fas fa-plus"></i> <span style="font-weight: bold;">Tambah</span></a>
 

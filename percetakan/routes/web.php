@@ -91,6 +91,7 @@ Route::resource('user', UserController::class)->middleware('auth');
 Route::resource('transaksi', TransaksiController::class)->middleware('auth');
 Route::resource('updatelevel', UpdateLevelController::class)->middleware('auth');
 Route::resource('suplaibarang', SuplaiBarangController::class)->middleware('auth');
+Route::resource('pelanggan/member', MemberController::class)->middleware('auth');
 Route::delete('/suplaibarang/deleteAll', [SuplaiBarangController::class, 'deleteAll']);
 Route::get('/transaksi-pdf', [TransaksiController::class, 'transaksiPDF']);
 Route::get('/transaksi-excel', [TransaksiController::class, 'transaksiExcel']);
