@@ -3,14 +3,14 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
-use App\Providers\RouteServiceProvider;
 use App\Models\User;
-use RealRashid\SweetAlert\Facades\Alert;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Validation\Rule;
 use Illuminate\Support\Facades\Auth; //tambahkan ini untuk auth
+use Illuminate\Validation\ValidationException;
+
 class RegisterController extends Controller
 {
     /*
@@ -51,7 +51,7 @@ class RegisterController extends Controller
      */
     protected function validator(array $data)
     {
-        $validator =  Validator::make($data, [
+        $Validator = Validator::make($data, [
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'level' => ['required', Rule::in(['admin', 'manajer', 'kasir'])], //tambahkan validasi level
@@ -59,13 +59,30 @@ class RegisterController extends Controller
             'alamat' => ['string', 'max:255'],
             'no_hp' => ['numeric', 'min:11'],
 
+        ], [
+            'name.required' => 'Nama harus diisi',
+            'name.string' => 'Nama harus berupa string',
+            'name.max' => 'Nama maksimal 255 karakter',
+            'email.required' => 'Email harus diisi',
+            'email.string' => 'Email harus berupa string',
+            'email.email' => 'Email harus berupa email',
+            'email.max' => 'Email maksimal 255 karakter',
+            'email.unique' => 'Email sudah terdaftar',
+            'level.required' => 'Level harus diisi',
+            'level.in' => 'Level harus admin, manajer, atau kasir',
+            'password.required' => 'Password harus diisi',
+            'password.string' => 'Password harus berupa string',
+            'password.min' => 'Password minimal 8 karakter',
+            'password.confirmed' => 'Password tidak cocok',
+            'alamat.string' => 'Alamat harus berupa string',
+            'alamat.max' => 'Alamat maksimal 255 karakter',
+            'no_hp.numeric' => 'No HP harus berupa angka',
+            'no_hp.min' => 'No HP minimal 11 angka',
         ]);
-
-        if ($validator->fails()) {
-            Alert::error('Error Title', 'Error Message');
-            return back();
+        if ($Validator->fails()) {
+            throw new ValidationException($Validator);
         }
-        return $validator;
+        return $Validator;
     }
 
     /**
@@ -88,14 +105,11 @@ class RegisterController extends Controller
 
             if ($account) {
                 // Display success message to the admin
-                Alert::success('Success Title', 'Success Message');
                 return $account;
             } else {
-                Alert::error('Error Title', 'Error Message');
                 return back();
             }
         } else {
-            Alert::error('Error Title', 'Error Message');
             return back();
         }
     }

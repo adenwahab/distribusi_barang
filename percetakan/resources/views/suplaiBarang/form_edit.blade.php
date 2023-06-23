@@ -1,13 +1,29 @@
 @extends('admin.index')
 @section('content')
 <h3>Ubah data Barang Masuk</h3>
-@if ($errors->any())
-<div class="alert alert-danger">
-    <ul>
-        @foreach ($errors->all() as $error)
-        <li>{{ $error }}</li>
-        @endforeach
-    </ul>
+@if ($message = Session::get('success'))
+<div class="alert alert-success" hidden>
+    <p id="message">{{ $message }}</p>
+    <script>
+        Swal.fire({
+            title: 'Success',
+            text: $('#message').text(),
+            icon: 'Success',
+            confirmButtonText: 'Cool'
+        })
+    </script>
+</div>
+@elseif ($message = Session::get('error'))
+<div class="alert alert-danger" hidden>
+    <p id="message">{{ $message }}</p>
+    <script>
+        Swal.fire({
+            title: 'Error',
+            text: $('#message').text(),
+            icon: 'Error',
+            confirmButtonText: 'Cool'
+        })
+    </script>
 </div>
 @endif
 <div class="container px-5 my-5">

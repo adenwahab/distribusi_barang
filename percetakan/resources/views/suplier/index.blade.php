@@ -6,8 +6,28 @@
         <div class="card-body p-4">
             <h1 class="mt-4">Daftar Suplier</h1>
             @if ($message = Session::get('success'))
-            <div class="alert alert-success">
+            <div class="alert alert-success" hidden>
+                <p id='message'>{{ $message }}</p>
+                <script>
+                    Swal.fire({
+                        title: 'Success',
+                        text: $('#message').text(),
+                        icon: 'Success',
+                        confirmButtonText: 'Oke!'
+                    })
+                </script>
+            </div>
+            @elseif ($message = Session::get('error'))
+            <div class="alert alert-danger">
                 <p>{{ $message }}</p>
+                <script>
+                    Swal.fire({
+                        title: 'Failed',
+                        text: $('#message').text(),
+                        icon: 'error',
+                        confirmButtonText: 'Oke!'
+                    })
+                </script>
             </div>
             @endif
             <br />
