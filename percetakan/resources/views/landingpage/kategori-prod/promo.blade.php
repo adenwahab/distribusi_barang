@@ -64,7 +64,7 @@
                     <div class="col mb-5">
                           <div class="card h-100 shadow">
                               <!-- Product image-->
-                              <img class="card-img-top" src="{{ asset('assets/img/produk/promo_and_gift/akrilik_spotify.png')}}" alt="..." />
+                              <img class="card-img-top" src="{{ asset('assets/img/produk/promo_and_gitf/akrilik_spotify.png')}}" alt="..." />
                               <!-- Product details-->
                               <div class="card-body p-4">
                                   <div class="text-center">
@@ -76,7 +76,7 @@
                               </div>
                               <!-- Product actions-->
                               <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-                                  <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="#">Pesan</a></div>
+                                  <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="https://wa.me/6282169019974">Pesan</a></div>
                               </div>
                           </div>
                     </div>
@@ -84,7 +84,7 @@
                     <div class="col mb-5">
                           <div class="card h-100 shadow">
                               <!-- Product image-->
-                              <img class="card-img-top" src="{{ asset('assets/img/produk/promo_and_gift/al-quran_cover.png')}}" alt="..." />
+                              <img class="card-img-top" src="{{ asset('assets/img/produk/promo_and_gitf/al-quran_cover.png')}}" alt="..." />
                               <!-- Product details-->
                               <div class="card-body p-4">
                                   <div class="text-center">
@@ -96,7 +96,7 @@
                               </div>
                               <!-- Product actions-->
                               <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-                                  <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="#">Pesan</a></div>
+                                  <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="https://wa.me/6282169019974">Pesan</a></div>
                               </div>
                           </div>
                     </div>
@@ -104,7 +104,7 @@
                     <div class="col mb-5">
                           <div class="card h-100 shadow">
                               <!-- Product image-->
-                              <img class="card-img-top" src="{{ asset('assets/img/produk/promo_and_gift/amplop_lebaran.png')}}" alt="..." />
+                              <img class="card-img-top" src="{{ asset('assets/img/produk/promo_and_gitf/amplop_lebaran.png')}}" alt="..." />
                               <!-- Product details-->
                               <div class="card-body p-4">
                                   <div class="text-center">
@@ -116,7 +116,7 @@
                               </div>
                               <!-- Product actions-->
                               <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-                                  <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="#">Pesan</a></div>
+                                  <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="https://wa.me/6282169019974">Pesan</a></div>
                               </div>
                           </div>
                     </div>
@@ -124,7 +124,7 @@
                     <div class="col mb-5">
                           <div class="card h-100 shadow">
                               <!-- Product image-->
-                              <img class="card-img-top" src="{{ asset('assets/img/produk/promo_and_gift/angpao.png')}}" alt="..." />
+                              <img class="card-img-top" src="{{ asset('assets/img/produk/promo_and_gitf/angpao.png')}}" alt="..." />
                               <!-- Product details-->
                               <div class="card-body p-4">
                                   <div class="text-center">
@@ -136,7 +136,7 @@
                               </div>
                               <!-- Product actions-->
                               <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-                                  <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="#">Pesan</a></div>
+                                  <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="https://wa.me/6282169019974">Pesan</a></div>
                               </div>
                           </div>
                     </div>
@@ -144,7 +144,7 @@
                     <div class="col mb-5">
                           <div class="card h-100 shadow">
                               <!-- Product image-->
-                              <img class="card-img-top" src="{{ asset('assets/img/produk/promo_and_gift/botol_1_liter.png')}}" alt="..." />
+                              <img class="card-img-top" src="{{ asset('assets/img/produk/promo_and_gitf/botol_1_liter.png')}}" alt="..." />
                               <!-- Product details-->
                               <div class="card-body p-4">
                                   <div class="text-center">
@@ -156,7 +156,7 @@
                               </div>
                               <!-- Product actions-->
                               <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-                                  <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="#">Pesan</a></div>
+                                  <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="https://wa.me/6282169019974">Pesan</a></div>
                               </div>
                           </div>
                     </div>
@@ -164,7 +164,7 @@
                     <div class="col mb-5">
                           <div class="card h-100 shadow">
                               <!-- Product image-->
-                              <img class="card-img-top" src="{{ asset('assets/img/produk/promo_and_gift/botol_anak.png')}}" alt="..." />
+                              <img class="card-img-top" src="{{ asset('assets/img/produk/promo_and_gitf/botol_anak.png')}}" alt="..." />
                               <!-- Product details-->
                               <div class="card-body p-4">
                                   <div class="text-center">
@@ -176,7 +176,7 @@
                               </div>
                               <!-- Product actions-->
                               <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-                                  <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="#">Pesan</a></div>
+                                  <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="https://wa.me/6282169019974">Pesan</a></div>
                               </div>
                           </div>
                     </div>
@@ -184,7 +184,7 @@
                     <div class="col mb-5">
                           <div class="card h-100 shadow">
                               <!-- Product image-->
-                              <img class="card-img-top" src="{{ asset('assets/img/produk/promo_and_gift/lampu_bts.png')}}" alt="..." />
+                              <img class="card-img-top" src="{{ asset('assets/img/produk/promo_and_gitf/lampu_bts.png')}}" alt="..." />
                               <!-- Product details-->
                               <div class="card-body p-4">
                                   <div class="text-center">
@@ -196,7 +196,7 @@
                               </div>
                               <!-- Product actions-->
                               <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-                                  <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="#">Pesan</a></div>
+                                  <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="https://wa.me/6282169019974">Pesan</a></div>
                               </div>
                           </div>
                     </div>
