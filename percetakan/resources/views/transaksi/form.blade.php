@@ -26,7 +26,7 @@
                 <select class="form-select" name="id" aria-label="ID barang">
                     <option value="">-- Pilih ID Barang --</option>
                     @foreach ($ar_barang as $b)
-                    <option value="{{ $b->id }}">{{ $b->id }}</option>
+                    <option value="{{ $b->id }}">{{ $b->id }} - {{$b->nama_barang}}</option>
                     @endforeach
                 </select>
             </div>

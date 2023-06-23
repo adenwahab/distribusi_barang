@@ -117,11 +117,6 @@
                                 </script>
                                 @endif
                             </div>
-                            <div class="col-md-4">
-                                <button type="submit" class="btn btn-primary">
-                                    <a href="{{ url('account/settings/updatePassword') }}" style="color: white; text-decoration:none;">Update Password</a>
-                                </button>
-                            </div>
                         </div>
                     </form>
                 </div>
