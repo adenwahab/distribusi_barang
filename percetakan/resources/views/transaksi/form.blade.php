@@ -1,6 +1,6 @@
 @extends('admin.index')
 @section('content')
-<h3>Form barang Masuk</h3>
+<h3>Form Transaksi</h3>
 @if ($errors->any())
 <div class="alert alert-danger">
     <ul>
