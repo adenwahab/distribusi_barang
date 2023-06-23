@@ -1,17 +1,16 @@
 @extends('admin.index')
 @section('content')
-    <div class="row">
-        <div class="card w-100">
-            <div class="card-body p-4">
-                <h1 class="mt-4">Kategori Detail</h1>
-                <br>
-                <div class="row">
-                    @if ($message = Session::get('success'))
-                        <div class="col-12">
-                            <div class="alert alert-success">
-                                <p>{{ $message }}</p>
-                            </div>
-
+<div class="row">
+    <div class="card w-100">
+        <div class="card-body p-4">
+            <h1 class="mt-4">Kategori Detail</h1>
+            <br>
+            <div class="row">
+                @if ($message = Session::get('success'))
+                <div class="col-12">
+                    <div class="alert alert-success">
+                        <p>{{ $message }}</p>
+                    </div>
                         </div>
                     @endif
                     @foreach ($rs as $data)
@@ -56,13 +55,15 @@
                                 </div>
                             </a>
                         </div>
-                    @endforeach
-
+                    </a>
                 </div>
-                <a href="{{ url('/kategori') }}" class="btn btn-primary">
-                    <i class="fas fa-arrow-left"></i> Kembali
-                </a>
+                @endforeach
+
             </div>
+            <a href="{{ url('/kategori') }}" class="btn btn-primary">
+                <i class="fas fa-arrow-left"></i> Kembali
+            </a>
         </div>
     </div>
+</div>
 @endsection

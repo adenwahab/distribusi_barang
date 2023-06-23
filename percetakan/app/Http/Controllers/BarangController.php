@@ -9,6 +9,8 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB; // jika pakai query builder
 use Illuminate\Database\Eloquent\Model; //jika pakai eloquent
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Database\QueryException;
+
 
 class barangController extends Controller
 {
@@ -247,18 +249,30 @@ class barangController extends Controller
     public function destroy($id)
     {
         // Find the record to be deleted
-        $barang = Barang::findOrFail($id);
+        try {
+            $barang = Barang::findOrFail($id);
 
-        // Check if the associated foto exists and delete it
-        if ($barang->foto && Storage::exists('admin/assets/img/' . $barang->foto)) {
-            Storage::delete('admin/assets/img/' . $barang->foto);
+            // Check if the associated foto exists and delete it
+            if ($barang->foto && Storage::exists('admin/assets/img/' . $barang->foto)) {
+                Storage::delete('admin/assets/img/' . $barang->foto);
+            }
+
+            // Delete the record from the database
+            $barang->delete();
+
+            return redirect()->route('barang.index')
+                ->with('success', 'Data Barang Berhasil Dihapus');
+        } catch (QueryException $e) {
+            $errorCode = $e->getCode();
+
+            if ($errorCode == 23000) {
+                return redirect()->route('barang.index')
+                    ->with('error', 'Data Barang Gagal Dihapus, Karena Masih Digunakan Pada Tabel Lain');
+            } else {
+                return redirect()->route('barang.index')
+                    ->with('error', 'Data barang Gagal Dihapus');
+            }
         }
-
-        // Delete the record from the database
-        $barang->delete();
-
-        return redirect()->route('barang.index')
-            ->with('success', 'Data Barang Berhasil Dihapus');
     }
 
     public function batal()
@@ -272,4 +286,43 @@ class barangController extends Controller
 
         return view('barang.index', compact('ar_barang'), ['title' => 'Data Barang']);
     }
+    //--------------------Rest API-----------------------
+    public function apiBarang(){
+        $ar_barang = DB::table('barang')
+        ->join('kategori', 'kategori.id', '=', 'barang.kategori_id')
+        ->select('barang.*', 'kategori.nama as kategori')
+        ->orderBy('barang.id', 'desc')
+        ->get();
+
+    return response ()->json(
+        [
+            'success'=>true,
+            'message'=>'Data Barang',
+            'data'=>$ar_barang,
+        ]
+    );
+    }
+        public function apiBarangDetail($id){
+            $rs = DB::table('barang')
+            ->join('kategori', 'kategori.id', '=', 'barang.kategori_id')
+            ->select('barang.*', 'kategori.nama as kategori')
+            ->where('barang.id', '=', $id)
+            ->get();
+        if(!empty($rs)){
+            return response ()->json(
+                [
+                    'success'=>true,
+                    'message'=>'Detail Barang',
+                    'data'=>$rs,
+                ]
+            );
+        }else{
+            return response ()->json(
+                [
+                    'success'=>false,
+                    'message'=>'Data Barang Tidak Ditemukan',
+                ]
+            );
+        }
+        }
 }
