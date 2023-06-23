@@ -23,9 +23,11 @@
                         <li><a href="{{ url('/printlembar') }}">Print Lembaran</a></li>
                         <li><a href="{{ url('/printterior') }}">Printterior</a></li>
                         <li><a href="{{ url('/promo') }}">Promo and Gift</a></li>
-                        <li><a href="{{ url('/signage') }}" class="nav-link disabled">Signage</a></li>
-                        <li><a href="{{ url('/stationary') }}" class="nav-link disabled">Stationary</a></li>
-                        <li><a href="{{ url('/umkm') }}" class="nav-link disabled">UMKM</a></li>
+
+                        <!-- nanti di on in lagi -->
+                        <!-- <li><a href="{{ url('/signage') }}" class="nav-link disabled">Signage</a></li> -->
+                        <!-- <li><a href="{{ url('/stationary') }}" class="nav-link disabled">Stationary</a></li> -->
+                        <!-- <li><a href="{{ url('/umkm') }}" class="nav-link disabled">UMKM</a></li> -->
 
 
                     </ul>
