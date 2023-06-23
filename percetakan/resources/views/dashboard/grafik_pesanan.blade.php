@@ -19,7 +19,7 @@
 
             <div class="d-flex align-items-center">
                 <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
-                    <i class="bi bi-cart"></i>
+                    <i class="fas fa-credit-card"></i>
                 </div>
                 <div class="ps-3">
                     <h6>
