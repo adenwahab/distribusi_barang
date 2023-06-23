@@ -23,14 +23,13 @@
                         <li><a href="{{ url('/printlembar') }}">Print Lembaran</a></li>
                         <li><a href="{{ url('/printterior') }}">Printterior</a></li>
                         <li><a href="{{ url('/promo') }}">Promo and Gift</a></li>
-                        <li><a href="{{ url('/signage') }}">Signage</a></li>
-                        <li><a href="{{ url('/stationary') }}">Stationary</a></li>
-                        <li><a href="{{ url('/umkm') }}">UMKM</a></li>
+                        <li><a href="{{ url('/signage') }}" class="nav-link disabled">Signage</a></li>
+                        <li><a href="{{ url('/stationary') }}" class="nav-link disabled">Stationary</a></li>
+                        <li><a href="{{ url('/umkm') }}" class="nav-link disabled">UMKM</a></li>
 
 
                     </ul>
                 </li>
-                <li><a class="nav-link scrollto" href="{{ url('/contact') }}">Contact</a></li>
                 @if(Auth::user())
                 <li><a class="getstarted scrollto" href="{{ url('/login') }}">{{ Auth::user()->name }} ({{ Auth::user()->level }})</a></li>
                 @else(Auth::user() == false)

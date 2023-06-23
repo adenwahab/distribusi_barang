@@ -58,14 +58,14 @@
                                     <a class="btn btn-info" href="{{ route('kategori.show', $data->id) }}" title="detail">
                                         <i class="fas fa-eye"></i>
                                     </a>
-                                    @if(Auth::user()->level != 'kasir')
+                                    @if (Auth::user()->level != 'kasir')
                                     <!-- ubah data -->
                                     <a class="btn btn-warning" href="{{ route('kategori.edit', $data->id) }}" title="ubah">
                                         <i class="fas fa-pencil-alt"></i>
                                     </a>
                                     @endif
                                     <!-- hapus data -->
-                                    @if (Auth::user()->level == 'admin'))
+                                    @if (Auth::user()->level == 'admin')
                                     <button class="btn btn-danger" type="submit" title="Hapus" name="proses" value="hapus" onclick="return confirm('Anda Yakin Data Dihapus?')">
                                         <i class="fas fa-trash-alt"></i>
                                     </button>
@@ -81,6 +81,5 @@
             </div>
         </div>
     </div>
-    <!-- </div> -->
 </div>
 @endsection
