@@ -1,63 +1,67 @@
 @extends('admin.index')
-
 @section('content')
-<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <h1 class="mt-4">Form Update Transaksi</h1>
+    @if ($errors->any())
+        <div class="alert alert-danger">
+            <ul>
+                @foreach ($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                @endforeach
+            </ul>
+        </div>
+    @endif
+<div class="container px-5 my-5">
+<form method="POST" action="{{route('transaksi.update', $row->id)}}" id="contactForm" data-sb-form-api-token="API_TOKEN">
+        @csrf
+        @method('PUT')
+        <div class="form-group from-floating mb-3">
+            <label for="barang">Nama barang</label>
+            <select id="barang" name="barang" class="form-control" value="{{old('barang')}}">
+                @foreach ($ar_barang as $barang)
+                <option value="{{ $barang->id }}" {{ $barang->id == $row->barang_id ? 'selected' : '' }}>
+                    {{ $barang->kode }} - {{ $barang->nama_barang }}
+                </option>
+                @endforeach
+            </select>
+        </div>
 
+        <div class="form-group from-floating mb-3">
+            <label for="nama">Nama Pelanggan</label>
+            <select id="nama" name="suplier" class="form-control" value="">
+                @foreach ($ar_pelanggan as $pelanggan)
+                <option value="{{ $pelanggan->id }}" {{ $pelanggan->id == $row->id ? 'selected' : '' }}>
+                    {{ $pelanggan->nama }}
+                </option>
+                @endforeach
+            </select>
+        </div>
 
-<div class="container-fluid">
-    <H3>Edit Transaksi</H3>
-    <br><br><br>
-    <form>
-        <div class="form-group row">
-            <label for="kodebarang" class="col-3 col-form-label">Kode Barang</label>
-            <div class="col-9">
-                <select class="form-select" name="kode" aria-label="Kode barang">
-                    <option value="">-- Pilih Kode Barang --</option>
-                    @foreach ($ar_barang as $b)
-                    <option value="{{ $b->id }} | {{$b->nama_barang}} | {{$b->kode}}">{{ $b->kode }} | {{$b->nama_barang}}</option>
-                    @endforeach
-                </select>
-            </div>
+        <div class="form-floating mb-3">
+            <input class="form-control" name="jumlah" value="{{$row->jumlah}}" id="jumlah" type="text" placeholder="jumlah" data-sb-validations="required" />
+            <label for="jumlah">Jumlah dibeli</label>
+            <div class="invalid-feedback" data-sb-feedback="jumlah:required">jumlah is required.</div>
         </div>
-        <div class="form-group row">
-            <label for="namapelanggan" class="col-3 col-form-label">Nama Pelanggan</label>
-            <div class="col-9">
-                <select class="form-select" name="kode" aria-label="Kode barang">
-                    <option value="">-- Pilih Nama Pelanggan --</option>
-                    @foreach ($ar_pelanggan as $p)
-                    <option value="{{ $p->id }} | {{$p->nama}}">{{ $p->nama }}</option>
-                    @endforeach
-                </select>
-            </div>
+
+        <div class="form-floating mb-3">
+            <input class="form-control" name="tgl" value="{{$row->tgl}}" id="date" type="text" placeholder="date" data-sb-validations="required" />
+            <label for="date">date</label>
+            <div class="invalid-feedback" data-sb-feedback="date:required">date is required.</div>
         </div>
-        <div class="form-group row">
-            <label for="select" class="col-3 col-form-label">Tanggal</label>
-            <div class="col-9">
-                <input name="date" type="date" id="date" class="form-control" value="<?php $d = date("Y-m-d");
-                                                                                        echo $d; ?>" placeholder="Date" autocomplete="off" required />
-            </div>
+
+        <div class="form-floating mb-3">
+            <input class="form-control" name="keterangan" value="{{$row->keterangan}}" id="keterangan" type="text" placeholder="keterangan" data-sb-validations="required" />
+            <label for="keterangan">keterangan</label>
+            <div class="invalid-feedback" data-sb-feedback="keterangan:required">keterangan is required.</div>
         </div>
-        <div class="form-group row">
-            <label for="select" class="col-3 col-form-label">Jumlah</label>
-            <div class="col-9">
-                <input class="form-control" name="jumlah" value="" id="jumlah" type="text" data-sb-validations="required" />
-            </div>
-        </div>
-        <div class="form-group row">
-            <label for="select" class="col-3 col-form-label">Keterangan</label>
-            <div class="col-9">
-                <input class="form-control" name="keterangan" value="" id="keterangan" type="text" data-sb-validations="required" />
-            </div>
-        </div>
-        <div class="form-group row">
-            <label for="select" class="col-3 col-form-label">Harga</label>
-            <div class="col-9">
-                <input class="form-control" name="harga" value="" id="harga" type="text" data-sb-validations="required" />
-            </div>
-        </div>
-        <button class="btn btn-primary" name="proses" value="simpan" id="simpan" type="submit">Simpan</button>
-        <a href="{{ url('/transaksi') }}" class="btn btn-info">Batal</a>
+
+        <button class="btn btn-primary" name="proses" value="ubah" id="ubah" type="submit">
+            <i class="fas fa-edit"></i> Ubah
+        </button>
+        <a href="{{ url('/transaksi') }}" class="btn btn-info">
+            <i class="fas fa-times"></i> Batal
+        </a>
+
     </form>
 </div>
+<script src="https://cdn.startbootstrap.com/sb-forms-latest.js"></script>
 @endsection

@@ -94,6 +94,7 @@ Route::resource('transaksi', TransaksiController::class)->middleware('auth');
 Route::resource('updatelevel', UpdateLevelController::class)->middleware('auth');
 Route::resource('suplaibarang', SuplaiBarangController::class)->middleware('auth');
 Route::get('/transaksi-pdf', [TransaksiController::class, 'transaksiPDF']);
+Route::get('/suplaibarang-pdf', [SuplaiBarangController::class, 'suplaibarangPDF']);
 Route::get('/transaksi-excel', [TransaksiController::class, 'transaksiExcel']);
 Route::get('/account/settings', [AccountSettingController::class, 'index'])->name('user.setting');
 Route::put('/account/settings', [AccountSettingController::class, 'update'])->name('user.setting.update');

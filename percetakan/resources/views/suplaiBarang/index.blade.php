@@ -60,6 +60,7 @@
                     </tbody>
                 </table>
             </div>
+            <a href="{{ url('/suplaibarang-pdf') }}" class="btn btn-primary">Cetak PDF</a>
         </div>
     </div>
     <!-- </div> -->
