@@ -2,6 +2,19 @@
 
 @section('content')
 <div class="container">
+    @if ($message = Session::get('success'))
+    <div class="alert alert-success" hidden>
+        <p id="message">{{ $message }}</p>
+        <script>
+            Swal.fire({
+                title: 'Success',
+                text: $('#message').text(),
+                icon: 'Success',
+                confirmButtonText: 'Cool'
+            })
+        </script>
+    </div>
+    @endif
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
@@ -25,6 +38,9 @@
                     </form>
                 </div>
             </div>
+            <script>
+
+            </script>
         </div>
     </div>
 </div>

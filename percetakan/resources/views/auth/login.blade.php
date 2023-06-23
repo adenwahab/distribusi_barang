@@ -1,9 +1,8 @@
 @extends('partials.header')
 
 @section('content')
-<br><br><br><br>
 
-<div class="container">
+<div class="container mt-5 pt-5">
     <div class="row justify-content-center">
         <div class="col-md-6">
             <div class="card">

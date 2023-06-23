@@ -8,6 +8,7 @@ use App\Models\SuplaiBarang; //panggil model
 use Illuminate\Support\Facades\DB; //
 use App\Models\Suplier; //panggil model
 use App\Models\Barang; //panggil model
+use PDF;
 
 class SuplaiBarangController extends Controller
 {
@@ -44,7 +45,7 @@ class SuplaiBarangController extends Controller
                 'suplier' => 'required',
                 'jumlah' => 'required|integer',
                 'date' => 'required|date',
-                'kode'  => '',
+                // 'kode'  => '',
             ],
             //custom pesan errornya
             [
@@ -56,7 +57,7 @@ class SuplaiBarangController extends Controller
         $selectedBarang = $request->input('barang');
 
         $dataBarang = explode(' | ', $selectedBarang);
-        $idBarang = $dataBarang[2];
+        $idBarang = $dataBarang[1];
 
         $selectedSuplier = $request->input('suplier');
         $dataSuplier = explode(' | ', $selectedSuplier);
@@ -72,20 +73,23 @@ class SuplaiBarangController extends Controller
                 'keterangan' => $request->keterangan,
             ]
         );
-        DB::table('barang')->where('id', $idBarang)->update(
-            [
-                'stok' => DB::raw('stok + ' . $request->jumlah),
-            ]
-        );
+        // DB::table('barang')->where('id', $idBarang)->update(
+        //     [
+        //         'stok' => DB::raw('stok + ' . $request->jumlah),
+        //     ]
+        // );
 
-        return redirect('/suplaibarang')->with('pesan', 'Barang Masuk berhasil disimpan');
+        return redirect('/suplaibarang')
+            ->with('pesan', 'Barang Masuk berhasil disimpan');
     }
 
     public function destroy($id)
     {
         SuplaiBarang::destroy($id);
-        return redirect('/suplaibarang')->with('pesan', 'Barang Masuk berhasil dihapus');
+        return redirect('/suplaibarang')
+            ->with('pesan', 'Barang Masuk berhasil dihapus');
     }
+
 
     public function edit(string $id)
     {
@@ -129,7 +133,28 @@ class SuplaiBarangController extends Controller
 
     public function show($id)
     {
+        return redirect('/suplaibarang')
+            ->with('error', 'Invalid request. Cannot access specific resource.');
+    }
 
-        return redirect('/suplaibarang')->with('error', 'Invalid request. Cannot access specific resource.');
+    public function deleteAll()
+    {
+        SuplaiBarang::truncate();
+        return redirect('/suplaibarang')
+            ->with('pesan', 'Data Suplai Berhasil Dihapus');
+    }
+
+    public function suplaibarangPDF()
+    {
+        $ar_suplai_barang = DB::table('suplai_barang')
+        ->join('suplier', 'suplai_barang.suplier_id', '=', 'suplier.id')
+        ->join('barang', 'suplai_barang.barang_id', '=', 'barang.id')
+        ->join('kategori', 'barang.kategori_id', '=', 'kategori.id')
+        ->select('suplai_barang.*', 'suplier.nama as suplier', 'barang.nama_barang as barang', 'kategori.nama as kategori', 'barang.kode as kode',)
+        ->orderBy('suplai_barang.id', 'desc')
+        ->get();
+
+        $pdf = PDF::loadView('suplaiBarang.suplaibarang_pdf', ['ar_suplai_barang' => $ar_suplai_barang]);
+        return $pdf->download('Data_SuplaiBarang_' . date('d-m-Y') . '.pdf');
     }
 }
