@@ -136,7 +136,7 @@ class TransaksiController extends Controller
 
         if ($transaksi) {
             $transaksi->barang_id = $request->input('barang');
-            $transaksi->suplier_id = $request->input('suplier');
+            $transaksi->pelanggan_id = $request->input('pelanggan');
             $transaksi->tgl = $request->input('date');
             $transaksi->jumlah = $request->input('jumlah');
             $transaksi->keterangan = $request->input('keterangan');

@@ -1,16 +1,24 @@
 @extends('partials.header')
 
 @section('content')
-<br><br><br><br>
+<br><br>
 
-<div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-6">
-            <div class="card">
-                <div class="card-header text-center">{{ __('Login') }}</div>
-
-                <div class="card-body">
-                    <form method="POST" action="{{ route('login') }}">
+<section class="vh-100" style="background-color: 	#4169E1;">
+  <div class="container py-5 h-100">
+    <div class="row d-flex justify-content-center align-items-center h-100">
+      <div class="col col-xl-10">
+        <div class="card" style="border-radius: 1rem;">
+          <div class="row g-0">
+            <div class="col-md-6 col-lg-5 d-none d-md-block">
+            <br>
+              <img src="https://media.istockphoto.com/id/164646073/id/vektor/percetakan-pers.jpg?s=612x612&w=0&k=20&c=r7RFJHuGQLaRpbyx21Mx3B5we8ujqI_Q_5Ehlh10hjE="
+                alt="login form" class="img-fluid" style="border-radius: 1rem 0 0 1rem;" />
+            </div>
+            <div class="col-md-6 col-lg-7 d-flex align-items-center">
+              <div class="card-body p-4 p-lg-5 text-black">
+              <div class="card-header text-center">{{ __('Login') }}</div>
+              <br>
+              <form method="POST" action="{{ route('login') }}">
                         @csrf
 
                         <div class="row mb-3">
@@ -67,9 +75,13 @@
                             </div>
                         </div>
                     </form>
-                </div>
+
+              </div>
             </div>
+          </div>
         </div>
+      </div>
     </div>
-</div>
+  </div>
+</section>
 @endsection
