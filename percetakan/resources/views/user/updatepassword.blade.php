@@ -4,9 +4,21 @@
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
-            <div class="card">
+            <div class="card mb-5">
                 <div class="card-header">{{ __('Password Setting') }}</div>
-
+                @if ($message = Session::get('success'))
+                <div class="alert alert-success" hidden>
+                    <p id="message">{{ $message }}</p>
+                    <script>
+                        Swal.fire({
+                            title: 'Success',
+                            text: $('#message').text(),
+                            icon: 'Success',
+                            confirmButtonText: 'Cool'
+                        })
+                    </script>
+                </div>
+                @endif
                 <div class="card-body">
                     <form method="POST" action="{{ route('user.settingpassword.update') }}">
                         @csrf

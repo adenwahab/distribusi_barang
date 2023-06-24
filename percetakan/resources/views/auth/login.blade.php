@@ -1,6 +1,7 @@
 @extends('partials.header')
 
 @section('content')
+<<<<<<< HEAD
 <br><br>
 
 <section class="vh-100" style="background-color: 	#4169E1;">
@@ -19,6 +20,17 @@
               <div class="card-header text-center">{{ __('Login') }}</div>
               <br>
               <form method="POST" action="{{ route('login') }}">
+=======
+
+<div class="container mt-5 pt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-header text-center">{{ __('Login') }}</div>
+
+                <div class="card-body">
+                    <form method="POST" action="{{ route('login') }}">
+>>>>>>> 779581863033e94997c2999591427d31c533432a
                         @csrf
 
                         <div class="row mb-3">

@@ -18,7 +18,7 @@
             <select id="barang" name="barang" class="form-control">
                 <option value="">--Pilih Barang--</option>
                 @foreach($ar_barang as $barang)
-                <option value="{{$barang->nama_barang}} | {{$barang->kode}} | {{$barang->id}} | {{$barang->stok}}">{{$barang -> kode}} - {{$barang->nama_barang}}</option>
+                <option value="{{$barang->nama_barang}} | {{$barang->id}} ">{{$barang -> kode}} - {{$barang->nama_barang}}</option>
                 @endforeach
             </select>
         </div>
@@ -63,6 +63,19 @@
         </script>
 
         <button class="btn btn-primary" name="proses" value="simpan" id="simpan" type="submit">Simpan</button>
+        @if ($message = Session::get('success'))
+        <div class="alert alert-success" hidden>
+            <p id="message">{{ $message }}</p>
+            <script>
+                Swal.fire({
+                    title: 'Success',
+                    text: $('#message').text(),
+                    icon: 'Success',
+                    confirmButtonText: 'Oke!'
+                })
+            </script>
+        </div>
+        @endif
         <a href="{{ url('/suplaibarang') }}" class="btn btn-info">Batal</a>
 
     </form>
