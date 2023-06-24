@@ -26,8 +26,8 @@ class TransaksiController extends Controller
         $ar_transaksi = DB::table('transaksi')
             ->join('barang', 'barang.id', '=', 'transaksi.barang_id')
             ->join('pelanggan', 'pelanggan.id', '=', 'transaksi.pelanggan_id')
-            ->select('transaksi.*', 'barang.kode as barang', 'pelanggan.nama as pelanggan')
-            //->select('transaksi.*', 'barang.nama_barang as barang')
+            ->select('transaksi.*', 'barang.kode as kode', 'barang.nama_barang as barang', 'pelanggan.nama as pelanggan', 'pelanggan.status_member as status')
+            // ->select('pelanggan.status_member as status', 'barang.nama_barang as barang')
             ->orderBy('transaksi.id', 'desc')
             ->get();
 
@@ -46,64 +46,63 @@ class TransaksiController extends Controller
             ->get();
         $ar_pelanggan = DB::table('pelanggan')
             ->orderBy('pelanggan.id', 'desc')
-             ->get();
+            ->get();
         //arahkan ke form input data
         return view('transaksi.form', compact('ar_barang', 'ar_pelanggan'), ['title' => 'Input Transaksi Baru']);
     }
-    
+
     /**
      * Store a newly created resource in storage.
      */
     public function store(Request $request)
     {
-                //proses input barang dari form
-                $request->validate([
-                    'tgl' => 'required|date',
-                    'jumlah' => 'required|max:45',
-                    'keterangan' => 'required | max:100',
-                    'total_harga' => '',
-                ]);
-        
-        
-                $selectedBarang = $request->input('barang');
-                $dataBarang = explode(' | ', $selectedBarang);
-        
-                $idBarang = $dataBarang[0];
-                $hargaBarang = $dataBarang[1];
-                $hargaMember = $dataBarang[2];
-        
-                if ($hargaMember == false) {
-                    $hargaMember = $hargaBarang;
-                }
-        
-                $selectedPelanggan = $request->input('nama');
-                $dataPelanggan = explode(' | ', $selectedPelanggan);
-        
-                $idPelanggan = $dataPelanggan[0];
-                $statusMember = $dataPelanggan[1];
-        
-                if ($statusMember) {
-                    $total = $hargaMember * $request->jumlah;
-                } else {
-                    $total = $hargaBarang * $request->jumlah;
-                }
-        
-                DB::table('transaksi')->insert([
-                    'pelanggan_id' => $idPelanggan,
-                    'barang_id' => $idBarang,
-                    'tgl' => $request->tgl,
-                    'jumlah' => $request->jumlah,
-                    'total_harga' => $total,
-                    'keterangan' => $request->keterangan,
-                ]);
-                DB::table('barang')->where('id', $idBarang)->update(
-                    [
-                        'stok' => DB::raw('stok + ' . $request->jumlah),
-                    ]
-                );
-                return redirect('transaksi')
-                    ->with('pesan', 'Barang Masuk berhasil disimpan');
-        
+        //proses input barang dari form
+        $request->validate([
+            'tgl' => 'required|date',
+            'jumlah' => 'required|integer',
+            'keterangan' => '',
+            'total_harga' => '',
+        ]);
+
+
+        $selectedBarang = $request->input('barang');
+        $dataBarang = explode(' | ', $selectedBarang);
+
+        $idBarang = $dataBarang[0];
+        $hargaBarang = $dataBarang[1];
+        $hargaMember = $dataBarang[2];
+
+        if (is_null($hargaMember)) {
+            $hargaMember = $hargaBarang;
+        }
+
+        $selectedPelanggan = $request->input('nama');
+        $dataPelanggan = explode(' | ', $selectedPelanggan);
+
+        $idPelanggan = $dataPelanggan[0];
+        $statusMember = $dataPelanggan[1];
+
+        if ($statusMember) {
+            $total = $hargaMember * $request->jumlah;
+        } else {
+            $total = $hargaBarang * $request->jumlah;
+        }
+
+        DB::table('transaksi')->insert([
+            'pelanggan_id' => $idPelanggan,
+            'barang_id' => $idBarang,
+            'tgl' => $request->tgl,
+            'jumlah' => $request->jumlah,
+            'total_harga' => $total,
+            'keterangan' => $request->keterangan,
+        ]);
+        // DB::table('barang')->where('id', $idBarang)->update(
+        //     [
+        //         'stok' => DB::raw('stok + ' . $request->jumlah),
+        //     ]
+        // );
+        return redirect('transaksi')
+            ->with('pesan', 'Barang Masuk berhasil disimpan');
     }
     public function edit(string $id)
     {
@@ -111,8 +110,8 @@ class TransaksiController extends Controller
         $ar_barang = barang::all();
         //$ar_pelanggan = pelanggan::all();
         $ar_pelanggan = DB::table('pelanggan')
-        ->orderBy('pelanggan.id', 'desc')
-        ->get();
+            ->orderBy('pelanggan.id', 'desc')
+            ->get();
         //tampilkan data lama di form
         $row = transaksi::find($id);
         return view('transaksi.form_edit', compact('row', 'ar_barang', 'ar_pelanggan'), ['title' => 'Edit Data Transaksi']);
@@ -146,7 +145,7 @@ class TransaksiController extends Controller
                 ->with('success', 'Data Transaksi Berhasil Diubah');
         }
         return redirect()->back()
-        ->with('error', 'Data Transaksi tidak ditemukan');
+            ->with('error', 'Data Transaksi tidak ditemukan');
     }
     public function show($id)
     {
@@ -181,19 +180,18 @@ class TransaksiController extends Controller
     {
         //$ar_transaksi = Transaksi::all(); //eloquent
         $ar_transaksi = DB::table('transaksi')
-        ->join('barang', 'barang.id', '=', 'transaksi.barang_id')
-        ->select('transaksi.*', 'barang.kode as barang')
-        ->join('pelanggan', 'pelanggan.id', '=', 'transaksi.pelanggan_id')
-        ->select('transaksi.*', 'barang.nama_barang as barang', 'barang.kode as barang', 'pelanggan.nama as pelanggan')
-        ->orderBy('transaksi.id', 'desc')
-        ->get();
-        
+            ->join('barang', 'barang.id', '=', 'transaksi.barang_id')
+            ->select('transaksi.*', 'barang.kode as barang')
+            ->join('pelanggan', 'pelanggan.id', '=', 'transaksi.pelanggan_id')
+            ->select('transaksi.*', 'barang.nama_barang as barang', 'barang.kode as barang', 'pelanggan.nama as pelanggan')
+            ->orderBy('transaksi.id', 'desc')
+            ->get();
+
         $pdf = PDF::loadView('transaksi.transaksi_pdf', ['ar_transaksi' => $ar_transaksi]);
         return $pdf->download('Data_Transaksi_' . date('d-m-Y') . '.pdf');
     }
     public function transaksiExcel()
     {
         return Excel::download(new transaksiExport, 'data_transaksi_' . date('d-m-Y') . '.xlsx');
-
     }
 }

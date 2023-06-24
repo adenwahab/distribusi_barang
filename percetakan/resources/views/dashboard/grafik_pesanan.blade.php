@@ -1,5 +1,5 @@
 <div class="col-md-4">
-    <div class="card info-card sales-card">
+    <div class="card info-card sales-card text-center align-items-center">
 
         <div class="filter">
             <a class="icon" href="#" data-bs-toggle="dropdown"><i class="bi bi-three-dots"></i></a>
@@ -15,21 +15,22 @@
         </div>
 
         <div class="card-body">
-            <h5 class="card-title">Transaksi <span>| tahun ini </span></h5>
+            <h3 class="card-title">Transaksi | tahun ini </h3>
 
-            <div class="d-flex align-items-center">
-                <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
-                    <i class="fas fa-credit-card"></i>
+            <div class="d-flex align-items-center ">
+                <div class="card-icon rounded-circle d-flex align-items-center justify-content-center ">
+                    <i class="fas fa-exchange-alt fa-3x"></i>
                 </div>
+
                 <div class="ps-3">
-                    <h6>
+                    <h3 class="text-primary fw-bold mb-0  ">
                         @foreach ($jml_transaksi as $jml)
                             {{ $jml->jumlah }}
                         @endforeach
-                    </h6>
-                    <span class="text-success small pt-1 fw-bold">Transaksi</span>
-
+                    </h3>
+                    <h5 class=" pt-1 ">Transaksi</h5>
                 </div>
+
             </div>
         </div>
 

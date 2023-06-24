@@ -4,7 +4,7 @@
 
 namespace Composer\Autoload;
 
-class ComposerStaticInit4c1eb7c87c56d29c837f4bbcfe6210a4
+class ComposerStaticInita200d3b7ca17caeb996aac15069028ba
 {
     public static $files = array (
         '0e6d7bf4a5811bfa5cf40c5ccd6fae6a' => __DIR__ . '/..' . '/symfony/polyfill-mbstring/bootstrap.php',
@@ -606,16 +606,20 @@ class ComposerStaticInit4c1eb7c87c56d29c837f4bbcfe6210a4
         'App\\Http\\Controllers\\Auth\\RegisterController' => __DIR__ . '/../..' . '/app/Http/Controllers/Auth/RegisterController.php',
         'App\\Http\\Controllers\\Auth\\ResetPasswordController' => __DIR__ . '/../..' . '/app/Http/Controllers/Auth/ResetPasswordController.php',
         'App\\Http\\Controllers\\Auth\\VerificationController' => __DIR__ . '/../..' . '/app/Http/Controllers/Auth/VerificationController.php',
+        'App\\Http\\Controllers\\BahanController' => __DIR__ . '/../..' . '/app/Http/Controllers/BahanController.php',
         'App\\Http\\Controllers\\Controller' => __DIR__ . '/../..' . '/app/Http/Controllers/Controller.php',
         'App\\Http\\Controllers\\DashboardController' => __DIR__ . '/../..' . '/app/Http/Controllers/DashboardController.php',
         'App\\Http\\Controllers\\HomeController' => __DIR__ . '/../..' . '/app/Http/Controllers/HomeController.php',
         'App\\Http\\Controllers\\KategoriController' => __DIR__ . '/../..' . '/app/Http/Controllers/KategoriController.php',
+        'App\\Http\\Controllers\\MemberController' => __DIR__ . '/../..' . '/app/Http/Controllers/MemberController.php',
         'App\\Http\\Controllers\\SuplaiBarangController' => __DIR__ . '/../..' . '/app/Http/Controllers/SuplaiBarangController.php',
         'App\\Http\\Controllers\\SuplierController' => __DIR__ . '/../..' . '/app/Http/Controllers/SuplierController.php',
         'App\\Http\\Controllers\\TransaksiController' => __DIR__ . '/../..' . '/app/Http/Controllers/TransaksiController.php',
         'App\\Http\\Controllers\\UpdateLevelController' => __DIR__ . '/../..' . '/app/Http/Controllers/UpdateLevelController.php',
         'App\\Http\\Controllers\\UpdatePasswordController' => __DIR__ . '/../..' . '/app/Http/Controllers/UpdatePasswordController.php',
         'App\\Http\\Controllers\\UserController' => __DIR__ . '/../..' . '/app/Http/Controllers/UserController.php',
+        'App\\Http\\Controllers\\UsersController' => __DIR__ . '/../..' . '/app/Http/Controllers/UsersController.php',
+        'App\\Http\\Controllers\\loginController' => __DIR__ . '/../..' . '/app/Http/Controllers/loginController.php',
         'App\\Http\\Kernel' => __DIR__ . '/../..' . '/app/Http/Kernel.php',
         'App\\Http\\Middleware\\Authenticate' => __DIR__ . '/../..' . '/app/Http/Middleware/Authenticate.php',
         'App\\Http\\Middleware\\EncryptCookies' => __DIR__ . '/../..' . '/app/Http/Middleware/EncryptCookies.php',
@@ -634,6 +638,7 @@ class ComposerStaticInit4c1eb7c87c56d29c837f4bbcfe6210a4
         'App\\Models\\Member' => __DIR__ . '/../..' . '/app/Models/Member.php',
         'App\\Models\\Pelanggan' => __DIR__ . '/../..' . '/app/Models/Pelanggan.php',
         'App\\Models\\SuplaiBarang' => __DIR__ . '/../..' . '/app/Models/SuplaiBarang.php',
+        'App\\Models\\Suplai_barang' => __DIR__ . '/../..' . '/app/Models/Suplai_barang.php',
         'App\\Models\\Suplier' => __DIR__ . '/../..' . '/app/Models/Suplier.php',
         'App\\Models\\Transaksi' => __DIR__ . '/../..' . '/app/Models/Transaksi.php',
         'App\\Models\\User' => __DIR__ . '/../..' . '/app/Models/User.php',
@@ -7559,10 +7564,10 @@ class ComposerStaticInit4c1eb7c87c56d29c837f4bbcfe6210a4
     public static function getInitializer(ClassLoader $loader)
     {
         return \Closure::bind(function () use ($loader) {
-            $loader->prefixLengthsPsr4 = ComposerStaticInit4c1eb7c87c56d29c837f4bbcfe6210a4::$prefixLengthsPsr4;
-            $loader->prefixDirsPsr4 = ComposerStaticInit4c1eb7c87c56d29c837f4bbcfe6210a4::$prefixDirsPsr4;
-            $loader->prefixesPsr0 = ComposerStaticInit4c1eb7c87c56d29c837f4bbcfe6210a4::$prefixesPsr0;
-            $loader->classMap = ComposerStaticInit4c1eb7c87c56d29c837f4bbcfe6210a4::$classMap;
+            $loader->prefixLengthsPsr4 = ComposerStaticInita200d3b7ca17caeb996aac15069028ba::$prefixLengthsPsr4;
+            $loader->prefixDirsPsr4 = ComposerStaticInita200d3b7ca17caeb996aac15069028ba::$prefixDirsPsr4;
+            $loader->prefixesPsr0 = ComposerStaticInita200d3b7ca17caeb996aac15069028ba::$prefixesPsr0;
+            $loader->classMap = ComposerStaticInita200d3b7ca17caeb996aac15069028ba::$classMap;
 
         }, null, ClassLoader::class);
     }

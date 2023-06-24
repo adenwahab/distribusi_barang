@@ -34,8 +34,12 @@ class DashboardController extends Controller
                         ->selectRaw('count(*) as jumlah')
                         ->get();
 
+                $jml_pendapatan = DB::table('transaksi')
+                ->selectRaw('SUM(total_harga) as jumlah')
+                ->get();
 
 
-                return view('dashboard.index', compact('ar_stok', 'ar_jumlah', 'jml_pelanggan', 'jml_transaksi'), ['title' => 'Dashboard']);
+
+                return view('dashboard.index', compact('ar_stok', 'ar_jumlah', 'jml_pelanggan', 'jml_transaksi','jml_pendapatan'), ['title' => 'Dashboard']);
         }
 }
