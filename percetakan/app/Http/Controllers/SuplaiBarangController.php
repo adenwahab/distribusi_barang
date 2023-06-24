@@ -147,12 +147,12 @@ class SuplaiBarangController extends Controller
     public function suplaibarangPDF()
     {
         $ar_suplai_barang = DB::table('suplai_barang')
-        ->join('suplier', 'suplai_barang.suplier_id', '=', 'suplier.id')
-        ->join('barang', 'suplai_barang.barang_id', '=', 'barang.id')
-        ->join('kategori', 'barang.kategori_id', '=', 'kategori.id')
-        ->select('suplai_barang.*', 'suplier.nama as suplier', 'barang.nama_barang as barang', 'kategori.nama as kategori', 'barang.kode as kode',)
-        ->orderBy('suplai_barang.id', 'desc')
-        ->get();
+            ->join('suplier', 'suplai_barang.suplier_id', '=', 'suplier.id')
+            ->join('barang', 'suplai_barang.barang_id', '=', 'barang.id')
+            ->join('kategori', 'barang.kategori_id', '=', 'kategori.id')
+            ->select('suplai_barang.*', 'suplier.nama as suplier', 'barang.nama_barang as barang', 'kategori.nama as kategori', 'barang.kode as kode',)
+            ->orderBy('suplai_barang.id', 'desc')
+            ->get();
 
         $pdf = PDF::loadView('suplaiBarang.suplaibarang_pdf', ['ar_suplai_barang' => $ar_suplai_barang]);
         return $pdf->download('Data_SuplaiBarang_' . date('d-m-Y') . '.pdf');
