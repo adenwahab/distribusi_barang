@@ -14,18 +14,16 @@
 
                 <li class="dropdown"><a href="#"><span>Kategori</span> <i class="bi bi-chevron-down"></i></a>
                     <ul>
-                        <li><a href="{{ url('/coworking') }}">Coworking Space</a></li>
-                        <li><a href="{{ url('/foto') }}">Foto</a></li>
-                        <li><a href="{{ url('/largform') }}">Large Format</a></li>
-                        <li><a href="{{ url('/marketing') }}">Marketing Tools</a></li>
-                        <li><a href="{{ url('/packaging') }}">Packaging</a></li>
-                        <li><a href="{{ url('/printkain') }}">Print Kain</a></li>
-                        <li><a href="{{ url('/printlembar') }}">Print Lembaran</a></li>
-                        <li><a href="{{ url('/printterior') }}">Printterior</a></li>
-                        <li><a href="{{ url('/promo') }}">Promo and Gift</a></li>
-                        <li><a href="{{ url('/signage') }}" class="nav-link disabled">Signage</a></li>
-                        <li><a href="{{ url('/stationary') }}" class="nav-link disabled">Stationary</a></li>
-                        <li><a href="{{ url('/umkm') }}" class="nav-link disabled">UMKM</a></li>
+                        @isset($ar_kategori)
+                        @foreach( $ar_kategori as $kategori )
+                        
+                        <li><a href="{{ route('categories.index', ['category'=> $kategori->nama]) }}">{{$kategori->nama}}</a></li>
+                        @endforeach
+                        @endisset
+                        <!-- nanti di on in lagi -->
+                        <!-- <li><a href="{{ url('/signage') }}" class="nav-link disabled">Signage</a></li> -->
+                        <!-- <li><a href="{{ url('/stationary') }}" class="nav-link disabled">Stationary</a></li> -->
+                        <!-- <li><a href="{{ url('/umkm') }}" class="nav-link disabled">UMKM</a></li> -->
 
 
                     </ul>
