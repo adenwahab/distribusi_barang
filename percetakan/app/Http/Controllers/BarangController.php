@@ -316,8 +316,8 @@ class barangController extends Controller
             ->select('barang.*', 'kategori.nama as kategori')
             ->where('barang.id', '=', $id)
             ->get();
-        if (!empty($rs)) {
-            return response()->json(
+        if($rs){
+            return response ()->json(
                 [
                     'success' => true,
                     'message' => 'Detail Barang',
