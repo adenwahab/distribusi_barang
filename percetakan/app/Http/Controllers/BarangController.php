@@ -294,7 +294,7 @@ class barangController extends Controller
             ->select('barang.*', 'kategori.nama as kategori')
             ->where('barang.id', '=', $id)
             ->get();
-        if(!empty($rs)){
+        if($rs){
             return response ()->json(
                 [
                     'success'=>true,
