@@ -6,7 +6,8 @@
 
 
   <!-- Start Banner Hero -->
-  <div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="false">
+  <!-- Start Banner Hero -->
+  <div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="false" data-aos="fade-up" data-aos-delay="100">
     <div class="carousel-indicators">
       <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
       <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1" aria-label="Slide 2"></button>
@@ -16,22 +17,24 @@
       <div class="carousel-item active">
         <img src="{{ asset('assets/img/carousel/carousel-2.jpg') }}" class="d-block w-100" alt="...">
         <div class="carousel-caption d-none d-md-block">
-          <h5>First slide label</h5>
-          <p>Some representative placeholder content for the first slide.</p>
+          <h2>Cetak Yuk!</h2>
+          <p>kami siap mencetak produk yang anda inginkan.</p>
         </div>
       </div>
       <div class="carousel-item">
         <img src="{{ asset('assets/img/carousel/carousel-2.jpg') }}" class="d-block w-100" alt="...">
         <div class="carousel-caption d-none d-md-block">
-          <h5>Second slide label</h5>
-          <p>Some representative placeholder content for the second slide.</p>
+          <h2>Produk berkualitas</h2>
+          <p>Kami menyediakan produk berkualitas.</p>
         </div>
       </div>
       <div class="carousel-item">
         <img src="{{ asset('assets/img/carousel/carousel-3.jpg') }}" class="d-block w-100" alt="...">
         <div class="carousel-caption d-none d-md-block">
-          <h5>Third slide label</h5>
-          <p>Some representative placeholder content for the third slide.</p>
+          <div class="shadow">
+            <h2>Siap melayani 24/7</h2>
+            <p>pelayanan yang kami berikan siap melayani 24/7.</p>
+          </div>
         </div>
       </div>
     </div>
@@ -44,6 +47,7 @@
       <span class="visually-hidden">Next</span>
     </button>
   </div>
+  <!-- End Banner Hero -->
   <!-- End Banner Hero -->
 </section>
 @include('landingpage.services')
