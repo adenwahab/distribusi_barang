@@ -892,7 +892,7 @@ section {
 
 .bg-new {
   background: #25D366;
-  border-color: #ffffff;
+  border-color: transparent;
   color: #ffffff;
   font-size: 14px;
 }

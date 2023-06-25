@@ -1,33 +1,18 @@
 @extends('landingpage.index')
 @section('content')
 
-<section id="about" class="about">
-        <div class="container" data-aos="fade-up">
-          <div class="section-title">
-            <h2>About Us</h2>
-            <p>
-              Nyetak merupakan sebuah toko yang menyediakan jasa terkait
-              percetakan.
-            </p>
-          </div>
+<section class="bg-light">
+            <div class="container px-5">
+                <div class="row gx-5 align-items-center justify-content-center justify-content-lg-between">
+                    <div class="col-12 col-lg-5">
+                        <h2 class="display-4 lh-1 mb-4">Pasific Printing</h2>
+                        <p class="lead fw-normal text-muted mb-5 mb-lg-0">Pasific Printing merupakan manajemen percetakan yang bergelut pada bidang percetakan dan memiliki 5000+ pelanggan setia yang berada di seluruh Indonesia. Anda bisa mencetak sesuai keinginan anda dengan hasil yang sangat memuaskan.</p>
+                    </div>
+                    <div class="col-sm-8 col-md-6">
+                        <div class="px-5 px-sm-0 "><img class="rounded-circle" src="{{ asset('assets/img/about.jpeg') }} " ></div>
+                    </div>
+                </div>
+            </div>
+          </section>
 
-          <div class="row content">
-            <div class="col-lg-6">
-              <p>Berikut merupakan beberapa produk yang kami miliki</p>
-              <ul>
-                <li><i class="ri-check-double-line"></i> Banner</li>
-                <li><i class="ri-check-double-line"></i> Poster</li>
-                <li><i class="ri-check-double-line"></i> Flyer</li>
-              </ul>
-            </div>
-            <div class="col-lg-6 pt-4 pt-lg-0">
-              <p>
-                Nyetak merupakan sebuah toko yang menyediakan jasa terkait
-                percetakan.
-              </p>
-              <a href="#" class="btn-learn-more">Learn More</a>
-            </div>
-          </div>
-        </div>
-      </section>
-      @endsection
+    @endsection
