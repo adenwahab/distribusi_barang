@@ -16,7 +16,7 @@
                     <ul>
                         @isset($ar_kategori)
                         @foreach( $ar_kategori as $kategori )
-                        
+
                         <li><a href="{{ route('categories.index', ['category'=> $kategori->nama]) }}">{{$kategori->nama}}</a></li>
                         @endforeach
                         @endisset

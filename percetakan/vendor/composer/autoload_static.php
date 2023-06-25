@@ -4,7 +4,7 @@
 
 namespace Composer\Autoload;
 
-class ComposerStaticInita200d3b7ca17caeb996aac15069028ba
+class ComposerStaticInit9fcd92b43cde6b707662c3af32b54810
 {
     public static $files = array (
         '0e6d7bf4a5811bfa5cf40c5ccd6fae6a' => __DIR__ . '/..' . '/symfony/polyfill-mbstring/bootstrap.php',
@@ -379,8 +379,8 @@ class ComposerStaticInita200d3b7ca17caeb996aac15069028ba
         ),
         'Psr\\Http\\Message\\' => 
         array (
-            0 => __DIR__ . '/..' . '/psr/http-factory/src',
-            1 => __DIR__ . '/..' . '/psr/http-message/src',
+            0 => __DIR__ . '/..' . '/psr/http-message/src',
+            1 => __DIR__ . '/..' . '/psr/http-factory/src',
         ),
         'Psr\\Http\\Client\\' => 
         array (
@@ -600,6 +600,7 @@ class ComposerStaticInita200d3b7ca17caeb996aac15069028ba
         'App\\Exceptions\\Handler' => __DIR__ . '/../..' . '/app/Exceptions/Handler.php',
         'App\\Exports\\transaksiExport' => __DIR__ . '/../..' . '/app/Exports/transaksiExport.php',
         'App\\Http\\Controllers\\AccountSettingController' => __DIR__ . '/../..' . '/app/Http/Controllers/AccountSettingController.php',
+        'App\\Http\\Controllers\\Api\\PelangganController' => __DIR__ . '/../..' . '/app/Http/Controllers/Api/PelangganController.php',
         'App\\Http\\Controllers\\Auth\\ConfirmPasswordController' => __DIR__ . '/../..' . '/app/Http/Controllers/Auth/ConfirmPasswordController.php',
         'App\\Http\\Controllers\\Auth\\ForgotPasswordController' => __DIR__ . '/../..' . '/app/Http/Controllers/Auth/ForgotPasswordController.php',
         'App\\Http\\Controllers\\Auth\\LoginController' => __DIR__ . '/../..' . '/app/Http/Controllers/Auth/LoginController.php',
@@ -611,7 +612,9 @@ class ComposerStaticInita200d3b7ca17caeb996aac15069028ba
         'App\\Http\\Controllers\\DashboardController' => __DIR__ . '/../..' . '/app/Http/Controllers/DashboardController.php',
         'App\\Http\\Controllers\\HomeController' => __DIR__ . '/../..' . '/app/Http/Controllers/HomeController.php',
         'App\\Http\\Controllers\\KategoriController' => __DIR__ . '/../..' . '/app/Http/Controllers/KategoriController.php',
+        'App\\Http\\Controllers\\LandingController' => __DIR__ . '/../..' . '/app/Http/Controllers/LandingController.php',
         'App\\Http\\Controllers\\MemberController' => __DIR__ . '/../..' . '/app/Http/Controllers/MemberController.php',
+        'App\\Http\\Controllers\\ProductCategoryController' => __DIR__ . '/../..' . '/app/Http/Controllers/ProductCategoryController.php',
         'App\\Http\\Controllers\\SuplaiBarangController' => __DIR__ . '/../..' . '/app/Http/Controllers/SuplaiBarangController.php',
         'App\\Http\\Controllers\\SuplierController' => __DIR__ . '/../..' . '/app/Http/Controllers/SuplierController.php',
         'App\\Http\\Controllers\\TransaksiController' => __DIR__ . '/../..' . '/app/Http/Controllers/TransaksiController.php',
@@ -632,6 +635,7 @@ class ComposerStaticInita200d3b7ca17caeb996aac15069028ba
         'App\\Http\\Middleware\\VerifyCsrfToken' => __DIR__ . '/../..' . '/app/Http/Middleware/VerifyCsrfToken.php',
         'App\\Http\\Requests\\StoreUsersRequest' => __DIR__ . '/../..' . '/app/Http/Requests/StoreUsersRequest.php',
         'App\\Http\\Requests\\UpdateUsersRequest' => __DIR__ . '/../..' . '/app/Http/Requests/UpdateUsersRequest.php',
+        'App\\Http\\Resources\\PelangganResource' => __DIR__ . '/../..' . '/app/Http/Resources/PelangganResource.php',
         'App\\Models\\Bahan' => __DIR__ . '/../..' . '/app/Models/Bahan.php',
         'App\\Models\\Barang' => __DIR__ . '/../..' . '/app/Models/Barang.php',
         'App\\Models\\DataUser' => __DIR__ . '/../..' . '/app/Models/DataUser.php',
@@ -3980,6 +3984,7 @@ class ComposerStaticInita200d3b7ca17caeb996aac15069028ba
         'Monolog\\Processor\\GitProcessor' => __DIR__ . '/..' . '/monolog/monolog/src/Monolog/Processor/GitProcessor.php',
         'Monolog\\Processor\\HostnameProcessor' => __DIR__ . '/..' . '/monolog/monolog/src/Monolog/Processor/HostnameProcessor.php',
         'Monolog\\Processor\\IntrospectionProcessor' => __DIR__ . '/..' . '/monolog/monolog/src/Monolog/Processor/IntrospectionProcessor.php',
+        'Monolog\\Processor\\LoadAverageProcessor' => __DIR__ . '/..' . '/monolog/monolog/src/Monolog/Processor/LoadAverageProcessor.php',
         'Monolog\\Processor\\MemoryPeakUsageProcessor' => __DIR__ . '/..' . '/monolog/monolog/src/Monolog/Processor/MemoryPeakUsageProcessor.php',
         'Monolog\\Processor\\MemoryProcessor' => __DIR__ . '/..' . '/monolog/monolog/src/Monolog/Processor/MemoryProcessor.php',
         'Monolog\\Processor\\MemoryUsageProcessor' => __DIR__ . '/..' . '/monolog/monolog/src/Monolog/Processor/MemoryUsageProcessor.php',
@@ -7568,13 +7573,16 @@ class ComposerStaticInita200d3b7ca17caeb996aac15069028ba
         'ZipStream\\Exception\\DosTimeOverflowException' => __DIR__ . '/..' . '/maennchen/zipstream-php/src/Exception/DosTimeOverflowException.php',
         'ZipStream\\Exception\\FileNotFoundException' => __DIR__ . '/..' . '/maennchen/zipstream-php/src/Exception/FileNotFoundException.php',
         'ZipStream\\Exception\\FileNotReadableException' => __DIR__ . '/..' . '/maennchen/zipstream-php/src/Exception/FileNotReadableException.php',
+        'ZipStream\\Exception\\FileSizeIncorrectException' => __DIR__ . '/..' . '/maennchen/zipstream-php/src/Exception/FileSizeIncorrectException.php',
         'ZipStream\\Exception\\OverflowException' => __DIR__ . '/..' . '/maennchen/zipstream-php/src/Exception/OverflowException.php',
         'ZipStream\\Exception\\ResourceActionException' => __DIR__ . '/..' . '/maennchen/zipstream-php/src/Exception/ResourceActionException.php',
+        'ZipStream\\Exception\\SimulationFileUnknownException' => __DIR__ . '/..' . '/maennchen/zipstream-php/src/Exception/SimulationFileUnknownException.php',
         'ZipStream\\Exception\\StreamNotReadableException' => __DIR__ . '/..' . '/maennchen/zipstream-php/src/Exception/StreamNotReadableException.php',
         'ZipStream\\Exception\\StreamNotSeekableException' => __DIR__ . '/..' . '/maennchen/zipstream-php/src/Exception/StreamNotSeekableException.php',
         'ZipStream\\File' => __DIR__ . '/..' . '/maennchen/zipstream-php/src/File.php',
         'ZipStream\\GeneralPurposeBitFlag' => __DIR__ . '/..' . '/maennchen/zipstream-php/src/GeneralPurposeBitFlag.php',
         'ZipStream\\LocalFileHeader' => __DIR__ . '/..' . '/maennchen/zipstream-php/src/LocalFileHeader.php',
+        'ZipStream\\OperationMode' => __DIR__ . '/..' . '/maennchen/zipstream-php/src/OperationMode.php',
         'ZipStream\\PackField' => __DIR__ . '/..' . '/maennchen/zipstream-php/src/PackField.php',
         'ZipStream\\Time' => __DIR__ . '/..' . '/maennchen/zipstream-php/src/Time.php',
         'ZipStream\\Version' => __DIR__ . '/..' . '/maennchen/zipstream-php/src/Version.php',
@@ -7590,10 +7598,10 @@ class ComposerStaticInita200d3b7ca17caeb996aac15069028ba
     public static function getInitializer(ClassLoader $loader)
     {
         return \Closure::bind(function () use ($loader) {
-            $loader->prefixLengthsPsr4 = ComposerStaticInita200d3b7ca17caeb996aac15069028ba::$prefixLengthsPsr4;
-            $loader->prefixDirsPsr4 = ComposerStaticInita200d3b7ca17caeb996aac15069028ba::$prefixDirsPsr4;
-            $loader->prefixesPsr0 = ComposerStaticInita200d3b7ca17caeb996aac15069028ba::$prefixesPsr0;
-            $loader->classMap = ComposerStaticInita200d3b7ca17caeb996aac15069028ba::$classMap;
+            $loader->prefixLengthsPsr4 = ComposerStaticInit9fcd92b43cde6b707662c3af32b54810::$prefixLengthsPsr4;
+            $loader->prefixDirsPsr4 = ComposerStaticInit9fcd92b43cde6b707662c3af32b54810::$prefixDirsPsr4;
+            $loader->prefixesPsr0 = ComposerStaticInit9fcd92b43cde6b707662c3af32b54810::$prefixesPsr0;
+            $loader->classMap = ComposerStaticInit9fcd92b43cde6b707662c3af32b54810::$classMap;
 
         }, null, ClassLoader::class);
     }

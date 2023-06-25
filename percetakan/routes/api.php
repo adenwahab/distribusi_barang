@@ -3,6 +3,7 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\barangController;
+use App\Http\Controllers\Api\PelangganController;
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -20,3 +21,7 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
 Route::get('/api-barang',[barangController::class,'apiBarang']);
 Route::get('/api-barang/{id}',[barangController::class,'apiBarangDetail']);
+
+Route::get('/pelanggan',[PelangganController::class,'index']);
+Route::get('/pelanggan/{id}',[PelangganController::class,'show']);
+Route::post('/pelanggan-create',[PelangganController::class,'store']);
