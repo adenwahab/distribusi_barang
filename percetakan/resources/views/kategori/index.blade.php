@@ -51,8 +51,8 @@
                         <tr>
                             <th>{{ $no }}</th>
                             <td>{{ $data->nama }}</td>
-                            <td align="justify">
-                                <form method="POST" action="{{ route('kategori.destroy', $data->id) }}">
+                            <td>
+                                <form id="deleteForm" method="POST" action="{{ route('kategori.destroy', $data->id) }}">
                                     @csrf
                                     @method('DELETE')
                                     <a class="btn btn-info" href="{{ route('kategori.show', $data->id) }}" title="detail">
@@ -66,7 +66,7 @@
                                     @endif
                                     <!-- hapus data -->
                                     @if (Auth::user()->level == 'admin')
-                                    <button class="btn btn-danger" type="submit" title="Hapus" name="proses" value="hapus" onclick="return confirm('Anda Yakin Data Dihapus?')">
+                                    <button class="btn btn-danger" type="submit" title="Hapus" name="proses" value="hapus" onclick='showConfirmationDialog(event)'>
                                         <i class="fas fa-trash-alt"></i>
                                     </button>
                                     @endif
@@ -82,4 +82,28 @@
         </div>
     </div>
 </div>
+<script>
+    function showConfirmationDialog(e) {
+        e = e || window.event;
+        e.preventDefault();
+        Swal.fire({
+            title: 'Are you sure?',
+            text: "You won't be able to revert this!",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonText: 'Yes, delete it!',
+            cancelButtonText: 'No, cancel!',
+            reverseButtons: true
+        }).then((result) => {
+            if (result.isConfirmed) {
+                console.log('afkar ganteng')
+                // Trigger the form submission to delete the record
+                document.getElementById('deleteForm').submit();
+            } else if (result.dismiss === Swal.DismissReason.cancel) {
+                // User canceled the action, show a message or redirect as needed
+                Swal.fire('Cancelled', 'Your imaginary file is safe :)', 'error');
+            }
+        });
+    }
+</script>
 @endsection

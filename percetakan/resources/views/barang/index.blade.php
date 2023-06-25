@@ -17,6 +17,18 @@
                     })
                 </script>
             </div>
+            @elseif ($message = Session::get('error'))
+            <div class="alert alert-danger" hidden>
+                <p id="message">{{ $message }}</p>
+                <script>
+                    Swal.fire({
+                        title: 'Failed',
+                        text: $('#message').text(),
+                        icon: 'error',
+                        confirmButtonText: 'Oke!'
+                    })
+                </script>
+            </div>
             @endif
             <br />
             <a href="{{ route('barang.create') }}" class="btn btn-primary btn-sm"><i class="fas fa-plus"></i> <span style="font-weight: bold;">Tambah</span></a>
@@ -28,6 +40,7 @@
                     <thead>
                         <tr>
                             <th>No</th>
+                            <th>Kode</th>
                             <th>Nama Barang</th>
                             <th>Volume</th>
                             <th>Harga</th>
@@ -45,6 +58,7 @@
                         @foreach ($ar_barang as $data)
                         <tr>
                             <th>{{ $no }}</th>
+                            <td>{{ $data->kode }}</td>
                             <td>{{ $data->nama_barang }}</td>
                             <td>{{ $data->satuan }}</td>
                             <td>Rp. {{ number_format($data->harga, 0, ',', '.') }}</td>
@@ -59,7 +73,7 @@
                                 @endempty
                             </td>
                             <td>
-                                <form method="POST" action="{{ route('barang.destroy', $data->id) }}">
+                                <form id='deleteForm' method="POST" action="{{ route('barang.destroy', $data->id) }}">
                                     @csrf
                                     @method('DELETE')
                                     <a class="btn btn-info btn-sm" href="{{ route('barang.show', $data->id) }}" title="Detail">
@@ -70,11 +84,10 @@
                                     </a>
                                     @if (Auth::user()->level == 'admin')
                                     <!-- hapus data -->
-                                    <button class="btn btn-danger btn-sm delete-confirm" type="submit" title="Hapus" name="proses" value="hapus" onclick="return confirm('Anda Yakin Data Dihapus?')">
+                                    <button id='delete' class="btn btn-danger" onclick='showConfirmationDialog(event)'>
                                         <i class="fas fa-trash-alt"></i>
                                     </button>
                                     @endif
-                                    <input type="hidden" name="idx" value="" />
                                 </form>
                             </td>
                         </tr>
@@ -86,5 +99,29 @@
             </div>
         </div>
     </div>
-    <!-- </div> -->
-    @endsection
+</div>
+<script>
+    function showConfirmationDialog(e) {
+        e = e || window.event;
+        e.preventDefault();
+        Swal.fire({
+            title: 'Are you sure?',
+            text: "You won't be able to revert this!",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonText: 'Yes, delete it!',
+            cancelButtonText: 'No, cancel!',
+            reverseButtons: true
+        }).then((result) => {
+            if (result.isConfirmed) {
+                console.log('afkar ganteng')
+                // Trigger the form submission to delete the record
+                document.getElementById('deleteForm').submit();
+            } else if (result.dismiss === Swal.DismissReason.cancel) {
+                // User canceled the action, show a message or redirect as needed
+                Swal.fire('Cancelled', 'Your imaginary file is safe :)', 'error');
+            }
+        });
+    }
+</script>
+@endsection

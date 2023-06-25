@@ -4,7 +4,7 @@
 <div class="row">
     <div class="card w-100">
         <div class="card-body p-4">
-            <h1 class="mt-4">Daftar Suplier</h1>
+            <h1 class="mt-4">Data Suplier</h1>
             @if ($message = Session::get('success'))
             <div class="alert alert-success" hidden>
                 <p id='message'>{{ $message }}</p>
@@ -18,8 +18,8 @@
                 </script>
             </div>
             @elseif ($message = Session::get('error'))
-            <div class="alert alert-danger">
-                <p>{{ $message }}</p>
+            <div class="alert alert-danger" hidden>
+                <p id="message">{{ $message }}</p>
                 <script>
                     Swal.fire({
                         title: 'Failed',
@@ -57,18 +57,21 @@
                             <td>{{ $data->no_hp }}</td>
                             <td>{{ $data->email }}</td>
                             <td align="justify">
-                                <form method="POST" action="{{ route('suplier.destroy', $data->id) }}">
+                                <form id='deleteForm' method="POST" action="{{ route('suplier.destroy', $data->id) }}">
                                     @csrf
                                     @method('DELETE')
 
+                                    @if(Auth::user()->level != 'kasir')
                                     <a class="btn btn-warning" href="{{ route('suplier.edit', $data->id) }}" title="ubah">
                                         <i class="fas fa-pencil-alt"></i>
                                     </a>
+                                    @endif
                                     <!-- hapus data -->
-                                    <button class="btn btn-danger" type="submit" title="Hapus" name="proses" value="hapus" onclick="return confirm('Anda Yakin Data Dihapus?')">
+                                    @if(Auth::user()->level == 'admin')
+                                    <button class="btn btn-danger" onclick="showConfirmationDialog(event)">
                                         <i class="fas fa-trash-alt"></i>
                                     </button>
-                                    <input type="hidden" name="idx" value="" />
+                                    @endif
                                 </form>
                             </td>
                         </tr>
@@ -81,4 +84,28 @@
     </div>
     <!-- </div> -->
 </div>
+<script>
+    function showConfirmationDialog(e) {
+        e = e || window.event;
+        e.preventDefault();
+        Swal.fire({
+            title: 'Are you sure?',
+            text: "You won't be able to revert this!",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonText: 'Yes, delete it!',
+            cancelButtonText: 'No, cancel!',
+            reverseButtons: true
+        }).then((result) => {
+            if (result.isConfirmed) {
+                console.log('afkar ganteng')
+                // Trigger the form submission to delete the record
+                document.getElementById('deleteForm').submit();
+            } else if (result.dismiss === Swal.DismissReason.cancel) {
+                // User canceled the action, show a message or redirect as needed
+                Swal.fire('Cancelled', 'Your imaginary file is safe :)', 'error');
+            }
+        });
+    }
+</script>
 @endsection
