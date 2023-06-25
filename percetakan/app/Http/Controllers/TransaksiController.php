@@ -72,7 +72,7 @@ class TransaksiController extends Controller
         $hargaBarang = $dataBarang[1];
         $hargaMember = $dataBarang[2];
 
-        if (is_null($hargaMember)) {
+        if ($hargaMember == 0) {
             $hargaMember = $hargaBarang;
         }
 

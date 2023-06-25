@@ -16,7 +16,7 @@
                 @foreach ($rs as $data)
                 <div class="col-md-3 mb-4">
                     <a href="{{ route('barang.show', $data->id) }}" style="color: black; text-decoration:none;">
-                        <div class="card" style="width: 18rem;">
+                        <div class="card">
                             @empty($data->foto)
                             <img src="{{ url('admin/assets/img/noimage.jpg') }}" class="card-img-top" alt="...">
                             @else
