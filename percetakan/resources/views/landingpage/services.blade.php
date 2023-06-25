@@ -22,7 +22,7 @@
                                       <!-- Product name-->
                                       <h5 class="fw-bolder">{{ $barang->nama_barang }}</h5>
                                       <!-- Product price-->
-                                      {{ $barang->harga }}
+                                     Rp {{ $barang->harga }}
                                   </div>
                               </div>
                               <!-- Product actions-->
