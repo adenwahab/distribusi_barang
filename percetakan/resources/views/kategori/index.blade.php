@@ -35,7 +35,7 @@
             <a href="{{ route('kategori.create') }}" class="btn btn-primary">Tambah</a>
             <div class="table-responsive">
                 <br>
-                <table class="table table-hover datatable-table" id="datatablesSimple">
+                <table class="table table-hover" id="datatablesSimple">
                     <thead align="center">
                         <tr>
                             <th>No</th>
