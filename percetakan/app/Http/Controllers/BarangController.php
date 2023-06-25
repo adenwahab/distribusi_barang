@@ -42,7 +42,7 @@ class barangController extends Controller
     public function create()
     {
         //ambil master untuk dilooping di select option
-        $ar_kategori = kategori::all();
+        $ar_kategori = Kategori::all();
         //arahkan ke form input data
         return view('barang.form', compact('ar_kategori'), ['title' => 'Input Barang Baru']);
     }

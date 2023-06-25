@@ -49,24 +49,24 @@
                         @endphp
                         @foreach ($ar_kategori as $data)
                         <tr>
-                            <th>{{ $no }}</th>
+                            <td width="5%">{{ $no }}</td>
                             <td>{{ $data->nama }}</td>
                             <td>
                                 <form id="deleteForm" method="POST" action="{{ route('kategori.destroy', $data->id) }}">
                                     @csrf
                                     @method('DELETE')
-                                    <a class="btn btn-info" href="{{ route('kategori.show', $data->id) }}" title="detail">
+                                    <a class="btn btn-info btn-sm" href="{{ route('kategori.show', $data->id) }}" title="detail">
                                         <i class="fas fa-eye"></i>
                                     </a>
                                     @if (Auth::user()->level != 'kasir')
                                     <!-- ubah data -->
-                                    <a class="btn btn-warning" href="{{ route('kategori.edit', $data->id) }}" title="ubah">
+                                    <a class="btn btn-warning btn-sm" href="{{ route('kategori.edit', $data->id) }}" title="ubah">
                                         <i class="fas fa-pencil-alt"></i>
                                     </a>
                                     @endif
                                     <!-- hapus data -->
                                     @if (Auth::user()->level == 'admin')
-                                    <button class="btn btn-danger" type="submit" title="Hapus" name="proses" value="hapus" onclick='showConfirmationDialog(event)'>
+                                    <button class="btn btn-danger btn-sm" type="submit" title="Hapus" name="proses" value="hapus" onclick='showConfirmationDialog(event)'>
                                         <i class="fas fa-trash-alt"></i>
                                     </button>
                                     @endif
@@ -106,4 +106,13 @@
         });
     }
 </script>
+<style>
+    #datatablesSimple th {
+        text-align: center;
+    }
+
+    #datatablesSimple #no {
+        width: 10px;
+    }
+</style>
 @endsection

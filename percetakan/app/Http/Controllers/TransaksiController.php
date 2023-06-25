@@ -107,7 +107,9 @@ class TransaksiController extends Controller
     public function edit(string $id)
     {
         //ambil master untuk dilooping di select option
-        $ar_barang = barang::all();
+        $ar_barang = DB::table('barang')
+            ->orderBy('barang.id', 'desc')
+            ->get();
         //$ar_pelanggan = pelanggan::all();
         $ar_pelanggan = DB::table('pelanggan')
             ->orderBy('pelanggan.id', 'desc')
@@ -125,28 +127,65 @@ class TransaksiController extends Controller
         //proses input barang dari form
         $request->validate([
             'tgl' => 'required|date',
-            'jumlah' => 'required|max:45',
-            'keterangan' => 'required | max:100',
+            'jumlah' => 'required|integer',
+            'keterangan' => '',
             'total_harga' => '',
         ]);
 
         //lakukan update data dari request form edit
         $transaksi = transaksi::find($id);
 
-        if ($transaksi) {
-            $transaksi->barang_id = $request->input('barang');
-            $transaksi->pelanggan_id = $request->input('pelanggan');
-            $transaksi->tgl = $request->input('date');
-            $transaksi->jumlah = $request->input('jumlah');
-            $transaksi->keterangan = $request->input('keterangan');
-            //$transaksi->save();
+        $selectedBarang = $request->input('barang');
+        $dataBarang = explode(' | ', $selectedBarang);
 
-            return redirect()->route('transaksi.show', $id)
-                ->with('success', 'Data Transaksi Berhasil Diubah');
-        }
-        return redirect()->back()
-            ->with('error', 'Data Transaksi tidak ditemukan');
+        $idBarang = $dataBarang[0]; //id
+        // $hargaBarang = $dataBarang[1]; //harga
+        // $hargaMember = $dataBarang[2]; //harga_member
+
+        // if (is_null($hargaMember)) {
+        //     $hargaMember = $hargaBarang;
+        // }
+
+        $selectedPelanggan = $request->input('pelanggan');
+        $dataPelanggan = explode(' | ', $selectedPelanggan);
+
+        $idPelanggan = $dataPelanggan[0];
+        // $statusMember = $dataPelanggan[1];
+
+        // if ($hargaBarang) {
+        //     $total = $hargaBarang * $request->jumlah;
+        // }
+
+        // if ($statusMember) {
+        //     $total = $hargaMember * $request->jumlah;
+        // } else {
+        //     $total = $hargaBarang * $request->jumlah;
+        // }
+
+        // if ($transaksi) {
+        //     $transaksi->pelanggan_id = $idPelanggan;
+        //     $transaksi->barang_id = $idBarang;
+        //     $transaksi->tgl = $request->input('tgl');
+        //     $transaksi->jumlah = $request->input('jumlah');
+        //     $transaksi->total_harga = $request->input('total_harga');
+        //     $transaksi->keterangan = $request->input('keterangan');
+        //     $transaksi->save();
+
+        DB::table('transaksi')->where('id', $id)->update([
+            'pelanggan_id' => $idPelanggan,
+            'barang_id' => $idBarang,
+            'tgl' => $request->tgl,
+            'jumlah' => $request->jumlah,
+            'total_harga' => $request->total_harga,
+            'keterangan' => $request->keterangan,
+        ]);
+
+        return redirect()->route('transaksi.show', $id)
+            ->with('success', 'Data Transaksi Berhasil Diubah');
     }
+    //     return redirect()->back()
+    //         ->with('error', 'Data Transaksi tidak ditemukan');
+    // }
     public function show($id)
     {
 
@@ -183,7 +222,7 @@ class TransaksiController extends Controller
             ->join('barang', 'barang.id', '=', 'transaksi.barang_id')
             ->select('transaksi.*', 'barang.kode as barang')
             ->join('pelanggan', 'pelanggan.id', '=', 'transaksi.pelanggan_id')
-            ->select('transaksi.*', 'barang.nama_barang as barang', 'barang.kode as barang', 'pelanggan.nama as pelanggan')
+            ->select('transaksi.*', 'barang.nama_barang as barang', 'barang.kode as barang', 'pelanggan.nama as pelanggan', 'pelanggan.status_member as status')
             ->orderBy('transaksi.id', 'desc')
             ->get();
 
