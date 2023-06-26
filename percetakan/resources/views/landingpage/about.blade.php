@@ -1,39 +1,18 @@
 @extends('landingpage.index')
 @section('content')
-    <section id="about" class="about">
-        <div class="container" data-aos="fade-up">
 
-            <div class="section-title">
-                <h2>About Us</h2>
-                <p>Magnam dolores commodi suscipit. Necessitatibus eius consequatur ex aliquid fuga eum quidem. </p>
-            </div>
-
-            <div class="row content">
-                <div class="col-lg-6">
-                    <p>
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore
-                        et dolore
-                        magna aliqua.
-                    </p>
-                    <ul>
-                        <li><i class="ri-check-double-line"></i> Ullamco laboris nisi ut aliquip ex ea commodo consequat</li>
-                        <li><i class="ri-check-double-line"></i> Duis aute irure dolor in reprehenderit in voluptate velit
-                        </li>
-                        <li><i class="ri-check-double-line"></i> Ullamco laboris nisi ut aliquip ex ea commodo consequat</li>
-                    </ul>
-                </div>
-                <div class="col-lg-6 pt-4 pt-lg-0">
-                    <p>
-                        Ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in
-                        voluptate
-                        velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident,
-                        sunt in
-                        culpa qui officia deserunt mollit anim id est laborum.
-                    </p>
-                    <a href="#" class="btn-learn-more">Learn More</a>
+<section class="bg-light">
+            <div class="container px-5">
+                <div class="row gx-5 align-items-center justify-content-center justify-content-lg-between"  data-bs-ride="false" data-aos="fade-up" data-aos-delay="100">
+                    <div class="col-12 col-lg-5">
+                        <h2 class="display-4 lh-1 mb-4"  data-bs-ride="false" data-aos="fade-up" data-aos-delay="200">Pasific Printing</h2>
+                        <p class="lead fw-normal text-muted mb-5 mb-lg-0"  data-bs-ride="false" data-aos="fade-up" data-aos-delay="200">Pasific Printing merupakan manajemen percetakan yang bergelut pada bidang percetakan dan memiliki 5000+ pelanggan setia yang berada di seluruh Indonesia. Anda bisa mencetak sesuai keinginan anda dengan hasil yang sangat memuaskan.</p>
+                    </div>
+                    <div class="col-sm-8 col-md-6">
+                        <div class="px-5 px-sm-0 "  data-bs-ride="false" data-aos="fade-up" data-aos-delay="300"><img class="rounded-circle" src="{{ asset('assets/img/about.jpeg') }} " ></div>
+                    </div>
                 </div>
             </div>
+          </section>
 
-        </div>
-    </section>
-@endsection
+    @endsection

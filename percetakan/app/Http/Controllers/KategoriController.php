@@ -8,6 +8,7 @@ use App\Models\Barang; //panggil model
 use App\Models\Kategori; //panggil model
 use Illuminate\Support\Facades\DB; // jika pakai query builder
 use Illuminate\Database\Eloquent\Model; //jika pakai eloquent
+use Illuminate\Database\QueryException;
 
 class KategoriController extends Controller
 {
@@ -20,13 +21,15 @@ class KategoriController extends Controller
             ->orderBy('kategori.id', 'desc')
             ->get();
 
-        return view('kategori.index', compact('ar_kategori'), ['title' => 'Data Kategori']);
+
+        return view('kategori.index', compact('ar_kategori'), ['title' => 'kategori']);
     }
 
     public function dataPilihan()
     {
         $ar_pilihan = Kategori::all(); //eloquent
-        return view('landingpage.about', compact('ar_pilihan'), ['title' => 'Data Kategori']);
+
+        return view('landingpage.about', compact('ar_pilihan'), ['title' => 'kategori']);
     }
 
     public function create()
@@ -34,7 +37,8 @@ class KategoriController extends Controller
         //ambil master untuk dilooping di select option
         $ar_kategori = Kategori::all();
         //arahkan ke form input data
-        return view('kategori.form', compact('ar_kategori'), ['title' => 'Input Kategori Baru']);
+
+        return view('kategori.form', compact('ar_kategori'), ['title' => 'kategori']);
     }
 
 
@@ -73,9 +77,8 @@ class KategoriController extends Controller
      */
     public function show(string $id)
     {
-
-        $rs = Kategori::find($id);
-        return view('kategori.detail', compact('rs'), ['title' => 'Detail Kategori']);
+        $rs = Barang::where('kategori_id', $id)->get();
+        return view('kategori.detail', compact('rs'), ['title' => 'Data Barang']);
     }
 
     /**
@@ -87,7 +90,8 @@ class KategoriController extends Controller
         $ar_barang = Barang::all();
         //tampilkan data lama di form
         $row = Kategori::find($id);
-        return view('kategori.form_edit', compact('row', 'ar_barang'), ['title' => 'Ubah Data Kategori']);
+
+        return view('kategori.form_edit', compact('row', 'ar_barang'), ['title' => 'Edit Data Kategori']);
     }
 
     /**
@@ -126,9 +130,22 @@ class KategoriController extends Controller
      */
     public function destroy(string $id)
     {
-        Kategori::where('id', $id)->delete();
-        return redirect()->route('kategori.index')
-            ->with('success', 'Data Kategori Berhasil Dihapus');
+        try {
+
+            Kategori::where('id', $id)->delete();
+            return redirect()->route('kategori.index')
+                ->with('success', 'Data Kategori Berhasil Dihapus');
+        } catch (QueryException $e) {
+            $errorCode = $e->getCode();
+
+            if ($errorCode == 23000) {
+                return redirect()->route('kategori.index')
+                    ->with('error', 'Data Kategori Gagal Dihapus, Karena Masih Digunakan Pada Tabel Lain');
+            } else {
+                return redirect()->route('kategori.index')
+                    ->with('error', 'Data Kategori Gagal Dihapus');
+            }
+        }
     }
 
     public function batal()
@@ -137,6 +154,6 @@ class KategoriController extends Controller
             ->orderBy('kategori.id', 'desc')
             ->get();
 
-        return view('kategori.index', compact('ar_kategori'));
+        return view('kategori.index', compact('ar_kategori'), ['title' => 'Data Kategori']);
     }
 }
