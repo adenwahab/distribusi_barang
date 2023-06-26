@@ -18,6 +18,18 @@
                         })
                     </script>
                 </div>
+                @elseif ($message = Session::get('error'))
+                <div class="alert alert-danger" hidden>
+                    <p id="message">{{ $message }}</p>
+                    <script>
+                        Swal.fire({
+                            title: 'Error',
+                            text: $('#message').text(),
+                            icon: 'Error',
+                            confirmButtonText: 'Cool'
+                        })
+                    </script>
+                </div>
                 @endif
                 <div class="card-body">
                     <form method="POST" action="{{ route('user.setting.update') }}">
