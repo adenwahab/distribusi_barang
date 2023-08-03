@@ -120,7 +120,7 @@ class TransaksiController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request, $id)
     {
         //proses input barang dari form
         $request->validate([
@@ -139,6 +139,7 @@ class TransaksiController extends Controller
             $transaksi->tgl = $request->input('date');
             $transaksi->jumlah = $request->input('jumlah');
             $transaksi->keterangan = $request->input('keterangan');
+
             //$transaksi->save();
 
             return redirect()->route('transaksi.show', $id)

@@ -71,6 +71,9 @@ Route::get('datauser', [UserController::class, 'index'])->middleware('auth');
 
 Route::get('/beranda', [BarangController::class, 'dataBahan'])->middleware('auth');
 
+Route::put('/transaksi/{id}', [TransaksiController::class, 'update'])->name('transaksi.update')->middleware('auth');
+
+
 
 //---------route landingpage kategori-------
 Route::get('/coworking', function () {
