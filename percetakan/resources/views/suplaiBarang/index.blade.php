@@ -4,7 +4,7 @@
     <div class="row">
         <div class="card w-100">
             <div class="card-body p-4">
-                <h1 class="mt-4">Daftar Barang Masuk</h1>
+                <h1 class="mt-4">Data Barang Masuk</h1>
                 @if ($message = Session::get('success'))
                     <div class="alert alert-success" hidden>
                         <p id="message">{{ $message }}</p>
@@ -33,9 +33,7 @@
                                 <th>Jumlah Masuk</th>
                                 <th>Tanggal Masuk</th>
                                 <th>keterangan</th>
-                                @if (Auth::user()->level !== 'kasir')
-                                    <th>Action</th>
-                                @endif
+                                <th>Action</th>
                             </tr>
                         </thead>
                         <tbody>

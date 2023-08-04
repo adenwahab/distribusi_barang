@@ -22,24 +22,37 @@
                                         <div class="text-center">
                                             <!-- Product name-->
                                             <h5 class="fw-bolder">{{ $barang->nama_barang }}</h5>
+
+                                            <!-- Product reviews-->
+                                            <div class="d-flex justify-content-center small text-warning mb-2">
+                                                <div class="bi-star-fill"></div>
+                                                <div class="bi-star-fill"></div>
+                                                <div class="bi-star-fill"></div>
+                                                <div class="bi-star-fill"></div>
+                                                <div class="bi-star-fill"></div>
+                                            </div>
                                             <!-- Product price-->
-                                            {{ $barang->harga }}
+                                            Rp {{ $barang->harga }}
                                         </div>
+
                                     </div>
                                     <!-- Product actions-->
                                     <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-                                        <div class="text-center"><a class="btn btn-success mt-auto"
-                                                href="https://wa.me/6285888560861"><i class="bi bi-whatsapp"></i> Pesan
-                                                Ke WhatsApp</a></div>
+                                        <div class="text-center"><a class="btn btn-outline-dark mt-auto bg-new shadow"
+                                                href="https://wa.me/6282169019974"><i class="bi-whatsapp">&nbsp;Pesan ke
+                                                    Whatsapp</i></a></div>
                                     </div>
-
                                 </div>
                             </div>
                         @endforeach
-                        <button type="button" class="btn btn-link">Lihat lebih banyak</button>
+                        <a href="{{ url('/ourbarang') }}"><button type="button" class="btn btn-link">Lihat lebih
+                                banyak</button></a>
                     </div>
                 </div>
             </section>
         </div>
     </div>
+
+    </div>
+
 </section>

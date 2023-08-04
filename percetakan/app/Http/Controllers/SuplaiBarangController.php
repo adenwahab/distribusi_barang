@@ -33,7 +33,7 @@ class SuplaiBarangController extends Controller
         $ar_barang = DB::table('barang')
             ->orderBy('barang.id', 'desc')
             ->get();
-        return view('suplaibarang.form', compact('ar_suplier', 'ar_barang'), ['title' => 'Barang Masuk']);
+        return view('suplaiBarang.form', compact('ar_suplier', 'ar_barang'), ['title' => 'Barang Masuk']);
     }
 
     public function store(Request $request)
@@ -97,7 +97,7 @@ class SuplaiBarangController extends Controller
         $ar_suplier = Suplier::all();
         $ar_barang = Barang::all();
         $row = SuplaiBarang::find($id);
-        return view('suplaibarang.form_edit', compact('ar_suplier', 'ar_barang', 'row'), ['title' => 'Edit Barang Masuk']);
+        return view('suplaiBarang.form_edit', compact('ar_suplier', 'ar_barang', 'row'), ['title' => 'Edit Barang Masuk']);
     }
 
     public function update(Request $request, $id)

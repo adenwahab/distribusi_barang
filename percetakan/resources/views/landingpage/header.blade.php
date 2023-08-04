@@ -7,7 +7,7 @@
 
         <nav id="navbar" class="navbar">
             <ul>
-                <li><a class="nav-link scrollto active" href="{{ url('/') }}">Home</a></li>
+                <li><a class="nav-link scrollto " href="{{ url('/') }}">Home</a></li>
                 <li><a class="nav-link scrollto " href="{{ url('/about') }}">About</a></li>
                 <li><a class="nav-link scrollto " href="{{ url('/ourbarang') }}">Product</a></li>
                 <li><a class="nav-link scrollto " href="{{ url('/team') }}">Team</a></li>
@@ -16,7 +16,7 @@
                     <ul>
                         @isset($ar_kategori)
                         @foreach( $ar_kategori as $kategori )
-                        
+
                         <li><a href="{{ route('categories.index', ['category'=> $kategori->nama]) }}">{{$kategori->nama}}</a></li>
                         @endforeach
                         @endisset

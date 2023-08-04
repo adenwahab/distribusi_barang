@@ -9,6 +9,10 @@
                         <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
                         Dashboard
                     </a>
+                    <a class="nav-link" href="{{ url('/transaksi') }}">
+                        <div class="sb-nav-link-icon"><i class="fas fa-cash-register"></i></div>
+                        Transaksi
+                    </a>
 
                     <div class="sb-sidenav-menu-heading">Interface</div>
                     <a class="nav-link collapsed" href="#" data-bs-toggle="collapse"
@@ -21,7 +25,6 @@
                         data-bs-parent="#sidenavAccordion">
                         <nav class="sb-sidenav-menu-nested nav">
                             <a class="nav-link" href="{{ url('/barang') }}">Produk</a>
-                            <a class="nav-link" href="{{ url('/transaksi') }}">Transaksi</a>
                             <a class="nav-link" href="{{ url('/kategori') }}">Kategori Barang</a>
                         </nav>
                     </div>
@@ -41,7 +44,7 @@
                     <div class="sb-sidenav-menu-heading">Addons</div>
                     <a class="nav-link" href="{{ url('/suplaibarang') }}">
                         <div class="sb-nav-link-icon"><i class="fas fa-cart-plus"></i></div>
-                        Barang Masuk
+                        Suplai Barang
                     </a>
 
                     <a class="nav-link" href="{{ url('/suplier') }}">

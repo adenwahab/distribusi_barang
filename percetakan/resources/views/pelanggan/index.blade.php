@@ -45,7 +45,6 @@
                             <th>No Handphone</th>
                             <th>Email</th>
                             <th>Status Member</th>
-                            <th>Foto</th>
                             <th>Action</th>
                         </tr>
                     </thead>
@@ -66,13 +65,6 @@
                             <td>Bukan Member</td>
                             @endif
 
-                            <td>
-                                @empty($data->foto)
-                                <img src="{{ url('admin/assets/img/noimage.jpg') }}" width="15%" style="width: 50px;border-radius: 10px;">
-                                @else
-                                <img src="{{ url('admin/assets/img') }}/{{ $data->foto }}" width="15%" style="width: 50px;border-radius: 10px;">
-                                @endempty
-                            </td>
                             <td>
                                 <form id='deleteForm' method="POST" action="{{ route('pelanggan.destroy', $data->id) }}">
                                     @csrf
